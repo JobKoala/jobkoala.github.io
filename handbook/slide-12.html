@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>What the Platform Gives an Employer</title>
+<link rel="stylesheet" href="assets/page.css">
+<link rel="stylesheet" href="assets/theme-employer.css">
+<style>
+ .subtitle{position:absolute;left:126px;top:66px;font-size:10.5px;font-weight:800;
+   color:#9AA6C0;letter-spacing:.6px;}
+ .title .num{color:#E08A17;margin-right:10px;}
+ .pgno{position:absolute;right:34px;top:722px;font-size:11px;color:#9AA6C0;font-weight:700;}
+
+ .cols{display:grid;grid-template-columns:1fr 302px;gap:20px;height:100%;}
+ .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;}
+ .cd{background:#fff;border:1px solid #EFDCB6;border-radius:13px;padding:14px 16px;
+   display:flex;gap:14px;box-shadow:0 6px 18px -14px rgba(120,86,20,.45);}
+ .cd .tx{flex:1;min-width:0;display:flex;flex-direction:column;}
+ .cd .ic{width:28px;height:28px;border-radius:9px;background:#FDF3E2;display:flex;
+   align-items:center;justify-content:center;margin-bottom:8px;}
+ .cd .ic svg{width:15px;height:15px;fill:none;stroke:#B4720E;stroke-width:2;
+   stroke-linecap:round;stroke-linejoin:round;}
+ .cd h3{font-size:16px;font-weight:800;color:#101A45;letter-spacing:-.012em;line-height:1.2;}
+ .cd .kick{font-size:11.5px;font-weight:800;color:#B4720E;margin-top:3px;}
+ .cd p{font-size:11px;color:#4A5468;line-height:1.55;margin-top:7px;}
+ .cd p b{color:#101A45;}
+ .cd .where{margin-top:auto;padding-top:8px;font-size:9px;font-weight:700;color:#A9A092;}
+ .cd .logos{display:flex;gap:7px;margin-top:10px;}
+ .cd .logos span{width:25px;height:25px;border-radius:8px;background:#fff;border:1px solid #EDE3D2;
+   display:flex;align-items:center;justify-content:center;flex:none;
+   box-shadow:0 1px 2.5px rgba(90,70,30,.07);}
+ .cd .logos svg{width:15px;height:15px;display:block;}
+ .vst{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;}
+ .vst span{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:800;
+   border-radius:5px;padding:3px 7px;border:1px solid transparent;}
+ .vst span svg{width:9px;height:9px;display:block;flex:none;}
+ .vst .ok{color:#1C62E2;background:#EAF0FE;border-color:#CFDFFB;}
+ .vst .wait{color:#B4720E;background:#FDF3E2;border-color:#F0DCB4;}
+ .vst .non{color:#8A8577;background:#F4F1EA;border-color:#E6E0D2;}
+ .vst .no{color:#B03A3A;background:#FBEDEB;border-color:#F2D4D0;}
+ .cd .where i{font-style:normal;font-size:8px;font-weight:800;letter-spacing:.08em;
+   background:#FBF4E6;border-radius:4px;padding:2px 6px;margin-right:6px;color:#B4720E;}
+ .sh{position:relative;width:104px;flex:none;align-self:flex-start;background:#3A3F46;border-radius:15px;padding:3px;
+   box-shadow:0 12px 24px -16px rgba(120,86,20,.6);}
+ .sh .scr{border-radius:12px;overflow:hidden;background:#FBF6EC;height:176px;position:relative;}
+ .vzoom{position:absolute;left:9px;right:9px;top:112px;background:#fff;border-radius:7px;
+   border:1.4px solid #1C62E2;padding:4px;box-shadow:0 6px 14px -6px rgba(20,50,110,.45);}
+ .vzoom img{width:100%;display:block;}
+ .vzoom:before{content:"";position:absolute;left:50%;top:-22px;width:1.4px;height:22px;
+   background:#1C62E2;opacity:.55;}
+ .vzoom:after{content:"";position:absolute;left:calc(50% - 3px);top:-25px;width:6px;height:6px;
+   border-radius:50%;background:#1C62E2;}
+ .sh .scr img{width:100%;display:block;}
+ .appset{background:#fff;border:1px solid #EFDCB6;border-radius:13px;padding:13px 0 0;
+   box-shadow:0 6px 18px -14px rgba(120,86,20,.45);display:flex;flex-direction:column;}
+ .appset .hd{font-size:8.4px;font-weight:800;letter-spacing:.09em;color:#A9A092;text-align:center;
+   margin-bottom:10px;}
+ .fan{flex:1;position:relative;}
+ .fan .ph{position:absolute;background:#3A3F46;border-radius:17px;padding:3px;
+   box-shadow:0 16px 34px -18px rgba(120,86,20,.6);}
+ .fan .ph .scr{border-radius:14px;overflow:hidden;background:#FBF6EC;}
+ .fan .ph .scr img{width:100%;display:block;}
+ .fan .p1{left:14px;top:0;width:126px;z-index:1;transform:rotate(-4deg);}
+ .fan .p2{left:50%;margin-left:-70px;top:14px;width:140px;z-index:3;}
+ .fan .p3{right:14px;top:0;width:126px;z-index:1;transform:rotate(4deg);}
+ .fan .p1 .scr,.fan .p3 .scr{height:230px;}
+ .fan .p2 .scr{height:250px;}
+ .appset .cap{text-align:center;font-size:9.4px;color:#4A5468;line-height:1.5;padding:0 18px 12px;}
+ .appset .cap b{color:#101A45;}
+ .big{display:none;}
+ .big b{display:block;font-size:30px;font-weight:800;color:#E08A17;letter-spacing:-.02em;line-height:1;}
+ .big s{text-decoration:none;display:block;font-size:8.6px;font-weight:800;color:#C6B896;
+   letter-spacing:.08em;margin-top:5px;line-height:1.35;}
+ /* 促销 banner(卡内版,雇主配色):红色爆炸星压出左边缘 */
+ .promo{position:relative;margin-top:12px;background:#FFF8EC;border:1px solid #F0E0C2;border-radius:10px;
+   padding:9px 12px 9px 44px;}
+ .promo b{display:block;font-size:14px;font-weight:800;color:#B4720E;}
+ .promo p{font-size:11px !important;line-height:1.4;color:#4A5468;margin-top:2px !important;}
+ .promo .burst{position:absolute;left:-22px;top:50%;width:58px;height:58px;margin-top:-29px;
+   filter:drop-shadow(0 3px 5px rgba(229,50,45,.3));}
+ .promo .burst span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+   flex-direction:column;color:#fff;font-weight:900;line-height:1;transform:rotate(-12deg);}
+ .promo .burst span i{font-style:normal;font-size:13px;letter-spacing:.4px;}
+ .promo .burst span em{font-style:normal;font-size:6.5px;letter-spacing:.2px;margin-top:2px;}
+ .freeline{display:flex;align-items:center;gap:8px;margin-top:10px;background:#E9F8F1;
+   border:1px solid #BFE8D4;border-radius:9px;padding:8px 12px;}
+ .freeline i{font-style:normal;font-size:14px;line-height:1;}
+ .freeline b{font-size:14px;font-weight:800;color:#0F7A50;letter-spacing:-.01em;}
+</style></head>
+<body>
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">3.1</span>What the Platform Gives an Employer</div>
+ <div class="subtitle">EMPLOYER &nbsp;/&nbsp; FOUR THINGS A JOB BOARD DOES NOT DO</div>
+
+
+ <div class="wrap lead-off" style="top:134px;bottom:44px">
+  <div class="cols">
+   <div class="grid">
+
+   <div class="cd">
+    <div class="tx">
+     <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/>
+       <path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><path d="M16 11l2 2 4-4"/></svg></div>
+     <h3>You Pick, You Don't Wait</h3>
+     <div class="kick">Instead of waiting for applications</div>
+     <p>Open the app and you are looking at <b>candidates</b>, not at an inbox waiting to fill up. Filter by
+      region, category and the advanced filter, then reach out to whoever fits.</p>
+     <div class="where"><i>IN THE APP</i>1 Candidate List</div>
+    </div>
+    <div class="sh"><div class="scr"><img src="assets/3.3_candidate_list_v2.png" alt=""></div></div>
+   </div>
+
+   <div class="cd">
+    <div class="tx">
+     <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+     <h3>A direct line to the candidate</h3>
+     <div class="kick">You call them yourself</div>
+     <p><b>WeChat</b>, <b>WhatsApp</b>, <b>LINE</b>, <b>KakaoTalk</b>, phone, email — the candidate picks
+      which ones to show, and you reach them in the app they already use.</p>
+     <div class="logos">
+      <span><svg viewBox="0 0 24 24"><path fill="#1C62E2" d="M6.4 3h3l1.5 3.8-1.9 1.1a12.4 12.4 0 0 0 5.1 5.1l1.1-1.9L19 12.6v3a2 2 0 0 1-2.2 2A16.9 16.9 0 0 1 4.4 5.2 2 2 0 0 1 6.4 3z"/></svg></span>
+      <span><svg viewBox="0 0 24 24"><path fill="#E8705F" d="M3 6.6A1.6 1.6 0 0 1 4.6 5h14.8A1.6 1.6 0 0 1 21 6.6L12 13z"/><path fill="#D93025" d="M3 7.6 12 14l9-6.4v9A1.6 1.6 0 0 1 19.4 18H4.6A1.6 1.6 0 0 1 3 16.4z"/></svg></span>
+      <span><svg viewBox="0 0 24 24"><path fill="#07C160" d="M9.1 3.4c4.3 0 7.8 2.7 7.8 6.1s-3.5 6.1-7.8 6.1a9.8 9.8 0 0 1-2.3-.3l-3 1.5 1-2.4a5.8 5.8 0 0 1-3.5-4.9c0-3.4 3.5-6.1 7.8-6.1z"/><path fill="#07C160" d="M17.2 9.9c3.3 0 6 2.2 6 4.8a4.6 4.6 0 0 1-2.1 3.6l.7 2.3-2.6-1.3a8 8 0 0 1-2 .2c-3.3 0-6-2.1-6-4.8s2.7-4.8 6-4.8z"/><circle cx="6.8" cy="8.2" r=".95" fill="#fff"/><circle cx="11.4" cy="8.2" r=".95" fill="#fff"/></svg></span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.4" fill="#25D366"/><path fill="#fff" d="M9.3 7.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.8 2.8 4.4 3.9 2.2.9 2.6.7 3.1.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3-1.7-.8c-.2-.1-.4-.1-.6.1l-.6.8c-.2.2-.3.2-.6.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5z"/></svg></span>
+      <span><svg viewBox="0 0 24 24"><rect x="1.6" y="1.6" width="20.8" height="20.8" rx="6" fill="#06C755"/><path fill="#fff" d="M12 5.4c-3.9 0-7.1 2.6-7.1 5.7 0 2.8 2.5 5.2 5.9 5.6.2 0 .5.2.6.4.1.2 0 .5 0 .7l-.1.6c0 .2-.1.7.6.4 .7-.3 4-2.4 5.5-4.1a5 5 0 0 0 1.7-3.6c0-3.1-3.2-5.7-7.1-5.7z"/></svg></span>
+      <span><svg viewBox="0 0 24 24"><rect x="1.6" y="1.6" width="20.8" height="20.8" rx="6" fill="#FEE500"/><path fill="#3C1E1E" d="M12 5.8c-3.9 0-7 2.4-7 5.4 0 1.9 1.3 3.6 3.2 4.6l-.8 2.9c-.1.3.2.5.4.3l3.5-2.3c.2 0 .5.1.7.1 3.9 0 7-2.4 7-5.6s-3.1-5.4-7-5.4z"/></svg></span>
+     </div>
+     <div class="where"><i>IN THE APP</i>1 Candidate List · 1.3 Resume Detail</div>
+    </div>
+    <div class="sh"><div class="scr"><img src="assets/3.3_candidate_list_v2.png" alt=""></div></div>
+   </div>
+
+   <div class="cd">
+    <div class="tx">
+     <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7.5 3.4v5c0 4.4-3.1 8.1-7.5 9.2-4.4-1.1-7.5-4.8-7.5-9.2v-5z"/>
+       <path d="M9.4 12.2l1.9 1.9 3.5-3.9"/></svg></div>
+     <h3>A blue tick candidates can trust</h3>
+     <div class="kick">Optional — but it shows everywhere</div>
+     <p>Upload your <b>ABN</b> and business licence once. Once you are approved, a blue tick sits beside
+      your company name on the job card, the job detail and your company page. <b>Posting never waits
+      for it</b> — the tick is what makes people pick up.</p>
+     <div class="vst">
+      <span class="non">Not verified</span>
+      <span class="wait">Under review</span>
+      <span class="ok"><svg viewBox="0 0 24 24"><path fill="#1C62E2" d="M12 2.3l2.5 1.9 3.1-.2.9 3 2.5 1.9-1.3 2.8 1.3 2.8-2.5 1.9-.9 3-3.1-.2L12 21.7l-2.5-1.9-3.1.2-.9-3L3 15.1l1.3-2.8L3 9.5l2.5-1.9.9-3 3.1.2z"/><path fill="#fff" d="M10.8 15.1l-2.9-2.9 1.2-1.2 1.7 1.7 4-4 1.2 1.2z"/></svg>Verified</span>
+      <span class="no">Rejected</span>
+     </div>
+     <div class="where"><i>IN THE APP</i>4.7 Company Info · Verification</div>
+    </div>
+    <div class="sh"><div class="scr"><img src="assets/3.9_my_employer_v2.png" alt="">
+     <div class="vzoom"><img src="assets/3.9_verified_zoom.png" alt="Verified badge"></div>
+    </div></div>
+   </div>
+
+   <div class="cd">
+    <div class="tx">
+     <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.6.7-4 3.9 1 5.4-5-2.7-5 2.7 1-5.4-4-3.9 5.6-.7z"/></svg></div>
+     <h3>Posting is free, boost is optional</h3>
+     <div class="kick">And boost is free at this stage</div>
+     <p>Publish <b>as many jobs as you like</b> and they do not expire. A boost plan only moves a job up the list — skip it and the same job goes live all the same.</p>
+     <div class="promo">
+      <div class="burst"><svg viewBox="0 0 76 76" width="58" height="58"><polygon points="38.0,0.0 44.0,7.6 52.5,2.9 55.2,12.2 64.9,11.1 63.8,20.8 73.1,23.5 68.4,32.0 76.0,38.0 68.4,44.0 73.1,52.5 63.8,55.2 64.9,64.9 55.2,63.8 52.5,73.1 44.0,68.4 38.0,76.0 32.0,68.4 23.5,73.1 20.8,63.8 11.1,64.9 12.2,55.2 2.9,52.5 7.6,44.0 0.0,38.0 7.6,32.0 2.9,23.5 12.2,20.8 11.1,11.1 20.8,12.2 23.5,2.9 32.0,7.6" fill="#E5322D"/></svg><span><i>FREE</i><em>LIMITED TIME</em></span></div>
+      <b>Limited-time free boost</b>
+      <p>For a limited time, every boost plan is free. No payment needed.</p>
+     </div>
+     <div class="where"><i>IN THE APP</i>2 Posts · Post a Job</div>
+    </div>
+    <div class="sh"><div class="scr"><img src="assets/3.8_emp_notif_list.png" alt=""></div></div>
+   </div>
+
+   </div>
+   <div class="appset">
+    <div class="fan">
+     <div class="ph p1"><div class="scr"><img src="assets/3.9_my_employer.png" alt=""></div></div>
+     <div class="ph p3"><div class="scr"><img src="assets/3.8_emp_notif_list.png" alt=""></div></div>
+     <div class="ph p2"><div class="scr"><img src="assets/3.3_candidate_list_v2.png" alt=""></div></div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="footer">JobABC</div>
+ <div class="pgno">3.1</div>
+</div><script src="assets/fit.js"></script>
+</body></html>

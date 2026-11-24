@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>The Blue Tick — What a Verified Employer Gets</title>
+<link rel="stylesheet" href="assets/page.css">
+<link rel="stylesheet" href="assets/theme-employer.css">
+<style>
+ :root{--blue:#1B3C8C;--blue2:#1C62E2;--bluebg:#EAF0FE;--blueln:#C7D5EF;
+       --amb:#B4720E;--amb2:#E08A17;--red:#B03A3A;--grn:#1E7A45;
+       --ink:#101A45;--ink2:#4A5468;--ink3:#9AA6C0;--line:#E3E9F5;}
+ .subtitle{position:absolute;left:126px;top:66px;font-size:10.5px;font-weight:800;
+   color:#9AA6C0;letter-spacing:.6px;}
+ .title .num{color:var(--blue2);margin-right:10px;}
+ .pgno{position:absolute;right:34px;top:722px;font-size:11px;color:#9AA6C0;font-weight:700;}
+ .sec{font-size:8.4px;font-weight:800;letter-spacing:.09em;color:var(--ink3);margin-bottom:8px;}
+
+
+ /* 全局定位树 */
+ .loc{display:flex;align-items:center;gap:9px;}
+ .loc > i{font-style:normal;font-size:15px;color:#B9C4DA;font-weight:800;flex:none;}
+ .lz{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;position:relative;}
+ .lz b{display:block;font-size:11.5px;font-weight:800;color:var(--ink);}
+ .lz em{font-style:normal;display:block;font-size:7.8px;font-weight:700;color:var(--ink3);margin-top:2px;}
+ .lz .sib{font-size:7.4px;color:#B8C2D4;font-weight:700;margin-top:5px;padding-top:5px;
+   border-top:1px solid #F0F3F9;}
+ .lz.here{border:1.8px solid var(--blue2);background:#F4F8FF;padding-right:96px;max-width:430px;}
+ .lz .you{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:7.4px;
+   font-weight:800;letter-spacing:.07em;color:#fff;background:var(--blue2);border-radius:99px;
+   padding:3px 9px;}
+ .leaves{display:flex;flex-direction:column;gap:6px;}
+ .lz.tip{padding:6px 12px;}
+ .lz.tip b{font-size:10px;}
+ .lz.tip.v{border:1.4px solid var(--blue2);background:#EFF5FF;}
+ .lz.tip.s{border:1.4px solid #F0DCB4;background:#FFFCF5;}
+ .cols{display:block;}
+ .lf{position:relative;border-radius:12px;padding:11px 13px 13px;}
+ .lf.v{background:#F4F8FF;border:1.5px solid var(--blue2);}
+ .lf.s{background:#FFFCF5;border:1.5px solid #F0DCB4;}
+ .lf .lh{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+ .lf .lh u{text-decoration:none;font-size:8px;font-weight:800;letter-spacing:.07em;color:#fff;
+   border-radius:99px;padding:2px 8px;}
+ .lf.v .lh u{background:var(--blue2);} .lf.s .lh u{background:var(--amb2);}
+ .lf .lh b{font-size:12.5px;font-weight:800;color:var(--ink);}
+ .lf .lh em{font-style:normal;margin-left:auto;font-size:7.6px;font-weight:800;color:var(--ink3);}
+ .kv{display:flex;gap:8px;align-items:flex-start;margin-top:7px;}
+ .kv i{font-style:normal;font-size:12px;flex:none;line-height:1.3;}
+ .kv > div > b{display:block;font-size:9.2px;font-weight:800;color:var(--ink);}
+ .kv span b{display:inline;color:var(--ink2);font-weight:800;}
+ .kv span{font-size:8.2px;color:var(--ink2);line-height:1.45;}
+ .kv.bad > div > b{color:var(--red);} .kv.bad span{color:#8A4444;}
+ .ex{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+ .ex span{font-size:7.8px;font-weight:700;background:#fff;border:1px solid #F0DCB4;color:var(--amb);
+   border-radius:5px;padding:3px 8px;}
+
+ /* ── 原型图:四态 ── */
+ .protos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+ .pw{display:flex;flex-direction:column;align-items:center;}
+ .cap{display:flex;align-items:center;gap:5px;margin-bottom:6px;}
+ .cap u{text-decoration:none;font-size:7.4px;font-weight:800;letter-spacing:.06em;
+   border-radius:99px;padding:2px 7px;}
+ .cap b{font-size:9px;font-weight:800;color:var(--ink);white-space:nowrap;}
+ .pw.a .cap u{background:var(--bluebg);color:var(--blue2);}
+ .pw.b .cap u{background:#FDF0D8;color:var(--amb);}
+ .pw.c .cap u{background:#FDEEEE;color:var(--red);}
+ .pw.d .cap u{background:var(--blue2);color:#fff;}
+
+ .fr{background:#3A3F46;border-radius:19px;padding:4px;width:100%;max-width:246px;margin:0 auto;
+   box-shadow:0 12px 24px -16px rgba(24,52,110,.6);}
+ .sc{background:#F7F9FC;border-radius:15px;overflow:hidden;padding:7px 8px 9px;}
+ .sb{display:flex;justify-content:space-between;font-size:6px;color:#8A93A3;font-weight:700;
+   padding:0 2px 3px;}
+ .nav{display:flex;align-items:center;gap:4px;font-size:8.6px;font-weight:800;color:var(--ink);
+   padding-bottom:5px;border-bottom:1px solid #EDF0F6;margin-bottom:5px;}
+ .nav em{font-style:normal;color:#B9C4DA;}
+ .bn{border-radius:5px;padding:4px 5px;margin-bottom:5px;}
+ .bn b{display:block;font-size:7.6px;font-weight:800;line-height:1.25;}
+ .bn span{display:block;font-size:6.2px;line-height:1.35;margin-top:1.5px;}
+ .bn.amb{background:#FDF4E3;border:.6px solid #F0DCB4;} .bn.amb b{color:var(--amb);} .bn.amb span{color:#8C6A22;}
+ .bn.red{background:#FDEEEE;border:.6px solid #F3D2D2;} .bn.red b{color:var(--red);} .bn.red span{color:#8A4444;}
+ .bn.blu{background:#EAF0FE;border:.6px solid #C7D5EF;} .bn.blu b{color:var(--blue2);} .bn.blu span{color:#3E5C93;}
+ .fd{background:#fff;border-radius:5px;padding:5px 7px;margin-bottom:4px;}
+ .fd u{text-decoration:none;display:block;font-size:6px;color:#9AA2B1;font-weight:700;}
+ .fd i{font-style:normal;display:block;font-size:7.6px;color:var(--ink);font-weight:700;margin-top:1px;}
+ .fd.ph i{color:#C3CBD8;}
+ .fd.lock{background:#F2F4F8;}
+ .up{border:.8px dashed var(--blue2);border-radius:4px;padding:5px;text-align:center;
+   font-size:6.6px;color:var(--blue2);font-weight:800;margin-bottom:4px;background:#FBFCFF;}
+ .files{display:flex;gap:2px;margin-bottom:4px;}
+ .files span{flex:1;font-size:5.4px;background:#EEF2F9;color:#5A6478;border-radius:3px;
+   padding:2px 3px;text-align:center;font-weight:700;overflow:hidden;white-space:nowrap;}
+ .ck{display:flex;gap:4px;font-size:5.8px;color:#5A6478;line-height:1.3;margin-bottom:5px;}
+ .ck b{flex:none;width:5px;height:5px;border-radius:1.5px;background:var(--blue2);}
+ .btn{border-radius:99px;text-align:center;font-size:8.2px;font-weight:800;padding:5px 0;
+   background:var(--blue2);color:#fff;}
+ .btn.ghost{background:#EDF0F6;color:#9AA2B1;}
+
+ .flow{display:flex;align-items:center;justify-content:space-between;margin-top:9px;padding:0 24px;}
+ .flow span{font-size:7.4px;font-weight:800;color:var(--ink3);}
+ .flow i{font-style:normal;color:#B9C4DA;font-size:11px;}
+ .flow .back{color:var(--red);}
+
+ /* ── 树状图 ── */
+ .root{background:#fff;border:1.6px solid var(--blue2);border-radius:9px;padding:8px 12px;
+   box-shadow:0 8px 16px -13px rgba(28,98,226,.55);}
+ .root b{font-size:11.5px;font-weight:800;color:var(--ink);}
+ .root i{font-style:normal;display:block;font-size:7.6px;color:var(--ink3);font-weight:700;margin-top:2px;}
+ .sub{position:relative;margin:4px 0 0 15px;background:#fff;border:1px solid var(--line);
+   border-radius:6px;padding:4px 9px;display:flex;align-items:baseline;gap:7px;}
+ .sub:before{content:"";position:absolute;left:-12px;top:0;bottom:50%;width:8px;
+   border-left:1.4px solid #9FB3DD;border-bottom:1.4px solid #9FB3DD;border-radius:0 0 0 4px;}
+ .sub b{font-size:8.6px;font-weight:800;color:var(--ink);}
+ .sub .go{margin-left:auto;font-size:7.4px;font-weight:800;color:var(--blue2);white-space:nowrap;}
+ .sub .go.dim{color:var(--ink3);font-weight:700;}
+ .sub .go.hi{color:#fff;background:var(--blue2);border-radius:4px;padding:2px 6px;}
+ .sub.sub2{margin-left:33px;}
+ .sub.hit{border:1.5px solid var(--blue2);background:#EFF5FF;}
+ .sub.key{border:1.4px solid #F0DCB4;background:#FFFDF7;}
+ .sub.grp{background:#FBFCFE;} .sub.grp b{color:var(--ink3);font-weight:700;}
+
+
+ .un{display:flex;gap:9px;align-items:flex-start;margin-top:8px;background:#fff;
+   border:1px solid var(--line);border-radius:9px;padding:8px 12px;}
+ .un i{font-style:normal;font-size:14px;flex:none;}
+ .un > div > b{display:block;font-size:9.4px;font-weight:800;color:var(--ink);}
+ .un span b{color:var(--ink2);font-weight:800;}
+ .un span{font-size:8.2px;color:var(--ink2);line-height:1.45;}
+ .un.no > div > b{color:var(--ink3);} .un.no span{color:var(--ink3);}
+
+ /* 认证 = 发帖前提:每个状态标出能否发布职位 */
+ .cap em.post{font-style:normal;margin-left:8px;font-size:8px;font-weight:800;letter-spacing:.05em;
+   border-radius:4px;padding:2px 6px;vertical-align:middle}
+ .cap em.post.no{color:#B03A3A;background:#FDEEEE;border:1px solid #F3D2D2}
+ .cap em.post.ok{color:#18A566;background:#E6F7EF;border:1px solid #BFE8D4}
+ .gate{display:flex;align-items:center;gap:12px;
+   background:linear-gradient(90deg,#FFF7E9,#FFFDF8);border:1px solid #F0DCB4;border-radius:11px;
+   padding:12px 16px}
+ .gate .ic{font-size:17px;flex:none}
+ .gate b{font-size:12.5px;font-weight:800;color:#8A5A0B}
+ .gate span{font-size:11px;color:#8A6A34;margin-left:2px}
+
+ /* 入口:雇主「我的」→ 公司信息 → 企业认证 */
+ .btm{position:absolute;left:34px;right:34px;top:208px;bottom:44px;display:flex;justify-content:flex-start;align-items:flex-start;}
+ .entry{flex:none;display:flex;align-items:flex-start;gap:14px;zoom:.90;}
+ .pcell{display:flex;flex-direction:column;align-items:center;}
+ .ecap{font-size:9.4px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+   color:#A98B50;margin-bottom:7px;white-space:nowrap;}
+ .ea{align-self:center;margin-top:150px;margin:150px -4px 0;display:flex;flex-direction:column;align-items:center;gap:3px;}
+ .ea i{font-style:normal;font-size:16px;color:#C6B48C;}
+ .ea.cause i{font-size:22px;color:#2878F0;}
+ .ea.cause s{color:#2878F0;font-size:7.4px;letter-spacing:.07em;}
+ .ea.soft i{color:#9EC0F5;} .ea.soft s{color:#9EC0F5;}
+ .ea s{text-decoration:none;font-size:6.6px;font-weight:800;color:#C6B48C;letter-spacing:.05em;white-space:nowrap;}
+ .ep{position:relative;width:206px;background:#2F343B;border-radius:22px;padding:4px;
+   box-shadow:0 18px 36px -24px rgba(60,45,15,.9);}
+ .ep .sc{position:relative;height:418px;border-radius:18px;overflow:hidden;background:#EEF3FB;}
+ .ep .sb{display:flex;justify-content:space-between;padding:6px 11px 0;font-size:6.6px;font-weight:800;color:#12203F;}
+ .ep .ttl{font-size:12px;font-weight:800;font-style:italic;color:#12203F;padding:5px 11px 1px;}
+ .ep .me{display:flex;align-items:center;gap:7px;padding:5px 11px 9px;}
+ .ep .me img{width:29px;height:29px;border-radius:50%;box-shadow:0 0 0 1.8px #fff;}
+ .ep .me b{display:block;font-size:10.4px;font-weight:800;color:#12203F;}
+ .ep .me s{text-decoration:none;font-size:7.4px;color:#8A93A3;}
+ .ep .me .sw{margin-left:auto;height:16px;border-radius:8px;background:#fff;border:1px solid #E3E7EE;
+   display:flex;align-items:center;gap:3px;padding:0 6px;font-size:6.6px;font-weight:800;color:#12203F;}
+ .ep .tiles{display:flex;gap:6px;padding:0 9px;}
+ .ep .tile{flex:1;background:#fff;border-radius:8px;padding:8px 0 6px;text-align:center;
+   font-size:6.8px;font-weight:700;color:#12203F;box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .ep .tile svg{width:13px;height:13px;display:block;margin:0 auto 3px;fill:none;stroke:#12203F;stroke-width:1.8;}
+ .ep .sh{font-size:8.6px;font-weight:800;color:#12203F;padding:11px 11px 5px;}
+ .ep .lst{background:#fff;border-radius:9px;margin:0 9px;box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .ep .row{display:flex;align-items:center;gap:7px;padding:8px 10px;font-size:8px;font-weight:700;color:#12203F;
+   border-bottom:1px solid #F1F4F9;}
+ .ep .row:last-child{border-bottom:0;}
+ .ep .row svg{width:12px;height:12px;flex:none;fill:none;stroke:#12203F;stroke-width:1.7;}
+ .ep .row u{margin-left:auto;text-decoration:none;font-size:6.8px;font-weight:800;color:#B4720E;
+   background:#FDF0DA;border-radius:4px;padding:2px 5px;}
+ .ep .row s{margin-left:auto;text-decoration:none;font-size:7.2px;font-weight:600;color:#9AA2B1;}
+ .ep .row i{font-style:normal;font-size:8px;color:#C3C9D4;margin-left:5px;}
+ .ep .tb{position:absolute;left:0;right:0;bottom:0;height:31px;background:#fff;border-top:1px solid #EDF1F7;
+   display:flex;align-items:center;justify-content:space-around;}
+ .ep .tb span{font-size:5.8px;font-weight:700;color:#A6AEBE;text-align:center;position:relative;}
+ .ep .tb span.on{color:#1C62E2;font-weight:800;}
+ .ep .tb svg{width:11px;height:11px;display:block;margin:0 auto 2px;fill:none;stroke:#A6AEBE;stroke-width:1.9;}
+ .ep .tb span.on svg{stroke:#1C62E2;}
+ .ep .tb em{position:absolute;right:-5px;top:-3px;min-width:8px;height:8px;border-radius:4px;background:#E0554B;
+   color:#fff;font-style:normal;font-size:5.2px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 2px;}
+ /* 企业认证表单 */
+ .ep .nv{display:flex;align-items:center;justify-content:center;position:relative;padding:6px 11px 9px;}
+ .ep .nv i{position:absolute;left:10px;font-style:normal;font-size:10px;color:#12203F;margin:0;}
+ .ep .nv b{font-size:9.4px;font-weight:800;color:#12203F;}
+ .ep .fm{padding:0 11px;}
+ .ep .lb{font-size:7.6px;font-weight:800;color:#12203F;margin-top:9px;}
+ .ep .lb em{font-style:normal;color:#E0554B;margin-left:2px;}
+ .ep .in{height:21px;border-radius:7px;background:#fff;display:flex;align-items:center;padding:0 8px;
+   margin-top:4px;font-size:7.6px;color:#12203F;}
+ .ep .in.ph{color:#AFB7C4;} .ep .in.ro{background:#F0F3F8;color:#9AA2B1;}
+ .ep .in .cc{font-weight:800;padding-right:7px;margin-right:7px;border-right:1px solid #E6EAF1;}
+ .ep .hint{font-size:6.4px;color:#9AA2B1;margin-top:3px;}
+ .ep .up{margin-top:6px;border:1px dashed #9EC0F5;border-radius:8px;background:#fff;
+   padding:9px 0;text-align:center;}
+ .ep .up b{display:block;font-size:7.6px;font-weight:800;color:#2878F0;margin-top:3px;}
+ .ep .up span{font-size:6.2px;color:#9AA2B1;}
+ .ep .sub2{margin:9px 11px 0;height:24px;border-radius:12px;background:#C8CDD6;color:#fff;
+   font-size:8.6px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+ .ep .hl{position:absolute;border:1.6px dashed #B4720E;border-radius:7px;z-index:3;
+   box-shadow:0 0 0 1.5px rgba(255,255,255,.9);}
+ .ep .pin{position:absolute;width:20px;height:20px;border-radius:50%;background:#B4720E;color:#fff;
+   font-size:9.6px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff;
+   box-shadow:0 4px 10px rgba(140,90,10,.4);transform:translate(-50%,-50%);z-index:4;}
+ /* 蓝 V 放大镜 + 注释 */
+ .zoomw{position:absolute;left:986px;top:252px;width:340px;}
+ .zoomw .bub{width:132px;height:132px;border-radius:50%;background:#fff;border:2.6px solid #2878F0;
+   box-shadow:0 18px 34px -16px rgba(28,98,226,.55),0 0 0 7px rgba(40,120,240,.09);
+   display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto;overflow:hidden;}
+ .zoomw .bub .nm{font-size:15px;font-weight:800;color:#12203F;letter-spacing:-.01em;white-space:nowrap;}
+ .zoomw .bub svg{width:44px;height:44px;flex:none;}
+ .zoomw .zn{margin-top:16px;text-align:center;}
+ .zoomw .zn b{display:block;font-size:14px;font-weight:800;color:#101A45;}
+ .zoomw .zn p{font-size:11.4px;line-height:1.55;color:#4A5468;margin-top:6px;}
+ .zoomw .zn p b{display:inline;font-size:11.4px;color:#101A45;}
+ .zline{position:absolute;left:0;top:0;width:1360px;height:765px;pointer-events:none;z-index:2;}
+ /* 岗位列表 / 岗位详情(屏内原型) */
+ .ep .jc .t .hot{font-size:5.2px;font-weight:800;color:#fff;background:#F0A32A;border-radius:2.5px;padding:1px 3px;}
+ .ep .jc .g span.loc{color:#4A5468;background:#EEF3FC;display:inline-flex;align-items:center;gap:2px;}
+ .ep .jc .g span.loc b{width:3px;height:3px;border-radius:50%;background:#E0554B;display:block;}
+ .ep .jc .d{font-size:5.8px;color:#9AA2B1;line-height:1.4;margin-top:5px;
+   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+ .ep .jc .c .nm{display:flex;flex-direction:column;gap:1px;min-width:0;}
+ .ep .jc .c .nm span{display:flex;align-items:center;gap:3px;white-space:nowrap;}
+ .ep .jc .c .nm u{text-decoration:none;font-size:5.6px;font-weight:600;color:#9AA2B1;}
+ .ep .jc .acts{margin-left:auto;display:flex;gap:3px;flex:none;}
+ .ep .jc .acts b{width:14px;height:14px;border-radius:50%;display:flex;align-items:center;
+   justify-content:center;position:relative;}
+ .ep .jc .acts b svg{width:7.5px;height:7.5px;}
+ .ep .jc .acts b.dot::after{content:"";position:absolute;right:-1px;top:-1px;width:4px;height:4px;
+   border-radius:50%;background:#E0554B;border:1px solid #fff;}
+ .ep .fab{position:absolute;right:9px;bottom:42px;width:33px;height:33px;border-radius:50%;
+   background:linear-gradient(160deg,#4C8BFF,#1C4FD8);color:#fff;display:flex;flex-direction:column;
+   align-items:center;justify-content:center;font-size:4.2px;font-weight:800;line-height:1.15;
+   box-shadow:0 6px 14px -4px rgba(28,98,226,.7),0 0 0 2.5px rgba(255,255,255,.55);}
+ .ep .fab svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2;margin-bottom:1px;}
+ /* 详情页 */
+ .ep .jd .ttl{display:flex;align-items:baseline;gap:4px;}
+ .ep .jd .ttl b{font-size:9px;font-weight:800;color:#13224A;}
+ .ep .jd .ttl em{margin-left:auto;font-style:normal;font-size:8px;font-weight:800;color:#1C62E2;}
+ .ep .jd .ttl em small{font-weight:600;color:#8A93A3;font-size:5.6px;}
+ .ep .jd .tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px;}
+ .ep .jd .tags span{font-size:5.6px;color:#4A5468;background:#F1F4F9;border-radius:3px;padding:2px 4px;}
+ .ep .jd .tags span.v{color:#B4720E;background:#FDF3E1;}
+ .ep .jd .ln{height:1px;background:#EFF2F7;margin:7px 0 6px;}
+ .ep .jd .by{display:flex;align-items:center;gap:3px;font-size:6.8px;font-weight:800;color:#12203F;}
+ .ep .jd .by s{text-decoration:none;font-weight:600;color:#8A93A3;}
+ .ep .jd .mt{display:flex;gap:9px;margin-top:4px;font-size:5.6px;color:#9AA2B1;}
+ .ep .jd ol{margin:4px 0 0 9px;padding:0;font-size:5.8px;color:#5A6478;line-height:1.6;}
+
+ .ep .jsrch{margin:7px 9px 0;height:19px;border-radius:10px;background:#fff;border:1px solid #E4E8EF;
+   display:flex;align-items:center;gap:5px;padding:0 8px;font-size:7.2px;color:#9AA2B1;}
+ .ep .jchips{display:flex;gap:4px;margin:6px 9px 0;}
+ .ep .jchips span{background:#fff;border:1px solid #E4E8EF;border-radius:8px;font-size:6.4px;
+   color:#3A4354;padding:3px 6px;font-weight:600;white-space:nowrap;}
+ .ep .jchips span.r{margin-left:auto;color:#1C62E2;}
+ .ep .jc{background:#fff;border-radius:9px;margin:7px 9px 0;padding:7px 8px;
+   box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .ep .jc .t{display:flex;align-items:baseline;gap:5px;}
+ .ep .jc .t b{font-size:8.4px;font-weight:800;color:#13224A;}
+ .ep .jc .t em{margin-left:auto;font-style:normal;font-size:7.6px;font-weight:800;color:#1C62E2;}
+ .ep .jc .g{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px;}
+ .ep .jc .g span{font-size:5.8px;color:#4A5468;background:#F1F4F9;border-radius:3px;padding:2px 4px;}
+ .ep .jc .g span.v{color:#B4720E;background:#FDF3E1;}
+ .ep .jc .c{display:flex;align-items:center;gap:4px;margin-top:7px;font-size:7px;font-weight:800;color:#12203F;}
+ .ep .jc .c .a{flex:none;width:13px;height:13px;border-radius:50%;background:#D7DCE4;}
+ .ep .jc .c svg{width:9.5px;height:9.5px;flex:none;}
+ .ep .jc .c u{margin-left:auto;text-decoration:none;font-size:6px;font-weight:600;color:#9AA2B1;}
+ .ep .jdnav{display:flex;align-items:center;justify-content:center;position:relative;padding:6px 11px 7px;}
+ .ep .jdnav i{position:absolute;left:10px;font-style:normal;font-size:10px;color:#12203F;}
+ .ep .jdnav b{font-size:9px;font-weight:800;color:#12203F;}
+ .ep .jd{background:#fff;border-radius:9px;margin:6px 9px 0;padding:8px 9px;
+   box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .ep .jd .h{font-size:8px;font-weight:800;color:#12203F;margin-bottom:4px;}
+ .ep .jd p{font-size:6.6px;color:#5A6478;line-height:1.55;}
+ .ep .co{display:flex;align-items:center;gap:7px;}
+ .ep .co .lg{flex:none;width:21px;height:21px;border-radius:6px;background:#D7DCE4;}
+ .ep .co b{font-size:8.2px;font-weight:800;color:#12203F;display:flex;align-items:center;gap:4px;}
+ .ep .co b svg{width:10px;height:10px;}
+ .ep .co s{text-decoration:none;display:block;font-size:6.2px;color:#8A93A3;margin-top:2px;}
+ .ep .co i{margin-left:auto;font-style:normal;font-size:9px;color:#C3C9D4;}
+ .ep .adr{font-size:6.2px;color:#5A6478;margin-top:6px;}
+ .ep .map{height:34px;border-radius:5px;margin-top:5px;position:relative;overflow:hidden;
+   background:linear-gradient(120deg,#CFE3F4,#BFDCEF 45%,#D8E9F7);}
+ .ep .map:before{content:"";position:absolute;left:-10%;top:45%;width:120%;height:2.5px;
+   background:#F0C46A;transform:rotate(-5deg);}
+ .ep .bbar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;
+   padding:7px 10px 10px;background:#fff;border-top:1px solid #EDF1F7;}
+ .ep .bbar .sh{flex:none;font-size:5.6px;font-weight:700;color:#8A93A3;text-align:center;}
+ .ep .bbar .sh i{display:block;font-style:normal;font-size:9px;color:#1C62E2;}
+ .ep .bbar .go{flex:1;height:21px;border-radius:11px;background:#2457D6;color:#fff;font-size:7.6px;
+   font-weight:800;display:flex;align-items:center;justify-content:center;}
+ .rcol{display:none;}
+ /* 蓝 V 出现在哪儿:列表卡 / 岗位详情 / 未认证对照 */
+ .lcmp{display:flex;gap:18px;}
+ .lcmp .jc{flex:1;background:#fff;border:1px solid #E7E1D2;border-radius:13px;padding:14px 18px 16px;
+   box-shadow:0 14px 30px -22px rgba(60,45,15,.8);}
+ .lcmp .jc.no{background:#FAF9F6;border-style:dashed;}
+ .lcmp .cap{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+   color:#A98B50;margin-bottom:11px;}
+ .lcmp .jc.no .cap{color:#AFB6C4;}
+ .lcmp .r1{display:flex;align-items:baseline;gap:8px;}
+ .lcmp .r1 b{font-size:13.6px;font-weight:800;color:#13224A;}
+ .lcmp .r1 em{margin-left:auto;font-style:normal;font-size:12.4px;font-weight:800;color:#1C62E2;}
+ .lcmp .jc.no .r1 b{color:#6E7589;} .lcmp .jc.no .r1 em{color:#9AA2B1;}
+ .lcmp .tg{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+ .lcmp .tg span{font-size:9.6px;color:#4A5468;background:#F1F4F9;border-radius:5px;padding:3px 7px;}
+ .lcmp .tg span.v{color:#B4720E;background:#FDF3E1;}
+ .lcmp .jc.no .tg span{color:#9AA2B1;background:#F3F4F7;}
+ .lcmp .hr{height:1px;background:#EFEADF;margin:11px 0 10px;}
+ .lcmp .r2{display:flex;align-items:center;gap:5px;font-size:11.4px;font-weight:800;color:#12203F;}
+ .lcmp .jc.no .r2{color:#8A93A3;}
+ .lcmp .r2 .av{flex:none;width:22px;height:22px;border-radius:50%;background:#D7DCE4;}
+ .lcmp .r2 .av.sq{border-radius:6px;}
+ .lcmp .r2 svg{width:17px;height:17px;flex:none;}
+ .lcmp .r2 .fl{font-size:13px;}
+ .lcmp .r2 i{margin-left:auto;font-style:normal;font-size:9.6px;font-weight:600;color:#9AA2B1;white-space:nowrap;}
+ .lcmp .cline{font-size:10.6px;color:#7A8397;margin:6px 0 0 28px;}
+ .lcmp .ft{margin-top:11px;font-size:10.6px;font-weight:700;color:#8A7A58;}
+ .lcmp .jc.no .ft{color:#A6AEBE;}
+</style></head>
+<body>
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png"></div>
+ <div class="title"><span class="num">3.5</span>The Blue Tick — What a Verified Employer Gets</div>
+ <div class="subtitle">VERIFIED EMPLOYER &nbsp;/&nbsp; ONE ROW OF COMPANY INFO · ONE MARK</div>
+
+
+ <div class="wrap lead-off" style="top:130px;bottom:44px">
+  <div class="steps3">
+   <div class="st3 on"><div><b>Verification</b>
+    <s>The company passes once, then never again. <a>this page</a></s></div></div>
+   <div class="arw3">›</div>
+   <div class="st3"><div><b>Post</b>
+    <s>Three steps — job info, visa, candidate requirements. <a>See 3.6</a></s></div></div>
+   <div class="arw3">›</div>
+   <div class="st3"><div><b>Promotion</b>
+    <s>Optional. Pick <b>Area · Plan · Duration</b> and the job jumps to the top. <a>See 3.7</a></s></div></div>
+  </div>
+
+
+
+  
+
+ </div>
+ <div class="btm">
+  <div class="entry">
+   <div class="pcell"><div class="ecap">My &rsaquo; Company Info</div>
+    <div class="ep"><div class="sc">
+     <div class="sb"><span>4:57</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="ttl">Profile</div>
+     <div class="me"><img src="assets/jobabc_icon.png" alt=""><div><b>MEG</b><s>401 663 728</s></div>
+      <div class="sw">Employer<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#12203F" stroke-width="2.2" stroke-linecap="round"><circle cx="10" cy="7.5" r="3"/><path d="M4 19c1-3 3.4-4.4 6-4.4"/><path d="M15 13h6l-2-2M21 17h-6l2 2"/></svg></div></div>
+     <div class="tiles">
+      <div class="tile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></svg>History</div>
+      <div class="tile"><svg viewBox="0 0 24 24"><path d="M12 3.8l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.9l5.8-.8z"/></svg>Favourites</div>
+      <div class="tile"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.4"/><path d="M3.5 10h17"/></svg>Payments</div>
+     </div>
+     <div class="sh">Service</div>
+     <div class="lst">
+      <div class="row"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="10" height="16" rx="1.6"/><path d="M14 10h6v10H4M7 8h4M7 12h4M7 16h4"/></svg>Company Info<u>Not verified</u><i>&rsaquo;</i></div>
+      <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M4 12h16M12 3.6c4 4.7 4 11.9 0 16.8-4-4.9-4-12.1 0-16.8z"/></svg>Language<s>English</s><i>&rsaquo;</i></div>
+      <div class="row"><svg viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="3" y="13" width="4" height="6" rx="1.6"/><rect x="17" y="13" width="4" height="6" rx="1.6"/></svg>FAQ<i>&rsaquo;</i></div>
+      <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.6 6.6L12 13l8.4-6.4"/></svg>Contact Us<i>&rsaquo;</i></div>
+      <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.84 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.33 1.7 1.7 0 0 0-1 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.88.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.33-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6h.08A1.7 1.7 0 0 0 10.64 3V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 16.2 4.6a1.7 1.7 0 0 0 1.88-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 20.58 9v.08a1.7 1.7 0 0 0 1.56 1.56H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1z"/></svg>Settings<i>&rsaquo;</i></div>
+     </div>
+     <div class="tb">
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1.4-3.6 4.5-5 7-5s5.6 1.4 7 5"/></svg>Candidate</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 13 2.5 2.5L16 10"/></svg>Posts</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 4a6 6 0 0 0-6 6v4l-1.5 3h15L18 14v-4a6 6 0 0 0-6-6Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Notification<em>8</em></span>
+      <span class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.4"/><path d="M5 20c1.4-3.5 4.5-5 7-5s5.6 1.5 7 5"/></svg>My</span>
+     </div>
+     <div class="hl" style="left:13px;top:146px;width:172px;height:35px"></div>
+     <div class="pin" style="left:6px;top:163px">1</div>
+    </div></div></div>
+   <div class="ea"><i>&rarr;</i><s>TAP IT</s></div>
+   <div class="pcell"><div class="ecap">Company Verification</div>
+    <div class="ep"><div class="sc">
+     <div class="sb"><span>4:58</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="nv"><i>&lsaquo;</i><b>Company Verification</b></div>
+     <div class="fm">
+      <div class="lb">ABN<em>*</em></div>
+      <div class="in ph">Enter the 11-digit ABN</div>
+      <div class="hint">Australian Business Number &mdash; 11 digits, no spaces</div>
+      <div class="lb">Company / Business Name<em>*</em></div>
+      <div class="in ro">Sydney Construction</div>
+      <div class="lb">Contact name<em>*</em></div>
+      <div class="in">Meg Li</div>
+      <div class="lb">Contact mobile<em>*</em></div>
+      <div class="in"><span class="cc">+61 &#9662;</span>401 663 728</div>
+      <div class="lb">Company email<em>*</em></div>
+      <div class="in">meg@sydneyconstruction.com.au</div>
+      <div class="lb">Company documents</div>
+      <div class="up"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2878F0" stroke-width="2" stroke-linecap="round"><path d="M20 11.5l-8.5 8.5a5 5 0 0 1-7-7l9-9a3.4 3.4 0 0 1 4.8 4.8l-9 9a1.8 1.8 0 0 1-2.5-2.5l8.3-8.3"/></svg>
+       <b>Upload company documents</b><span>jpg / png / pdf &middot; 10 MB each &middot; up to 3 files</span></div>
+     </div>
+     <div class="sub2">Submit for verification</div>
+    </div></div></div>
+   <div class="ea cause"><i>&rArr;</i><s>ONCE YOU PASS</s></div>
+   <div class="pcell"><div class="ecap">Then: on every job card</div>
+    <div class="ep"><div class="sc">
+     <div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="jsrch"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#9AA2B1" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Search jobs&hellip;</div>
+     <div class="jchips"><span>Area &#9662;</span><span>Category &#9662;</span><span class="r">Advanced Filter</span></div>
+     <div class="jc"><div class="t"><b>Software Engineer</b><span class="hot">Hot</span><em>Negotiable</em></div>
+      <div class="g"><span class="v">482 Sponsorship</span><span class="loc"><b></b>Melbourne CBD</span><span>Full-time</span><span>Cash</span></div>
+      <div class="d">Back-end work on the platform API. Training provided; hybrid, two days in the Melbourne office.</div>
+      <div class="c"><span class="a"></span><div class="nm"><span>JOBABC PTY LTD<svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&#127462;&#127482;</span></span><u>5 days ago</u></div><div class="acts"><b style="background:#2457D6"><svg viewBox="0 0 24 24"><path fill="#fff" d="M6.4 3h3l1.5 3.8-1.9 1.1a12.4 12.4 0 0 0 5.1 5.1l1.1-1.9L19 12.6v3a2 2 0 0 1-2 2A14.6 14.6 0 0 1 4 4.9a2 2 0 0 1 2-2z"/></svg></b><b style="background:#FDEEEA"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.4" fill="#fff"/><path d="M3.2 6.2L12 13l8.8-6.8" fill="none" stroke="#E8542F" stroke-width="2"/></svg></b><b class="dot" style="background:#EDF0F5"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.9" fill="#8A93A3"/><circle cx="12" cy="12" r="1.9" fill="#8A93A3"/><circle cx="18" cy="12" r="1.9" fill="#8A93A3"/></svg></b></div></div></div>
+     <div class="jc"><div class="t"><b>Warehouse Assistant</b><em>A$28&ndash;32<small>/hr</small></em></div>
+      <div class="g"><span class="loc"><b></b>Melbourne CBD</span><span>Casual</span><span>Cash</span></div>
+      <div class="d">Packing, sorting and shelving. Early starts, own transport preferred.</div>
+      <div class="c"><span class="a"></span><div class="nm"><span>Sydney Construction<span>&#127462;&#127482;</span></span><u>5 days ago</u></div><div class="acts"><b style="background:#2457D6"><svg viewBox="0 0 24 24"><path fill="#fff" d="M6.4 3h3l1.5 3.8-1.9 1.1a12.4 12.4 0 0 0 5.1 5.1l1.1-1.9L19 12.6v3a2 2 0 0 1-2 2A14.6 14.6 0 0 1 4 4.9a2 2 0 0 1 2-2z"/></svg></b><b style="background:#FDEEEA"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.4" fill="#fff"/><path d="M3.2 6.2L12 13l8.8-6.8" fill="none" stroke="#E8542F" stroke-width="2"/></svg></b></div></div></div>
+     <div class="jc"><div class="t"><b>Kitchen Hand</b><span class="hot">Hot</span><em>A$30&ndash;34<small>/hr</small></em></div>
+      <div class="g"><span class="v">482 Sponsorship</span><span class="loc"><b></b>Southbank</span><span>Casual</span></div>
+      <div class="d">Prep and dishwashing, available weeknights. No experience needed.</div>
+      <div class="c"><span class="a"></span><div class="nm"><span>Fresh Mart<svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&#127462;&#127482;</span></span><u>1 week ago</u></div><div class="acts"><b style="background:#23C05A"><svg viewBox="0 0 24 24"><path fill="#fff" d="M6.4 3h3l1.5 3.8-1.9 1.1a12.4 12.4 0 0 0 5.1 5.1l1.1-1.9L19 12.6v3a2 2 0 0 1-2 2A14.6 14.6 0 0 1 4 4.9a2 2 0 0 1 2-2z"/></svg></b><b style="background:#FDEEEA"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.4" fill="#fff"/><path d="M3.2 6.2L12 13l8.8-6.8" fill="none" stroke="#E8542F" stroke-width="2"/></svg></b><b class="dot" style="background:#EDF0F5"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.9" fill="#8A93A3"/><circle cx="12" cy="12" r="1.9" fill="#8A93A3"/><circle cx="18" cy="12" r="1.9" fill="#8A93A3"/></svg></b></div></div></div>
+     <div class="fab"><svg viewBox="0 0 24 24"><path d="M4 5h13v8H9l-5 4V5z"/><path d="M19 9h2v9l-3-2.6"/></svg>Work Visa</div>
+     <div class="tb">
+      <span class="on"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/></svg>Jobs</span>
+      <span><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M8.4 12.2l2.6 2.5 4.6-5.2"/></svg>Resume</span>
+      <span><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg>Notifications</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>My</span>
+     </div>
+     <div class="hl" style="left:21px;top:145px;width:156px;height:27px"></div>
+     <div class="pin" style="left:16px;top:158px">3</div>
+    </div></div>
+   </div>
+   <div class="ea soft"><i>&rarr;</i><s>SAME MARK</s></div>
+   <div class="pcell"><div class="ecap">&hellip;and in the job detail</div>
+    <div class="ep"><div class="sc">
+     <div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="jdnav"><i>&lsaquo;</i><b>Job Detail</b></div>
+     <div class="jd">
+      <div class="ttl"><b>Software Engineer</b><span class="hot" style="font-size:5.2px;font-weight:800;color:#fff;background:#F0A32A;border-radius:2.5px;padding:1px 3px">Hot</span><em>Negotiable</em></div>
+      <div class="tags"><span class="v">482, 186 Sponsorship</span><span>Melbourne CBD</span><span>Full-time</span><span>Cash</span></div>
+      <div class="ln"></div>
+      <div class="by">Kelvin Lyu&#127462;&#127482;<s>(JOBABC PTY LTD)</s></div>
+      <div class="mt"><span>&#128339; 18-11-2026</span><span>&#128065; 43</span></div>
+     </div>
+     <div class="jd"><div class="h">Job description</div>
+      <p>Back-end work on the platform API. Training provided; hybrid, two days in the Melbourne office.</p>
+      <div class="h" style="margin-top:7px">Job requirements</div>
+      <ol><li>Diploma or above</li><li>Australian citizen, PR, full work rights or working holiday</li><li>English, Mandarin or Cantonese</li><li>Able to start within one month</li></ol></div>
+     <div class="jd">
+      <div class="co"><span class="lg"></span><div><b>JOBABC PTY LTD<svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></b><s>Retail &middot; Est. 2012 &middot; 200&ndash;500 people</s></div><i>&rsaquo;</i></div>
+      <div class="adr">2/171 La Trobe St, Melbourne VIC 3000</div>
+      <div class="map"></div></div>
+     <div class="bbar"><div class="sh"><i>&#8599;</i>Share</div><div class="go">Contact Now</div></div>
+     <div class="hl" style="left:22px;top:305px;width:154px;height:29px"></div>
+     <div class="pin" style="left:17px;top:319px">4</div>
+    </div></div>
+   </div>
+  </div>
+  <div class="rcol">
+ <div class="gate"><span class="ic">🔵</span><div>
+  <b>The tick is the only thing at stake.</b>
+  <span>Publishing, browsing the resume pool and contacting candidates all work from day one, verified
+   or not. Passing adds exactly one thing — the blue tick on your cards, and your jobs recommended ahead of the rest.</span></div></div>
+
+ <div class="lcmp">
+  <div class="jc"><div class="cap">On a job card</div>
+   <div class="r1"><b>Software Engineer</b><em>Negotiable</em></div>
+   <div class="tg"><span class="v">482 Sponsorship</span><span>Melbourne CBD</span><span>Full-time</span></div>
+   <div class="hr"></div>
+   <div class="r2"><span class="av"></span>JOBABC PTY LTD<svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="fl">&#127462;&#127482;</span><i>5d</i></div>
+   <div class="ft">Sits beside the name, on every card.</div></div>
+  <div class="jc"><div class="cap">In the job detail</div>
+   <div class="r2" style="margin-top:4px"><span class="av sq"></span>JOBABC PTY LTD<svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><i>&rsaquo;</i></div>
+   <div class="cline">Retail &middot; Est. 2012 &middot; 200&ndash;500 people</div>
+   <div class="cline">2/171 La Trobe St, Melbourne VIC 3000</div>
+   <div class="hr"></div>
+   <div class="ft">Same mark on the company card inside the post.</div></div>
+  <div class="jc no"><div class="cap">Not verified</div>
+   <div class="r1"><b>Software Engineer</b><em>Negotiable</em></div>
+   <div class="tg"><span class="v">482 Sponsorship</span><span>Melbourne CBD</span><span>Full-time</span></div>
+   <div class="hr"></div>
+   <div class="r2"><span class="av"></span>Sydney Construction<span class="fl">&#127462;&#127482;</span><i>5d</i></div>
+   <div class="ft">Same job, no mark &mdash; and not recommended first.</div></div>
+ </div>
+  </div>
+ </div>
+
+ <svg class="zline" viewBox="0 0 1360 765">
+  <circle cx="624" cy="368" r="12" fill="none" stroke="#2878F0" stroke-width="1.6" opacity=".9"/>
+  <circle cx="888" cy="512" r="12" fill="none" stroke="#2878F0" stroke-width="1.6" opacity=".9"/>
+  <path d="M636 368 C 704 368, 736 322, 772 272 C 824 190, 985 200, 1090 318"
+    fill="none" stroke="#2878F0" stroke-width="1.4" stroke-dasharray="5 4" opacity=".75"/>
+  <path d="M898 505 L 1103 357" fill="none" stroke="#2878F0" stroke-width="1.4"
+    stroke-dasharray="5 4" opacity=".75"/>
+ </svg>
+ <div class="zoomw">
+  <div class="bub"><div class="nm">PTY LTD</div><svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="zn">
+   <b>One mark, nothing else</b>
+   <p>A blue shield with a white <b>V</b>, set right after the company name. It is the only thing
+    verification changes &mdash; no new screen, no new tab, no extra step for the job seeker.
+    If it is missing, the company simply has not passed yet.</p>
+  </div>
+ </div>
+ <div class="footer">JobABC</div>
+ <div class="pgno">3.5</div>
+</div><script src="assets/fit.js"></script>
+</body></html>

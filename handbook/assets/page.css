@@ -1,0 +1,104 @@
+/* JobKoala 手册 · 手机标注页共用样式
+   画布 1360×765（16:9，与 PPT 原始比例一致）
+   几何基线对齐既有源码页：logo(48,29) / title(140,37) / footer(48,733) */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1360px; height:765px; overflow:hidden; }
+body { font-family:-apple-system,"SF Pro Text","Helvetica Neue",Arial,"PingFang SC",sans-serif;
+  position:relative; background:#E9EEF9; }
+
+.bg-top { position:absolute; left:-10%; top:-55%; width:120%; height:110%;
+  background:radial-gradient(ellipse at 50% 45%, #FFFFFF 0%, #FBFCFE 55%, rgba(251,252,254,0) 72%); }
+.wave1 { position:absolute; left:-5%; bottom:-46%; width:60%; height:80%; opacity:.35;
+  background:radial-gradient(ellipse at 50% 50%, #E5EDF9 0%, rgba(229,237,249,0) 70%); }
+.wave2 { position:absolute; right:-8%; bottom:-40%; width:70%; height:85%; opacity:.35;
+  background:radial-gradient(ellipse at 50% 50%, #E2EBF8 0%, rgba(226,235,248,0) 70%); }
+
+/* 满幅：页面四周不留白边 */
+.page-card { position:absolute; inset:0; background:#fff; overflow:hidden; }
+
+.titleband { position:absolute; left:0; top:0; right:0; height:125px;
+  background:url('../assets/banner_user.png') center bottom / cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 55%, transparent 100%); }
+.headrule { position:absolute; left:0; right:0; top:108px; height:1px;
+  background:linear-gradient(90deg, rgba(198,211,234,0) 0%, rgba(198,211,234,.75) 10%,
+    rgba(198,211,234,.75) 90%, rgba(198,211,234,0) 100%); }
+
+.logo { position:absolute; left:34px; top:18px; width:72px; height:72px;
+  border-radius:50%; overflow:hidden; }
+.logo img { width:100%; height:100%; object-fit:cover; }
+.title { position:absolute; left:126px; top:26px; font-size:32px; font-weight:800;
+  letter-spacing:.2px; color:#101A45; white-space:nowrap; }
+.title .num { color:#1C62E2; margin-right:10px; }   /* 页号一律蓝色，全书统一 */
+
+.lead { position:absolute; left:34px; top:122px; width:1264px;
+  font-size:11px; line-height:1.5; color:#5A6478; }
+
+.footer { position:absolute; left:34px; top:722px; font-size:13px; font-weight:700; color:#2B3A6B; }
+
+/* ── 内容区 ── */
+.wrap { position:absolute; left:34px; right:34px; bottom:46px; display:flex; flex-direction:column; }
+.wrap.lead-on { top:146px; }
+.wrap.lead-off { top:130px; }
+
+/* 分区小标题 */
+.sect { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.sect svg { width:18px; height:18px; flex:none; }
+.sect .t { font-size:16.5px; font-weight:800; color:#101A45; }
+.sect .t .blue { color:#1C62E2; }
+.st { fill:none; stroke:#1C62E2; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ── 手机 ── */
+.stage { display:flex; align-items:flex-start; gap:26px; }
+/* 手机与下方两栏说明一一对齐 */
+.stage.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:0 40px; justify-items:center; }
+.pcol { display:flex; flex-direction:column; align-items:center; flex:none; }
+.pcol .head { display:flex; align-items:center; gap:7px; margin-bottom:9px; }
+.pcol .head svg { width:16px; height:16px; }
+.pcol .head .t { font-size:14px; font-weight:800; color:#1C62E2; white-space:nowrap; }
+
+.phone { position:relative; background:#3A3F46; border-radius:26px; padding:5px;
+  box-shadow:0 22px 45px rgba(24,52,110,.16), 0 5px 14px rgba(24,52,110,.10); }
+.phone .screen { border-radius:21px; overflow:hidden; background:#EDF1FA; display:block; }
+.phone .screen img { display:block; width:100%; height:100%; object-fit:cover; }
+.pcap { font-size:11px; font-weight:700; color:#101A45; margin-top:9px; text-align:center; }
+
+/* 手机左缘的蓝色编号徽章 */
+.pin { position:absolute; left:0; width:21px; height:21px; border-radius:50%; background:#1C62E2;
+  color:#fff; font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:10px; font-weight:800;
+  display:flex; align-items:center; justify-content:center; border:2px solid #fff;
+  box-shadow:0 4px 10px rgba(28,98,226,.35); transform:translate(-50%,-50%); z-index:3; }
+
+/* 页面之间的流转箭头 */
+.arrow { align-self:center; margin-top:120px; color:#1C62E2; flex:none; }
+.arrow svg { width:34px; height:14px; }
+
+/* ── 编号说明 ── */
+.notes { display:grid; gap:9px 40px; align-content:start; }
+.notes.c1 { grid-template-columns:1fr; }
+.notes.c2 { grid-template-columns:1fr 1fr; }
+.note { display:flex; gap:9px; align-items:flex-start; }
+.note .n { flex:none; width:19px; height:19px; border-radius:50%; background:#DCE7FA;
+  color:#1C62E2; font-size:10.5px; font-weight:800; display:flex; align-items:center;
+  justify-content:center; margin-top:1px; }
+.note .b { min-width:0; }
+.note .h { font-size:11.5px; font-weight:800; color:#101A45; }
+.note .d { font-size:10px; line-height:1.5; color:#4A5468; margin-top:2px; }
+.note ul { margin:3px 0 0 0; padding-left:12px; }
+.note li { font-size:9.5px; line-height:1.5; color:#4A5468; }
+
+/* 右侧单列说明（2.6 / 2.9 用），条目之间加分隔线 */
+.notes.ruled .note { padding-bottom:9px; border-bottom:1px solid #E9EDF4; }
+.notes.ruled .note:last-child { border-bottom:0; }
+
+/* 手机在上、说明在下时用的紧凑排式：标题与说明同一行 */
+.notes.inline { gap:7px 44px; }
+.notes.inline .note .b { font-size:0; }
+.notes.inline .note .h,
+.notes.inline .note .d { display:inline; font-size:10.2px; line-height:1.48; }
+.notes.inline .note .h { font-weight:800; color:#101A45; margin-right:5px; }
+.notes.inline .note .d { color:#4A5468; margin-top:0; }
+.notes.inline .note .n { width:17px; height:17px; font-size:9.5px; margin-top:0; }
+
+/* 页码:右下角,与页脚同一基线 */
+.pgno { position:absolute; right:34px; top:722px; font-size:11px; color:#9AA6C0; font-weight:700; }

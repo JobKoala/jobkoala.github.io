@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>2.1 Switch Mode — One Account, Two Apps</title>
+<link rel="stylesheet" href="assets/page.css">
+<style>
+ .stage { display:flex; gap:30px; align-items:flex-start; }
+ .pcol { flex:none; }
+ .phone { width:212px; }
+ .phone .screen { height:462px; }
+ .phone .screen img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+ /* 右上角图标上的高亮圈 */
+ .ring { position:absolute; left:66.5%; top:7.1%; width:27%; height:4.4%;
+   border:2.4px solid #1C62E2; border-radius:18px; box-shadow:0 0 0 4px rgba(28,98,226,.16);
+   z-index:4; }
+
+ .zoom { flex:none; width:150px; text-align:center; margin-top:34px; }
+ .zoom .bub { width:118px; height:118px; border-radius:50%; overflow:hidden; margin:0 auto;
+   border:2.4px solid #1C62E2; box-shadow:0 10px 24px -12px rgba(28,98,226,.6); background:#fff; }
+ .zoom .bub img { width:100%; height:100%; object-fit:cover; }
+ .zoom b { display:block; margin-top:10px; font-size:12px; font-weight:800; color:#101A45; }
+ .zoom s { text-decoration:none; display:block; margin-top:3px; font-size:9.6px; color:#5A6478;
+   line-height:1.45; }
+ .zoom .tapline { margin-top:10px; font-size:9px; font-weight:800; letter-spacing:.08em;
+   color:#1C62E2; }
+
+ .cmp { flex:1; }
+ .ch { display:grid; grid-template-columns:1fr 1fr; gap:0 12px; align-items:end;
+   padding-bottom:7px; border-bottom:2px solid #E3E9F5; }
+ .ch .t { font-size:12.5px; font-weight:800; }
+ .ch .t.s { color:#1C62E2; } .ch .t.e { color:#B4720E; }
+ .ch .t span { display:block; font-size:8.6px; font-weight:700; color:#9AA6C0; margin-top:2px; }
+ .r { display:grid; grid-template-columns:1fr 1fr; gap:0 12px; align-items:center;
+   padding:8px 0; border-bottom:1px solid #EEF1F7; }
+ .r:last-child { border-bottom:0; }
+ .k { display:flex; align-items:center; gap:7px; font-size:10px; font-weight:800;
+   letter-spacing:.02em; color:#101A45; }
+ .k u { text-decoration:none; flex:none; font-size:8px; font-weight:800; letter-spacing:.06em;
+   color:#1C62E2; background:#EAF0FE; border-radius:4px; padding:2px 6px; }
+ .v s { text-decoration:none; display:block; margin-top:2px; font-size:9.2px; color:#B4720E; }
+ .v { font-size:10.6px; color:#4A5468; line-height:1.4; }
+ .v b { color:#101A45; font-weight:800; }
+ .v.s { border-left:2px solid #DCE7FA; padding-left:11px; }
+ .v.e { border-left:2px solid #F5E3C2; padding-left:11px; }
+
+ .note { display:flex; align-items:center; gap:10px; margin-top:13px; border-radius:10px;
+   padding:10px 13px; background:linear-gradient(90deg,#F2F6FE,#FDF7EC);
+   border:1px solid #E3E9F5; }
+ .note .ic { font-size:15px; flex:none; }
+ .note b { font-size:11px; font-weight:800; color:#101A45; }
+ .note span { font-size:10px; color:#4A5468; }
+
+ /* 2.1 两端首页 + 中间切换标识 */
+ .stage.sw3 { justify-content:center; gap:0; align-items:flex-start; }
+ .stage.sw3 .pcol .head .t.e { color:#B4720E; }
+ .stage.sw3 .pcol .head svg.st.e { stroke:#B4720E; }
+ .ring.e { left:69.5%; width:24.5%; border-color:#D98A16; box-shadow:0 0 0 4px rgba(217,138,22,.18); }
+ .swc { flex:none; width:250px; display:flex; flex-direction:column; align-items:center; margin-top:24px; text-align:center; }
+ .swc .arw { display:flex; align-items:center; gap:10px; }
+ .swc .arw svg.ar { width:52px; height:12px; flex:none; }
+  .swc .bt { width:92px; height:92px; border-radius:50%; background:linear-gradient(135deg,#2F74F0 0,#2F74F0 48%,#E89A22 52%,#E89A22 100%);
+   display:flex; align-items:center; justify-content:center; box-shadow:0 12px 26px -10px rgba(28,98,226,.55); }
+ .swc .bt span { width:78px; height:78px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; }
+ .swc .bt svg { width:44px; height:44px; }
+ .swc b { display:block; margin-top:14px; font-size:15px; font-weight:800; color:#101A45; }
+ .swc p { margin-top:10px; font-size:11.5px; line-height:1.5; color:#4A5468; }
+ .swc .pills { display:flex; align-items:center; gap:6px; margin-top:10px; font-size:12px; font-weight:800; color:#9AA6C0; }
+ .swc .pills em { font-style:normal; font-size:10px; background:#fff; border-radius:12px; padding:4px 10px; box-shadow:0 2px 6px rgba(30,60,140,.14); }
+ .swc .pills em.s { color:#1C62E2; } .swc .pills em.e { color:#B4720E; }
+ .swc .tapline { margin-top:14px; font-size:10px; font-weight:800; letter-spacing:.08em; color:#1C62E2; }
+ /* 放大镜 ←→ 左边手机上那颗真的 Job Seeker 药丸:引线 */
+ .lead { position:absolute; left:0; top:0; width:1360px; height:765px; pointer-events:none; z-index:9; }
+ .swc .mag { position:relative; width:118px; height:118px; margin-bottom:6px; }
+ .swc .mag .bub { width:118px; height:118px; border-radius:50%; overflow:hidden; border:2.4px solid #1C62E2;
+   box-shadow:0 10px 24px -12px rgba(28,98,226,.6); background:#fff; }
+ .swc .mag .bub img { width:100%; height:100%; object-fit:cover; display:block; }
+ .swc .mag i { position:absolute; right:-14px; bottom:-10px; width:34px; height:9px; border-radius:5px; background:#1C62E2; transform:rotate(45deg); }
+ .swc .magcap { font-size:10px; color:#5A6478; margin-top:12px; margin-bottom:18px; }
+ .swc .magcap b { display:inline; margin:0; font-size:10.5px; }
+</style></head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">2.1</span>Switch Mode — One Account, Two Apps</div>
+
+ <div class="wrap lead-off">
+  <div class="stage sw3">
+   <div class="pcol">
+    <div class="head">
+     <svg class="st" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+     <div class="t">Job Seeker mode</div>
+    </div>
+    <div class="phone">
+     <div class="screen"><img src="assets/2.6_joblist_en.png" alt="Job Seeker home"></div>
+     <div class="ring"></div>
+    </div>
+   </div>
+
+   <div class="swc">
+    <div class="mag"><div class="bub"><img src="assets/2.4_toggle_zoom.png" alt="Switch pill, zoomed"></div><i></i></div>
+    <div class="magcap"><b>Zoomed in:</b> top-right of the home screen</div>
+    <div class="arw"><svg class="ar" viewBox="0 0 52 12"><path d="M51 6H3M9 1 3 6l6 5" fill="none" stroke="#1C62E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+     <div class="bt"><span><svg viewBox="0 0 16 16" fill="none" stroke="#101A45" stroke-width="1.3" stroke-linecap="round"><circle cx="6" cy="5" r="2.6"/><path d="M1.5 14c.4-3 2.2-4.6 4.5-4.6"/><path d="M10 9.5h4.5M12.6 7.6l1.9 1.9M14.5 12.5H10M11.9 14.4 10 12.5"/></svg></span></div>
+    <svg class="ar" viewBox="0 0 52 12"><path d="M1 6h48M43 1l6 5-6 5" fill="none" stroke="#D98A16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <b>Switch</b>
+    <div class="pills"><em class="s">Job Seeker</em>⇄<em class="e">Employer</em></div>
+    <p>Tap the pill in the top-right corner of the home screen. The whole app flips sides — same login, same phone number.</p>
+    <div class="tapline">ONE TAP, BOTH WAYS</div>
+   </div>
+
+   <div class="pcol">
+    <div class="head">
+     <svg class="st e" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+     <div class="t e">Employer mode</div>
+    </div>
+    <div class="phone">
+     <div class="screen"><img src="assets/2.1_home_employer_en.png" alt="Employer home"></div>
+     <div class="ring e"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+
+ <svg class="lead" viewBox="0 0 1360 765" width="1360" height="765" aria-hidden="true">
+  <!-- 真按钮外圈高亮 -->
+  <rect x="483.5" y="191.8" width="59" height="19" rx="9.5" fill="none"
+        stroke="#fff" stroke-width="4"/>
+  <rect x="483.5" y="191.8" width="59" height="19" rx="9.5" fill="none"
+        stroke="#1C62E2" stroke-width="1.8"/>
+  <!-- 引线:按钮右缘 -> 放大镜左缘 -->
+  <path d="M545 201.3 L618.5 208.3" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M545 201.3 L618.5 208.3" fill="none" stroke="#1C62E2" stroke-width="1.8"
+        stroke-linecap="round" stroke-dasharray="5 4.5"/>
+  <circle cx="545" cy="201.3" r="3.2" fill="#1C62E2" stroke="#fff" stroke-width="1.6"/>
+ </svg>
+
+ <div class="footer">JobABC</div>
+ <div class="pgno">2.1</div>
+</div>
+<script src="assets/fit.js"></script>
+</body></html>

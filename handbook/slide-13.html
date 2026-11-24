@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Employer — Information Architecture</title><link rel="stylesheet" href="assets/flow.css">
+<link rel="stylesheet" href="assets/theme-employer.css">
+
+<style>
+ .mainph{position:absolute;left:36px;top:206px;width:152px;background:#3A3F46;border-radius:19px;
+   padding:4px;box-shadow:0 18px 36px -18px rgba(24,52,110,.6);z-index:2;}
+ .mainph .scr{border-radius:15px;overflow:hidden;background:#EFF3FB;position:relative;}
+ .mainph .scr img{width:100%;display:block;}
+ .mainph .navhi{position:absolute;left:2%;right:2%;bottom:1%;height:7.6%;border:2px solid #E08A17;
+   border-radius:9px;background:rgba(224,138,23,.10);box-shadow:0 0 0 3px rgba(224,138,23,.16);}
+ .mainph .tbn{position:absolute;bottom:5.4%;transform:translateX(-140%);font-size:5.6px;font-weight:800;color:#fff;background:#E08A17;border-radius:3px;padding:0 3px;z-index:3;box-shadow:0 1px 3px rgba(0,0,0,.25);}
+ .mainph .cap{position:absolute;left:0;right:0;top:-19px;text-align:center;font-size:8.4px;
+   font-weight:800;letter-spacing:.09em;color:#9AA6C0;}
+ .mainph .foot{position:absolute;left:-10px;right:-10px;bottom:-42px;text-align:center;
+   font-size:8.6px;font-weight:700;color:#4A5468;line-height:1.4;}
+ .mainph .foot b{color:#1C62E2;}
+</style><style>
+ .band{position:absolute;left:296px;right:378px;top:540px;display:grid;
+   grid-template-columns:repeat(3,1fr);gap:16px;}
+ .band .bi{background:#fff;border:1px solid #EFDCB6;border-radius:11px;padding:11px 13px;
+   box-shadow:0 6px 16px -14px rgba(120,86,20,.5);}
+ .band .bi b{display:block;font-size:11.5px;font-weight:800;color:#101A45;}
+ .band .bi span{display:block;font-size:9.6px;color:#4A5468;line-height:1.5;margin-top:5px;}
+ .band .bi em{font-style:normal;font-weight:800;color:#B4720E;}
+</style><style>
+ .card.xs .t.vrow{display:flex;align-items:center;gap:5px;}
+ .card.xs .t.vrow svg{width:12px;height:12px;display:block;flex:none;}
+
+ /* 放大镜 */
+ .vmag{position:absolute;left:700px;top:540px;width:296px;z-index:3;}
+ .vmag .lbl{font-size:9px;font-weight:800;letter-spacing:.13em;color:#A9A092;margin-bottom:7px;}
+ .vmag .big{background:#fff;border:2px solid #1C62E2;border-radius:16px;padding:13px 18px;
+   box-shadow:0 14px 30px -14px rgba(20,50,110,.4);display:flex;align-items:center;gap:10px;}
+ .vmag .big b{font-size:23px;font-weight:800;color:#101A45;letter-spacing:-.01em;}
+ .vmag .big svg{width:24px;height:24px;display:block;flex:none;}
+ .vmag p{font-size:9.6px;color:#4A5468;line-height:1.5;margin-top:8px;}
+ .vmag p b{color:#101A45;}
+ .vwire{position:absolute;left:996px;top:600px;width:54px;height:2px;background:#1C62E2;
+   opacity:.5;z-index:3;}
+ .vwire:after{content:"";position:absolute;right:-4px;top:-3px;width:8px;height:8px;
+   border-radius:50%;background:#1C62E2;}
+</style>
+</head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="titleband"></div><div class="headrule"></div>
+<div class="logo"><img src="assets/jobabc_icon.png"></div>
+<div class="title"><span class="num">3.2</span>Employer — Information Architecture</div>
+<div class="subtitle">EMPLOYER &nbsp;/&nbsp; INFORMATION ARCHITECTURE</div>
+
+<div class="legend">
+  <span class="it"><i class="lg-main"></i>Tab home</span>
+  <span class="it"><i class="lg-card"></i>Sub-page</span>
+</div>
+
+<div class="mainph" id="mainph">
+ <div class="cap">THE APP</div>
+ <div class="scr"><img src="assets/3.3_candidate_list_v2.png" alt=""><div class="navhi"></div><span class="tbn" style="left:12.5%">01</span><span class="tbn" style="left:37.5%">02</span><span class="tbn" style="left:62.5%">03</span><span class="tbn" style="left:87.5%">04</span></div>
+ <div class="foot">Each tab below is <b>one column on the right</b><br>— same numbers, 01 to 04</div>
+</div>
+<svg class="wires" viewBox="0 0 1360 765"></svg>
+
+<div class="navbar" id="nav" style="left:280px; top:182px; width:912px">
+  <div id="nav1"><span>01</span><i class="bar"><i class="on"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 19c0-2.4-1-4-2.6-4.8"/></svg></i><i><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M8.4 12.2l2.6 2.5 4.6-5.2"/></svg></i><i><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></i></i><b>Candidate</b><em>Filters the Pool, Then Reaches Out</em></div>
+  <div id="nav2"><span>02</span><i class="bar"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 19c0-2.4-1-4-2.6-4.8"/></svg></i><i class="on"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M8.4 12.2l2.6 2.5 4.6-5.2"/></svg></i><i><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></i></i><b>Posts</b><em>Posts a Job</em></div>
+  <div id="nav3"><span>03</span><i class="bar"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 19c0-2.4-1-4-2.6-4.8"/></svg></i><i><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M8.4 12.2l2.6 2.5 4.6-5.2"/></svg></i><i class="on"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg></i><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></i></i><b>Notifications</b><em>Gets Told What Changed</em></div>
+  <div id="nav4"><span>04</span><i class="bar"><i><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 19c0-2.4-1-4-2.6-4.8"/></svg></i><i><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M8.4 12.2l2.6 2.5 4.6-5.2"/></svg></i><i><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10.3 19.5a2 2 0 0 0 3.4 0"/></svg></i><i class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></i></i><b>My</b><em>Keeps Track, Gets Help</em></div>
+</div>
+
+
+<div class="n card main" id="c1" style="left:296px; top:226px; width:206px">
+  <div class="t">1 &nbsp;Candidate List</div>
+  <div class="s">The home screen is people, not postings</div>
+</div>
+<div class="n card mini" id="c11" style="left:312px; top:296px; width:190px"><div class="t">1.1 &nbsp;Filters</div></div>
+<div class="n card mini" id="c12" style="left:312px; top:344px; width:190px"><div class="t">1.2 &nbsp;Candidate Card</div></div>
+<div class="n card mini" id="c13" style="left:328px; top:388px; width:174px"><div class="t">1.3 &nbsp;Resume Detail</div><div class="s">Contact by phone or email</div></div>
+
+<!-- 2 岗位 -->
+<div class="n card main" id="j2" style="left:534px; top:226px; width:206px">
+  <div class="t">2 &nbsp;Posts</div>
+  <div class="s">Publish and manage by status</div>
+</div>
+<div class="n card mini" id="j21" style="left:550px; top:296px; width:190px"><div class="t">2.1 &nbsp;Post a Job</div><div class="s">18 fields · AI copy · boost</div></div>
+<div class="n card mini" id="j22" style="left:550px; top:360px; width:190px"><div class="t">2.2 &nbsp;Post Detail</div></div>
+<div class="n card mini" id="j23" style="left:566px; top:408px; width:174px"><div class="t">Edit · Close · Delete</div></div>
+
+<!-- 3 通知 -->
+<div class="n card main" id="n3" style="left:772px; top:226px; width:206px">
+  <div class="t">3 &nbsp;Notifications</div>
+  <div class="s">The tab only reads — no settings here</div>
+</div>
+<div class="n card mini" id="n31" style="left:788px; top:296px; width:190px"><div class="t">New applications</div></div>
+<div class="n card mini" id="n32" style="left:788px; top:340px; width:190px"><div class="t">Boost / job expiring</div></div>
+<div class="n card mini" id="n33" style="left:788px; top:384px; width:190px"><div class="t">New comments</div></div>
+
+<!-- 4 我的 -->
+<div class="n card main" id="m4" style="left:1010px; top:226px; width:198px">
+  <div class="t">4 &nbsp;My</div>
+  <div class="s">3 quick entries + 5 service rows</div>
+</div>
+<div class="grouptag" style="left:1058px; top:293px;">Quick entries</div>
+<div class="n card xs" id="m41" style="left:1034px; top:319px; width:174px"><div class="t">4.1 &nbsp;History</div></div>
+<div class="n card xs" id="m42" style="left:1034px; top:351px; width:174px"><div class="t">4.2 &nbsp;Favourites</div></div>
+<div class="n card xs" id="m43" style="left:1034px; top:383px; width:174px"><div class="t">4.3 &nbsp;Payments</div></div>
+<div class="grouptag" style="left:1076px; top:426px;">Service</div>
+<div class="n card xs" id="m44" style="left:1034px; top:457px; width:174px"><div class="t">4.4 &nbsp;Language</div></div>
+<div class="n card xs" id="m45" style="left:1034px; top:489px; width:174px"><div class="t">4.5 &nbsp;FAQ</div></div>
+<div class="n card xs" id="m46" style="left:1034px; top:521px; width:174px"><div class="t">4.6 &nbsp;Contact Us</div></div>
+<div class="n card xs" id="m47" style="left:1034px; top:553px; width:174px"><div class="t">4.7 &nbsp;Company Info</div></div>
+<div class="n card xs" id="m48" style="left:1034px; top:617px; width:174px"><div class="t">4.8 &nbsp;Settings</div></div>
+<div class="n card xs" id="sub1" style="left:1050px; top:585px; width:158px"><div class="t vrow">Verification<svg viewBox="0 0 24 24"><path fill="#1C62E2" d="M12 2.3l2.5 1.9 3.1-.2.9 3 2.5 1.9-1.3 2.8 1.3 2.8-2.5 1.9-.9 3-3.1-.2L12 21.7l-2.5-1.9-3.1.2-.9-3L3 15.1l1.3-2.8L3 9.5l2.5-1.9.9-3 3.1.2z"/><path fill="#fff" d="M10.8 15.1l-2.9-2.9 1.2-1.2 1.7 1.7 4-4 1.2 1.2z"/></svg></div></div>
+<div class="vwire"></div>
+<div class="vmag">
+  <div class="lbl">THE BLUE TICK LIVES HERE</div>
+  <div class="big"><b>Verification</b><svg viewBox="0 0 24 24"><path fill="#1C62E2" d="M12 2.3l2.5 1.9 3.1-.2.9 3 2.5 1.9-1.3 2.8 1.3 2.8-2.5 1.9-.9 3-3.1-.2L12 21.7l-2.5-1.9-3.1.2-.9-3L3 15.1l1.3-2.8L3 9.5l2.5-1.9.9-3 3.1.2z"/><path fill="#fff" d="M10.8 15.1l-2.9-2.9 1.2-1.2 1.7 1.7 4-4 1.2 1.2z"/></svg></div>
+  <p>One row under <b>4.7 Company Info</b>. Pass it once and the tick rides along on every job card, every job detail and your company page — <b>nothing else waits on it</b>.</p>
+</div>
+<div class="n card xs" id="sub2" style="left:1050px; top:649px; width:158px"><div class="t">Notification Prefs</div></div>
+<div class="n card xs" id="sub3" style="left:1050px; top:681px; width:158px"><div class="t">Terms · Privacy · Log out</div></div>
+
+<div class="footer">JobABC</div>
+<div class="pageno">3.2</div>
+
+<script src="assets/flow.js"></script>
+<script>
+drawWires([
+  {tree:1, f:'nav1',fs:'bottom',t:'c1',ts:'top'},
+  {tree:1, f:'nav2',fs:'bottom',t:'j2',ts:'top'},
+  {tree:1, f:'nav3',fs:'bottom',t:'n3',ts:'top'},
+  {tree:1, f:'nav4',fs:'bottom',t:'m4',ts:'top'},
+
+  {tree:1, f:'c1',fs:'bottom',fo:-0.46,t:'c11',ts:'left'},
+  {tree:1, f:'c1',fs:'bottom',fo:-0.46,t:'c12',ts:'left'},
+  {tree:1, f:'c12',fs:'bottom',fo:-0.44,t:'c13',ts:'left'},
+
+  {tree:1, f:'j2',fs:'bottom',fo:-0.46,t:'j21',ts:'left'},
+  {tree:1, f:'j2',fs:'bottom',fo:-0.46,t:'j22',ts:'left'},
+  {tree:1, f:'j22',fs:'bottom',fo:-0.44,t:'j23',ts:'left'},
+
+  {tree:1, f:'n3',fs:'bottom',fo:-0.46,t:'n31',ts:'left'},
+  {tree:1, f:'n3',fs:'bottom',fo:-0.46,t:'n32',ts:'left'},
+  {tree:1, f:'n3',fs:'bottom',fo:-0.46,t:'n33',ts:'left'},
+
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m41',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m42',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m43',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m44',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m45',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m46',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m47',ts:'left'},
+  {tree:1, f:'m4',fs:'bottom',fo:-0.46,t:'m48',ts:'left'},
+  {tree:1, f:'m47',fs:'bottom',fo:-0.44,t:'sub1',ts:'left'},
+  {tree:1, f:'m48',fs:'bottom',fo:-0.44,t:'sub2',ts:'left'},
+  {tree:1, f:'m48',fs:'bottom',fo:-0.44,t:'sub3',ts:'left'}
+]);
+</script>
+
+<script src="assets/fit.js"></script>
+</body></html>

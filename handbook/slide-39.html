@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.11.1 FAQ</title>
+<link rel="stylesheet" href="assets/page.css">
+<link rel="stylesheet" href="assets/console-nav.css">
+<style>
+ .win { position:relative; width:100%; border-radius:12px; overflow:hidden; background:#fff;
+   box-shadow:0 22px 46px -22px rgba(20,40,90,.34), 0 0 0 1px #E3E9F5; }
+ .win .bar { height:30px; background:linear-gradient(#FBFCFE,#F2F5FA); border-bottom:1px solid #E9EDF4;
+   display:flex; align-items:center; gap:7px; padding:0 12px; }
+ .win .dot { width:9px; height:9px; border-radius:50%; flex:none; }
+ .win .dot.r { background:#FF5F57 } .win .dot.y { background:#FEBC2E } .win .dot.g { background:#28C840 }
+ .win .url { flex:1; margin-left:9px; height:18px; border-radius:9px; background:#fff;
+   border:1px solid #E4E9F2; font-size:9px; color:#8A93A3; display:flex; align-items:center; padding:0 10px; }
+ .empty { height:392px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+   gap:9px; background:repeating-linear-gradient(135deg,#FBFCFE 0 12px,#F5F8FD 12px 24px); }
+ .empty i { font-style:normal; font-size:30px; opacity:.5; }
+ .empty b { font-size:14px; font-weight:800; color:#8A93A3; }
+ .empty s { text-decoration:none; font-size:10.5px; color:#AAB2C2; }
+ .todo { display:grid; grid-template-columns:1fr 1fr; gap:8px 30px; margin-top:14px; }
+ .td { display:flex; gap:9px; align-items:flex-start; }
+ .td .n { flex:none; width:19px; height:19px; border-radius:50%; background:#EEF1F7;
+   color:#AAB2C2; font-size:10.5px; font-weight:800; display:flex; align-items:center;
+   justify-content:center; margin-top:1px; }
+ .td .h { font-size:11.5px; font-weight:800; color:#AAB2C2; display:inline; margin-right:6px; }
+ .td .d { font-size:10px; line-height:1.5; color:#C3C9D4; display:inline; }
+
+ .lg { background:#F6F8FC; font-size:8.6px; color:#3A4660; }
+ .lg .top { display:flex; align-items:center; background:#fff; padding:7px 12px;
+   border-bottom:1px solid #EDF0F5; }
+ .lg .top .bg { font-size:11px; color:#5A6478; }
+ .lg .top .rt { margin-left:auto; display:flex; align-items:center; gap:14px; color:#5A6478; font-size:8.4px; }
+ .lg h3 { text-align:center; font-size:13px; font-weight:800; color:#1B2440; margin-top:12px; }
+ .lg .sub { text-align:center; font-size:8.4px; color:#98A1B3; margin-top:2px; }
+ .lg .filt { margin:11px 14px 0; background:#fff; border-radius:6px; padding:10px 12px; }
+ .lg .fr1 { display:flex; align-items:center; gap:9px; }
+ .lg .fr2 { display:flex; gap:9px; margin-top:10px; padding-top:10px; border-top:1px solid #F2F4F8; }
+ .lg label { font-size:8.4px; color:#3A4660; }
+ .lg .inp { height:20px; min-width:96px; border:1px solid #DCE1EA; border-radius:4px; background:#fff;
+   display:flex; align-items:center; padding:0 7px; font-size:8px; color:#B4BBC8; }
+ .lg .btn { height:21px; border-radius:4px; display:flex; align-items:center; gap:4px; padding:0 11px;
+   font-size:8.2px; font-weight:700; }
+ .lg .btn.p { background:#2F7BF6; color:#fff; }
+ .lg .btn.g { background:#fff; border:1px solid #DCE1EA; color:#5A6478; }
+ .lg .btn.dim { background:#F6C4C0; color:#fff; }
+ .lg .tbl { margin:11px 14px 14px; background:#fff; border-radius:6px; overflow:hidden; }
+ .lg table { width:100%; border-collapse:collapse; table-layout:fixed; }
+ .lg th { background:#F7F9FC; font-size:8px; font-weight:800; color:#3A4660; text-align:left;
+   padding:7px 8px; border-bottom:1px solid #EDF0F5; }
+ .lg td { font-size:7.8px; color:#3A4660; padding:6px 8px; border-bottom:1px solid #F2F4F8;
+   overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+ .lg tr:nth-child(even) td { background:#FAFBFD; }
+ .lg .lang { display:inline-block; font-size:7.2px; font-weight:700; border-radius:3px; padding:1.5px 6px; }
+ .lg .lang.en { background:#EAF7EE; color:#3E8C5A; }
+ .lg .lang.zh { background:#EAF1FE; color:#3C6DC4; }
+ .lg .sw { width:20px; height:11px; border-radius:6px; background:#2F7BF6; position:relative;
+   display:inline-block; }
+ .lg .sw:after { content:""; position:absolute; right:1.5px; top:1.5px; width:8px; height:8px;
+   border-radius:50%; background:#fff; }
+ .lg .ck { width:8px; height:8px; border:1px solid #CBD2DE; border-radius:2px; display:inline-block; }
+ .lg .act { color:#2F7BF6; font-weight:700; }
+ .lg .act .del { color:#E8674F; }
+
+ .lg .brandlg { display:flex; align-items:center; gap:6px; }
+ .lg .brandlg img { width:14px; height:14px; border-radius:50%; }
+ .lg .brandlg b { font-size:9.4px; font-weight:800; color:#2F7BF6; }
+</style></head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.11.1</span>FAQ</div>
+ <div class="lead">The question-and-answer list both apps read from — the same entries a job seeker sees under My · FAQ.</div>
+
+ <div class="wrap lead-on hasnav">
+  <div class="cnav">
+   <div class="brand"><i>🐨</i>Job Koala Admin</div>
+   <div class="it top">Dashboard</div>
+   <div class="g">SYSTEM</div>
+   <div class="it">Administrators</div>
+   <div class="it">Roles</div>
+   <div class="it">Basic Info</div>
+   <div class="it">Logs</div>
+   <div class="it">Regions</div>
+   <div class="it">Education Types</div>
+   <div class="g">JOBS</div>
+   <div class="it">Job List</div>
+   <div class="it">Resume Management</div>
+   <div class="it">Industries</div>
+   <div class="it top">Users</div>
+   <div class="g">ORDERS</div>
+   <div class="it">Order List</div>
+   <div class="it top">Promotion Plans</div>
+   <div class="it top">Home Banners</div>
+   <div class="it top">Comments</div>
+   <div class="it top">Verification Review</div>
+   <div class="g">CONTENT</div>
+   <div class="it on">FAQ</div>
+   <div class="it">Notification Templates</div>
+   <div class="it">Privacy Policy</div>
+   <div class="it">User Agreement</div>
+   <div class="g">ASSESSMENT</div>
+   <div class="it">Form Templates</div>
+   <div class="it">AI Config</div>
+   <div class="it">Assessment Records</div>
+   <div class="it">Consultants</div>
+   <div class="it">Consultant Pricing</div>
+  </div>
+  <div class="cmain" style="zoom:0.976">
+   <div class="win">
+    <div class="bar">
+     <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+     <span class="url">admin.jobkoala.au/content/faq</span>
+    </div>
+    <div class="lg">
+     <div class="top"><span class="brandlg"><img src="assets/logo.png"><b>Job Koala Admin</b></span><span class="rt"><span>🌐 English ⌄</span><span>👤 admin ⌄</span></span></div>
+     <h3>FAQ Management</h3><div class="sub">Manage frequently asked questions and answers</div>
+     <div class="filt">
+      <div class="fr1"><label>Language</label><span class="inp">Select language ⌄</span><label>Status</label><span class="inp">Select status ⌄</span><label>Question</label><span class="inp" style="min-width:150px">Search question or answer</span><span class="btn p">🔍 Search</span><span class="btn g">↻ Reset</span></div>
+      <div class="fr2"><span class="btn p">+ Add FAQ</span><span class="btn dim">🗑 Batch Delete</span></div>
+     </div>
+     <div class="tbl"><table>
+      <colgroup><col style="width:20px"><col style="width:56px"><col style="width:200px"><col><col style="width:52px"><col style="width:42px"><col style="width:86px"><col style="width:118px"></colgroup>
+      <tr><th></th><th>Language</th><th>Question</th><th>Answer</th><th>Sort Order</th><th>Status</th><th>Created At</th><th>Action</th></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>one add one =?</td><td>two or three</td><td>0</td><td><span class="sw"></span></td><td>2026/07/11 18:59</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>1+1=?</td><td>2或者3</td><td>0</td><td><span class="sw"></span></td><td>2026/07/11 18:58</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>How do I create an account on JobKoala?</td><td>To create an account, click the “Sign Up” button on the homepage. You can regist…</td><td>1</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>如何在JobKoala注册账号？</td><td>点击首页的"注册"按钮，您可以使用邮箱或手机号码进行注册。按照提示完善个人资料后…</td><td>1</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>How can I search for jobs in my area?</td><td>Use the search bar on the homepage to enter keywords, job titles, or company nam…</td><td>2</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>如何搜索我所在地区的工作？</td><td>在首页搜索栏输入关键词、职位名称或公司名称。您还可以通过地区筛选功能…</td><td>2</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>What documents do I need to apply for a job …</td><td>Generally, you will need a valid visa with work rights, Tax File Number (TFN), b…</td><td>3</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>在澳大利亚申请工作需要哪些文件？</td><td>通常需要有效的工作签证、税号(TFN)、银行账户信息以及相关资质证书…</td><td>3</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>How do I apply for a job through JobKoala?</td><td>Once you find a job you are interested in, click on the listing to view details.…</td><td>4</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>如何通过JobKoala申请工作？</td><td>找到感兴趣的职位后，点击查看详情。如果符合要求，点击"立即申请"按钮…</td><td>4</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>Can I save jobs to apply later?1111</td><td>Yes, you can save jobs by clicking the bookmark icon on any job listing. Access …</td><td>5</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>可以收藏职位稍后申请吗？</td><td>可以，点击职位列表上的收藏图标即可保存。您可以随时在账户面板的"收藏职位"中查看…</td><td>5</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang en">English</span></td><td>How do I update my resume on JobKoala?</td><td>Log into your account, go to “My Profile” section, and click on “Resume”. You ca…</td><td>6</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><span class="lang zh">Chinese</span></td><td>如何更新我的简历？</td><td>登录账户后，进入"我的资料"页面，点击"简历"选项。您可以上传新的简历文件…</td><td>6</td><td><span class="sw"></span></td><td>2026/01/02 13:52</td><td class="act">👁 View &nbsp;✎ Edit &nbsp;<span class="del">🗑 Delete</span></td></tr>
+     </table></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="assets/fit.js"></script>
+</body></html>
