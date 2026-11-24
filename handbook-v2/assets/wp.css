@@ -1,0 +1,23 @@
+/* 白皮书版式：左一部手机 + 左缘编号，右侧 导语 + 编号清单 + 提示条 */
+.wp-ph { position:absolute; left:96px; top:126px; --z:.68; z-index:2; }
+.wp-ph .phone { padding:5px; border-radius:30px; box-shadow:0 26px 50px -26px rgba(24,52,110,.55); }
+.wp-ph .phone .screen { border-radius:25px; }
+.wp-ph .screen.scr { background:#F3F5F9; }
+.wp-mk { position:absolute; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%; background:#1C62E2;
+  color:#fff; font-size:12.5px; font-weight:800; display:flex; align-items:center; justify-content:center;
+  border:2.5px solid #fff; box-shadow:0 3px 8px rgba(28,98,226,.35); z-index:10; }
+.wp-tx { position:absolute; left:470px; right:110px; top:120px; bottom:58px; display:flex; flex-direction:column;
+  justify-content:center; }
+.wp-tx .intro { font-size:16px; line-height:1.7; color:#4A5468; max-width:640px; margin-bottom:22px; }
+.wp-tx .intro b { color:#101A45; }
+.wp-li { display:flex; gap:14px; align-items:flex-start; margin-bottom:17px; }
+.wp-li .n { flex:none; width:24px; height:24px; border-radius:50%; background:#E6EEFD; color:#1C62E2;
+  font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.wp-li h4 { font-size:16px; font-weight:800; color:#101A45; line-height:1.35; }
+.wp-li p { font-size:13.5px; line-height:1.6; color:#4A5468; margin-top:2px; }
+.wp-li p b { color:#101A45; }
+.wp-tip { margin-top:8px; border-left:3px solid #E08A17; background:#FBF4EC; border-radius:0 8px 8px 0;
+  padding:11px 16px; font-size:13.5px; line-height:1.55; color:#3A4660; }
+.wp-tip + .wp-tip { margin-top:10px; }
+.wp-tip b { color:#C26A0A; margin-right:6px; }
+.wp-tip em { font-style:normal; font-weight:700; color:#101A45; }

@@ -1,0 +1,129 @@
+/* JobKoala App 界面 · 纯 CSS 复刻（英文版）
+   给手册的手机标注页用；屏幕宽度按 .screen 的实际宽度走，字号已按 ~250px 屏调好。 */
+
+.ui { position:absolute; inset:0; background:#F2F5FB; overflow:hidden;
+  font-family:-apple-system,"SF Pro Text","Helvetica Neue",Arial,sans-serif; color:#12203F; }
+
+/* 状态栏 */
+.ui .sb { display:flex; justify-content:space-between; align-items:center;
+  padding:7px 12px 0; font-size:8.5px; font-weight:700; }
+.ui .sb .ic { display:flex; gap:2.5px; align-items:center; }
+.ui .sb .ic i { display:block; background:#12203F; border-radius:1px; font-style:normal; }
+.ui .sb .bar1 { width:2px; height:4px } .ui .sb .bar2 { width:2px; height:6px }
+.ui .sb .bar3 { width:2px; height:8px } .ui .sb .wifi { width:8px; height:7px; border-radius:2px }
+.ui .sb .bat { width:14px; height:7px; border-radius:2px }
+
+/* 蓝色头部 */
+.ui .hd { background:linear-gradient(160deg,#DCE9FF 0%,#CFE0FF 46%,#EAF1FE 100%);
+  padding:0 0 9px; position:relative; }
+.ui .hd.plain { background:linear-gradient(160deg,#D9E6FF,#EDF3FE); }
+.ui .greet { display:flex; align-items:center; gap:7px; padding:8px 12px 0; }
+.ui .greet .av { width:26px; height:26px; border-radius:50%; overflow:hidden; flex:none;
+  background:#B9C7DE url('avatar1.png') center/cover no-repeat; }
+.ui .greet .gt b { display:block; font-size:11px; font-weight:800; }
+.ui .greet .gt s { text-decoration:none; display:block; font-size:6.6px; color:#7C89A3; margin-top:1px; }
+.ui .greet .sw { margin-left:auto; width:20px; height:20px; border-radius:50%; background:#fff;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 1px 4px rgba(30,60,120,.14); }
+.ui .greet .sw svg { width:11px; height:11px; }
+
+/* 顶部标题（雇主端帖子页） */
+.ui .htitle { padding:9px 12px 0; display:flex; align-items:center; }
+.ui .htitle b { font-size:14px; font-weight:800; position:relative; }
+.ui .htitle b:after { content:''; position:absolute; left:0; right:-2px; bottom:-2px; height:3px;
+  border-radius:2px; background:#F5C24B; }
+.ui .htitle .post { margin-left:auto; background:#fff; border-radius:999px; padding:4px 9px;
+  font-size:8px; font-weight:800; display:flex; align-items:center; gap:4px;
+  box-shadow:0 2px 6px rgba(30,60,120,.14); }
+.ui .htitle .post svg { width:9px; height:9px; }
+
+/* 促销 banner */
+.ui .ban { margin:8px 12px 0; border-radius:11px; padding:9px 11px 10px; position:relative;
+  overflow:hidden; background:linear-gradient(115deg,#3F86F5 0%,#2E6BE6 44%,#5EA0F7 100%);
+  color:#fff; }
+.ui .ban:after { content:''; position:absolute; right:-18px; top:-26px; width:96px; height:96px;
+  border-radius:50%; background:rgba(255,255,255,.13); }
+.ui .ban b { font-size:13px; font-weight:800; letter-spacing:.01em; }
+.ui .ban b em { font-style:normal; color:#CFE3FF; }
+.ui .ban s { text-decoration:none; display:block; font-size:7.4px; opacity:.92; margin-top:2px; }
+.ui .ban .btn { display:inline-block; margin-top:7px; background:#fff; color:#1C62E2;
+  font-size:8px; font-weight:800; border-radius:999px; padding:4px 12px; }
+
+/* 筛选条 */
+.ui .flt { display:flex; align-items:center; gap:5px; padding:9px 12px 0; }
+.ui .flt .c { background:#fff; border:1px solid #E4E9F3; border-radius:8px; font-size:7.6px;
+  font-weight:700; color:#3A4660; padding:3.5px 8px; display:flex; align-items:center; gap:3px; }
+.ui .flt .c:after { content:''; width:0; height:0; border-left:3px solid transparent;
+  border-right:3px solid transparent; border-top:3.5px solid #9AA6C0; }
+.ui .flt .adv { margin-left:auto; background:#fff; border:1px solid #E4E9F3; border-radius:8px;
+  font-size:7.6px; font-weight:700; color:#3A4660; padding:3.5px 8px; display:flex; gap:4px;
+  align-items:center; }
+.ui .flt .adv:after { content:none; }
+.ui .flt .adv svg { width:8px; height:8px; }
+
+/* tab 条 */
+.ui .tabs2 { display:flex; gap:14px; padding:9px 12px 0; }
+.ui .tabs2 span { font-size:8.4px; font-weight:700; color:#8A93A3; padding-bottom:4px; }
+.ui .tabs2 span.on { color:#1C62E2; font-weight:800; border-bottom:2px solid #1C62E2; }
+
+/* 卡片 */
+.ui .list { padding:0 12px; margin-top:8px; display:flex; flex-direction:column; gap:8px; }
+.ui .cd { background:#fff; border-radius:10px; padding:8px 10px 9px;
+  box-shadow:0 1px 6px rgba(24,52,110,.06); }
+.ui .cd .r1 { display:flex; align-items:baseline; gap:4px; }
+.ui .cd .jt { font-size:9.6px; font-weight:800; }
+.ui .cd .nw { font-size:6px; font-weight:800; color:#1C62E2; background:#EAF0FE;
+  border:1px solid #D7E3FB; border-radius:3px; padding:.5px 3px; }
+.ui .cd .hot { font-size:6px; font-weight:800; color:#E08A17; background:#FDF4E3;
+  border:1px solid #F0DCB4; border-radius:3px; padding:.5px 3px; }
+.ui .cd .pay { margin-left:auto; font-size:9.4px; font-weight:800; color:#1C62E2; white-space:nowrap; }
+.ui .cd .pay u { text-decoration:none; font-size:6.4px; font-weight:700; color:#8A93A3; }
+.ui .cd .due { font-size:6.6px; color:#9AA6C0; margin-top:3px; }
+.ui .cd .tg { display:flex; flex-wrap:wrap; gap:4px; margin-top:5px; }
+.ui .cd .tg span { font-size:6.4px; font-weight:700; color:#5A6478; background:#F1F4FA;
+  border-radius:4px; padding:2px 5px; }
+.ui .cd .tg span.blue { color:#1C62E2; background:#EAF0FE; }
+.ui .cd .ds { font-size:6.8px; color:#8A93A3; line-height:1.45; margin-top:5px; }
+.ui .cd .r2 { display:flex; align-items:center; gap:5px; margin-top:7px; }
+.ui .cd .date { font-size:6.4px; color:#9AA6C0; }
+.ui .cd .flag { font-size:7px; }
+.ui .cd .ghost { margin-left:auto; border:1px solid #1C62E2; color:#1C62E2; background:#fff;
+  font-size:7.2px; font-weight:800; border-radius:999px; padding:3px 9px; }
+.ui .cd .solid { border:1px solid #1C62E2; background:#1C62E2; color:#fff;
+  font-size:7.2px; font-weight:800; border-radius:999px; padding:3px 9px; }
+.ui .cd .acts { display:flex; align-items:center; gap:9px; margin-top:8px;
+  padding-top:7px; border-top:1px solid #F0F3F8; }
+.ui .cd .acts a { text-decoration:none; font-size:7px; font-weight:800; color:#1C62E2;
+  display:flex; align-items:center; gap:2.5px; }
+.ui .cd .acts a.off { color:#9AA6C0; margin-left:auto; }
+.ui .cd .acts svg { width:8px; height:8px; }
+
+/* 详情页 */
+.ui .nav { display:flex; align-items:center; padding:8px 12px 6px; }
+.ui .nav .bk { font-size:11px; color:#3A4660; }
+.ui .nav .tt { flex:1; text-align:center; font-size:10px; font-weight:800; }
+.ui .nav .st { font-size:10px; color:#3A4660; }
+.ui .sec { font-size:8.6px; font-weight:800; margin-bottom:4px; }
+.ui .kv { font-size:7.2px; color:#5A6478; line-height:1.6; }
+.ui .para { font-size:7px; color:#5A6478; line-height:1.62; }
+.ui .meta { display:flex; align-items:center; gap:8px; font-size:6.6px; color:#9AA6C0; margin-top:4px; }
+.ui .who { font-size:8.6px; font-weight:800; margin-top:5px; }
+.ui .hr { height:1px; background:#EEF1F7; margin:7px 0; }
+
+/* 底部操作条 */
+.ui .abar { position:absolute; left:0; right:0; bottom:0; background:#fff;
+  border-top:1px solid #EEF0F5; padding:8px 11px; display:flex; align-items:center; gap:8px; }
+.ui .abar .sh { font-size:7px; font-weight:700; color:#5A6478; text-align:center; }
+.ui .abar .sh svg { width:11px; height:11px; display:block; margin:0 auto 1px; }
+.ui .abar .g { flex:1; border:1.4px solid #1C62E2; color:#1C62E2; background:#fff;
+  border-radius:999px; padding:6px 0; text-align:center; font-size:8.4px; font-weight:800; }
+.ui .abar .s { flex:1.25; background:#1C62E2; color:#fff; border-radius:999px; padding:6px 0;
+  text-align:center; font-size:8.4px; font-weight:800; }
+
+/* 底部导航 */
+.ui .nb { position:absolute; left:0; right:0; bottom:0; height:31px; background:#fff;
+  border-top:1px solid #EEF0F5; display:flex; align-items:center; justify-content:space-around; }
+.ui .nb .t { text-align:center; font-size:5.8px; color:#9AA6C0; font-weight:700; }
+.ui .nb .t svg { width:11px; height:11px; display:block; margin:0 auto 1px; }
+.ui .nb .t.on { color:#1C62E2; }
+.ui .hbar { position:absolute; left:50%; transform:translateX(-50%); bottom:4px;
+  width:74px; height:3px; border-radius:2px; background:#12203F; opacity:.85; }

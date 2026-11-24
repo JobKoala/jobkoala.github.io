@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Post a Job — AI Writes It, You Publish in Seconds</title>
+<link rel="stylesheet" href="assets/page.css">
+<link rel="stylesheet" href="assets/theme-employer.css">
+<style>
+ :root{--amb:#B4720E;--amb2:#E08A17;--ambbg:#FDF3E2;--ambln:#EFDCB6;
+       --blue2:#1C62E2;--bluebg:#EAF0FE;--ink:#101A45;--ink2:#4A5468;--ink3:#9AA6C0;
+       --line:#E3E9F5;--green:#18A566;--greenbg:#E9F8F1;}
+ .subtitle{position:absolute;left:126px;top:66px;font-size:10.5px;font-weight:800;
+   color:var(--ink3);letter-spacing:.6px;}
+ .title .num{color:var(--amb2);margin-right:10px;}
+ .pgno{position:absolute;right:34px;top:722px;font-size:11px;color:var(--ink3);font-weight:700;}
+
+ /* ── 位置引导:一条横着的树 ── */
+ .loc{display:flex;align-items:center;gap:7px;margin-bottom:12px;}
+ .loc .b{display:flex;align-items:baseline;gap:6px;background:#fff;border:1px solid var(--line);
+   border-radius:7px;padding:5px 11px;font-size:9.4px;font-weight:700;color:var(--ink2);}
+ .loc .b b{font-size:10px;font-weight:800;color:var(--ink);}
+ .loc .b.here{border:1.6px solid var(--amb2);background:var(--ambbg);color:var(--amb);}
+ .loc .b.here b{color:var(--amb);}
+ .loc .b.here i{font-style:normal;font-size:8px;font-weight:800;letter-spacing:.08em;
+   background:var(--amb2);color:#fff;border-radius:4px;padding:1px 5px;}
+ .loc .ar{color:#C3B48C;font-size:11px;font-weight:800;}
+
+ .cols{display:flex;justify-content:center;gap:0;align-items:flex-start;zoom:.92;}
+ .pcol{display:flex;flex-direction:column;align-items:center;}
+ .ph{display:flex;align-items:center;gap:5px;margin-bottom:7px;text-align:center;}
+ .ph u{text-decoration:none;font-size:8.6px;font-weight:800;color:#fff;background:var(--amb2);
+   border-radius:50%;width:15px;height:15px;display:flex;align-items:center;justify-content:center;}
+ .ph b{font-size:9.6px;font-weight:800;color:var(--ink);white-space:nowrap;}
+ .phone{position:relative;background:#3A3F46;border-radius:20px;padding:4px;
+   box-shadow:0 16px 30px -18px rgba(24,52,110,.5);}
+ .screen{width:184px;height:392px;border-radius:16px;overflow:hidden;background:#F7F9FC;
+   position:relative;display:block;}
+ .screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;}
+
+ /* 入口连线 + AI 重点标注 */
+ .flw{position:absolute;left:0;top:0;width:1360px;height:765px;pointer-events:none;z-index:4;}
+ .aicall{position:absolute;left:478px;top:489px;width:152px;background:#FFF8EC;
+   border:1.4px solid #E6C98E;border-radius:10px;padding:9px 11px;
+   box-shadow:0 14px 28px -16px rgba(140,95,10,.6);z-index:5;}
+ .aicall::after{content:"";position:absolute;right:100%;top:34px;
+   border:7px solid transparent;border-right-color:#FFF8EC;}
+ .aicall::before{content:"";position:absolute;right:100%;top:34px;margin-right:1px;
+   border:7px solid transparent;border-right-color:#E6C98E;}
+ .aicall b{display:block;font-size:11.6px;font-weight:800;color:#B4720E;}
+ .aicall p{font-size:9.6px;line-height:1.5;color:#5A4A2A;margin-top:4px;}
+ .aicall p b{display:inline;font-size:9.6px;color:#3F3416;}
+ .entrylbl{position:absolute;left:218px;top:194px;font-size:8.4px;font-weight:800;
+   letter-spacing:.09em;color:#B4720E;z-index:5;}
+ /* ── 入口:Posts tab(职位发布) ── */
+ .pl{position:relative;height:100%;background:#EEF3FB;}
+ .pl .st{display:flex;justify-content:space-between;padding:6px 10px 0;font-size:5.6px;font-weight:800;color:#12203F;}
+ .pl .hd{display:flex;align-items:center;padding:5px 10px 4px;}
+ .pl .hd b{font-size:11px;font-weight:800;font-style:italic;color:#12203F;}
+ .pl .hd u{margin-left:auto;text-decoration:none;display:flex;align-items:center;gap:3px;
+   background:#fff;border:1px solid #E3E7EE;border-radius:9px;padding:3px 7px;
+   font-size:6.6px;font-weight:800;color:#12203F;}
+ .pl .hd u i{font-style:normal;width:9px;height:9px;border-radius:50%;background:#2457D6;color:#fff;
+   font-size:6.4px;display:flex;align-items:center;justify-content:center;}
+ .pl .tabs2{display:flex;gap:14px;padding:3px 11px 0;font-size:7px;font-weight:700;color:#9AA2B1;}
+ .pl .tabs2 span.on{color:#12203F;font-weight:800;position:relative;}
+ .pl .tabs2 span.on::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1.6px;
+   border-radius:1px;background:#2457D6;}
+ .pl .pc{background:#fff;border-radius:8px;margin:7px 9px 0;padding:6px 8px 5px;
+   box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .pl .pc .t{display:flex;align-items:baseline;gap:4px;}
+ .pl .pc .t b{font-size:7.8px;font-weight:800;color:#13224A;}
+ .pl .pc .t em{margin-left:auto;font-style:normal;font-size:7.2px;font-weight:800;color:#1C62E2;}
+ .pl .pc .t em small{font-weight:600;color:#8A93A3;font-size:5.2px;}
+ .pl .pc .end{font-size:5.2px;color:#9AA2B1;margin-top:3px;}
+ .pl .pc .g{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px;align-items:flex-start;}
+ .pl .pc .g span{font-size:5.2px;color:#4A5468;background:#F1F4F9;border-radius:3px;padding:1.5px 4px;}
+ .pl .pc .g span.v{color:#B4720E;background:#FDF3E1;}
+ .pl .pc .g span.loc{display:inline-flex;align-items:center;gap:2px;background:#EEF3FC;}
+ .pl .pc .g span.loc b{width:2.6px;height:2.6px;border-radius:50%;background:#E0554B;display:block;}
+ .pl .pc .d{font-size:5.4px;color:#9AA2B1;line-height:1.35;margin-top:4px;white-space:nowrap;
+   overflow:hidden;text-overflow:ellipsis;}
+ .pl .pc .act{display:flex;align-items:center;gap:9px;margin-top:6px;padding-top:5px;
+   border-top:1px solid #F1F4F9;font-size:5.6px;font-weight:700;color:#2457D6;}
+ .pl .pc .act span{display:inline-flex;align-items:center;gap:3px;}
+ .pl .pc .act svg{width:7.5px;height:7.5px;fill:none;stroke:#2457D6;stroke-width:1.9;
+   stroke-linecap:round;stroke-linejoin:round;flex:none;}
+ .pl .pc .act .off svg{stroke:#9AA2B1;}
+ .pl .pc .act .off{margin-left:auto;color:#9AA2B1;font-weight:600;}
+ .pl .tb{position:absolute;left:0;right:0;bottom:0;height:28px;background:#fff;border-top:1px solid #EDF1F7;
+   display:flex;align-items:center;justify-content:space-around;}
+ .pl .tb span{font-size:5.2px;font-weight:700;color:#A6AEBE;text-align:center;position:relative;}
+ .pl .tb span.on{color:#1C62E2;font-weight:800;}
+ .pl .tb svg{width:10px;height:10px;display:block;margin:0 auto 1.5px;fill:none;stroke:#A6AEBE;stroke-width:1.9;}
+ .pl .tb span.on svg{stroke:#1C62E2;}
+ .pl .tb em{position:absolute;right:-5px;top:-3px;min-width:8px;height:8px;border-radius:4px;background:#E0554B;
+   color:#fff;font-style:normal;font-size:5px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 2px;}
+ .pl .hl2{position:absolute;border:1.6px dashed #B4720E;border-radius:7px;z-index:3;
+   box-shadow:0 0 0 1.5px rgba(255,255,255,.9);}
+ .ea2{flex:0 0 84px;position:relative;align-self:stretch;}
+ .ea2.wide{flex:0 0 180px;}
+ .ea2 .ar{position:absolute;left:50%;transform:translateX(-50%);top:130px;
+   display:flex;flex-direction:column;align-items:center;gap:3px;}
+ .ea2 i{font-style:normal;font-size:17px;color:#C6B48C;}
+ .ea2 s{text-decoration:none;font-size:6.6px;font-weight:800;color:#C6B48C;letter-spacing:.05em;white-space:nowrap;}
+ /* ── 发布岗位:三步表单(第 1 步) ── */
+ .wz{position:relative;height:100%;background:#EEF3FB;display:flex;flex-direction:column;}
+ .wz .scrl{flex:1;position:relative;overflow:hidden;margin-bottom:34px;}
+ .wz .tf{position:absolute;left:0;right:0;top:0;height:14px;z-index:2;
+   background:linear-gradient(180deg,#EEF3FB 40%,rgba(238,243,251,0));}
+ .wz .bf{position:absolute;left:0;right:0;bottom:0;height:16px;z-index:2;
+   background:linear-gradient(0deg,#EEF3FB 40%,rgba(238,243,251,0));}
+ .wz .st{display:flex;justify-content:space-between;padding:6px 10px 0;font-size:5.6px;font-weight:800;color:#12203F;}
+ .wz .nv{display:flex;align-items:center;justify-content:center;position:relative;padding:5px 10px 7px;}
+ .wz .nv i{position:absolute;left:9px;font-style:normal;font-size:9px;color:#12203F;}
+ .wz .nv b{font-size:8.6px;font-weight:800;color:#12203F;}
+ .wz .steps{display:flex;align-items:flex-start;padding:0 8px 8px;}
+ .wz .steps .sp{flex:1;text-align:center;}
+ .wz .steps .sp u{text-decoration:none;display:block;width:11px;height:11px;border-radius:50%;
+   margin:0 auto 3px;background:#D8DEE9;color:#fff;font-size:6.2px;font-weight:800;
+   display:flex;align-items:center;justify-content:center;}
+ .wz .steps .sp.on u{background:#2457D6;}
+ .wz .steps .sp s{text-decoration:none;font-size:5.4px;font-weight:700;color:#9AA2B1;white-space:nowrap;}
+ .wz .steps .sp.on s{color:#2457D6;font-weight:800;}
+ .wz .steps .ln{flex:0 0 18px;height:1px;background:#DDE3EC;margin-top:5.5px;}
+ .wz .card{background:#fff;border-radius:9px;margin:-200px 9px 0;padding:9px 10px 10px;
+   box-shadow:0 1px 4px rgba(24,52,110,.06);}
+ .wz .sec{display:flex;align-items:center;gap:5px;}
+ .wz .sec::before{content:"";width:2.4px;height:9px;border-radius:2px;background:#2457D6;}
+ .wz .sec b{font-size:8.2px;font-weight:800;color:#12203F;}
+ .wz .hint{font-size:5.2px;color:#9AA2B1;margin:3px 0 0 7px;}
+ .wz .lb{font-size:6.4px;font-weight:700;color:#12203F;margin-top:9px;}
+ .wz .lb em{font-style:normal;color:#E0554B;margin-right:2px;}
+ .wz .fld{display:flex;align-items:center;border-bottom:1px solid #EEF1F6;padding:5px 0 4px;
+   font-size:6.4px;color:#AFB7C4;}
+ .wz .fld svg{margin-left:auto;width:8px;height:8px;fill:none;stroke:#C3C9D4;stroke-width:2.2;}
+ .wz .fld .to{color:#8A93A3;margin:0 7px;}
+ .wz .fld .half{flex:1;}
+ .wz .ck{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:5.8px;color:#8A93A3;}
+ .wz .ck b{width:7px;height:7px;border-radius:1.6px;border:1px solid #C3C9D4;display:block;}
+ .wz .next{position:absolute;left:9px;right:9px;bottom:9px;height:23px;border-radius:12px;
+   background:#2457D6;color:#fff;font-size:8px;font-weight:800;
+   display:flex;align-items:center;justify-content:center;}
+ .wz .fade{position:absolute;left:0;right:0;bottom:32px;height:26px;
+   background:linear-gradient(180deg,rgba(238,243,251,0),#EEF3FB);}
+ .wz .fld.val{color:#12203F;font-weight:600;}
+ .wz .fld .ch{margin-left:auto;font-style:normal;font-size:7px;color:#C3C9D4;}
+ .wz .lb .ck2{display:inline-flex;align-items:center;gap:3px;margin-left:5px;font-size:5.4px;
+   font-weight:600;color:#8A93A3;}
+ .wz .lb .ck2 b{width:6.4px;height:6.4px;border-radius:1.6px;background:#2457D6;position:relative;}
+ .wz .lb .ck2 b::after{content:"";position:absolute;left:1.6px;top:1.1px;width:2.4px;height:3.6px;
+   border:1.4px solid #fff;border-top:0;border-left:0;transform:rotate(42deg);}
+ .wz .aih{margin-top:9px;background:#EDF3FE;border-radius:5px;padding:4px 6px;
+   font-size:5.2px;color:#2457D6;line-height:1.4;}
+ .wz .desc{font-size:5.4px;color:#3A4660;line-height:1.55;margin-top:4px;}
+ .wz .cnt{display:flex;align-items:center;gap:5px;margin-top:5px;}
+ .wz .cnt s{text-decoration:none;font-size:5px;color:#9AA2B1;}
+ .wz .cnt u{margin-left:auto;text-decoration:none;font-size:5.4px;font-weight:700;color:#2457D6;
+   border:1px solid #BFD3F7;border-radius:7px;padding:2.5px 6px;}
+ .wz .cnt u.ai{background:#EDF3FE;}
+ .wz .cnt u.ai.mark{outline:1.6px dashed #B4720E;outline-offset:2.5px;}
+ .wz .cnt u.ai.hero{outline:2px solid #B4720E;outline-offset:3px;
+   box-shadow:0 0 0 6px rgba(180,114,14,.14);background:#FFF3DF;color:#B4720E;}
+ .wz .steps .sp.ok u{background:#2457D6;font-size:0;}
+ .wz .steps .sp.ok u::after{content:"";width:3.4px;height:5.4px;border:1.3px solid #fff;
+   border-top:0;border-left:0;transform:rotate(42deg);margin-top:-1px;}
+ .wz .steps .sp.ok s{color:#2457D6;font-weight:800;}
+ .wz .steps .ln.on{background:#2457D6;}
+ .wz .opt{display:flex;align-items:center;gap:5px;padding:6px 0;font-size:6.2px;
+   font-weight:600;color:#12203F;border-bottom:1px solid #F3F5F9;}
+ .wz .opt:last-child{border-bottom:0;}
+ .wz .opt b{flex:none;width:7.4px;height:7.4px;border-radius:1.8px;background:#2457D6;position:relative;}
+ .wz .opt b::after{content:"";position:absolute;left:1.8px;top:1.2px;width:2.6px;height:4px;
+   border:1.4px solid #fff;border-top:0;border-left:0;transform:rotate(42deg);}
+ .wz .opt.off{color:#AFB7C4;}
+ .wz .opt.off b{background:#fff;border:1px solid #D7DCE5;}
+ .wz .opt.off b::after{display:none;}
+ .wz .two{position:absolute;left:9px;right:9px;bottom:9px;display:flex;gap:8px;}
+ .wz .two .bk{flex:0 0 34%;height:23px;border-radius:12px;background:#fff;border:1.2px solid #2457D6;
+   color:#2457D6;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+ .wz .two .nx{flex:1;height:23px;border-radius:12px;background:#2457D6;color:#fff;font-size:8px;
+   font-weight:800;display:flex;align-items:center;justify-content:center;}
+ .wz .sec2{display:flex;align-items:center;gap:5px;margin-top:11px;padding-top:9px;
+   border-top:1px solid #F1F4F9;}
+ .wz .sec2::before{content:"";width:2.4px;height:9px;border-radius:2px;background:#2457D6;}
+ .wz .sec2 b{font-size:8px;font-weight:800;color:#12203F;}
+ .wz .vcard{margin-top:6px;background:linear-gradient(180deg,#EDF3FE,#E4EDFD);
+   border:1px solid #CFDDF8;border-radius:7px;padding:7px 8px;display:flex;gap:6px;align-items:flex-start;}
+ .wz .vcard svg{width:16px;height:16px;flex:none;margin-top:1px;}
+ .wz .vcard b{display:block;font-size:6.6px;font-weight:800;color:#12203F;}
+ .wz .vcard s{text-decoration:none;display:block;font-size:5.2px;color:#5A6478;line-height:1.45;margin-top:2px;}
+ .wz .vcard u{display:inline-block;text-decoration:none;margin-top:5px;background:#2457D6;color:#fff;
+   border-radius:8px;padding:3px 8px;font-size:5.8px;font-weight:800;}
+ .wz .ckv{font-size:6.4px;color:#12203F;font-weight:600;padding:4px 0 5px;
+   border-bottom:1px solid #F3F5F9;}
+ .wz .opt.pure{border-bottom:0;padding:5px 0 3px;}
+ .wz .opt .mut{color:#9AA2B1;font-weight:500;margin-left:3px;}
+ /* ── 表单原型 ── */
+ .fbar{background:#fff;padding:5px 9px 4px;border-bottom:1px solid #EEF1F6;}
+ .fbar .st{display:flex;justify-content:space-between;font-size:5.4px;font-weight:800;color:#12203F;}
+ .fbar .nv{display:flex;align-items:center;gap:5px;margin-top:3px;}
+ .fbar .nv i{font-style:normal;font-size:8px;color:#5A6478;}
+ .fbar .nv b{font-size:8px;font-weight:800;color:#12203F;}
+ .fb{padding:6px 9px 0;}
+ .grp{font-size:6.2px;font-weight:800;color:var(--amb);letter-spacing:.06em;margin:5px 0 3px;}
+ .fr{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid #EDF0F5;
+   border-radius:5px;padding:3.4px 6px;margin-bottom:3px;}
+ .fr s{text-decoration:none;font-size:5.8px;font-weight:700;color:#5A6478;white-space:nowrap;}
+ .fr em{font-style:normal;margin-left:auto;font-size:5.8px;color:#B6BDC9;}
+ .fr em.on{color:#12203F;font-weight:700;}
+ .fr .req{color:#E1483C;font-weight:800;}
+ .ai{display:flex;align-items:center;justify-content:space-between;background:#F2F6FF;
+   border:1px solid #D9E4FB;border-radius:5px;padding:4px 6px;margin-bottom:3px;}
+ .ai b{font-size:5.8px;font-weight:800;color:var(--blue2);}
+ .ai s{text-decoration:none;font-size:5.2px;color:#9AA6C0;}
+ .chk{display:flex;gap:9px;padding:1px 2px 4px;}
+ .chk span{display:flex;align-items:center;gap:3px;font-size:5.8px;font-weight:700;color:#12203F;}
+ .chk i{font-style:normal;width:6.5px;height:6.5px;border-radius:2px;background:var(--blue2);
+   color:#fff;font-size:4.6px;display:flex;align-items:center;justify-content:center;}
+
+ .boost{margin-top:5px;border:1px solid var(--ambln);background:#FFFBF2;border-radius:6px;
+   padding:5px 7px;}
+ .boost .bh{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;}
+ .boost .bh b{font-size:6.2px;font-weight:800;color:var(--amb);letter-spacing:.05em;}
+ .boost .bh u{text-decoration:none;font-size:5px;font-weight:800;color:#fff;background:var(--green);
+   border-radius:3px;padding:1px 4px;}
+ .bp{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid #F0E4C8;
+   border-radius:4px;padding:3px 6px;margin-bottom:2.5px;}
+ .bp s{text-decoration:none;font-size:5.6px;font-weight:700;color:#5A6478;}
+ .bp em{font-style:normal;margin-left:auto;font-size:5.4px;font-weight:800;color:var(--green);}
+ .bp em del{color:#C0C6D2;font-weight:700;margin-right:3px;}
+ .bp.none{border-style:dashed;background:#FCFCFD;}
+ .bp.none s{color:#9AA6C0;}
+ .bp.none em{color:#9AA6C0;font-weight:700;}
+
+ .fbtn{position:absolute;left:0;right:0;bottom:0;display:flex;gap:6px;padding:6px 9px;
+   background:#fff;border-top:1px solid #EEF1F6;}
+ .fbtn span{flex:1;text-align:center;border-radius:11px;padding:4px 0;font-size:6.4px;font-weight:800;}
+ .fbtn .prev{border:1px solid #C9D2E0;color:#5A6478;flex:0 0 52px;}
+ .fbtn .post{background:var(--blue2);color:#fff;}
+ .fbtn .pay{background:var(--amb2);color:#fff;}
+
+ /* ── 右栏说明 ── */
+ .sec{font-size:8.4px;font-weight:800;letter-spacing:.09em;color:var(--ink3);margin-bottom:7px;}
+ .nt{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px;}
+ .nt u{text-decoration:none;flex:none;width:16px;height:16px;border-radius:50%;
+   background:var(--ambbg);color:var(--amb);font-size:9px;font-weight:800;display:flex;
+   align-items:center;justify-content:center;margin-top:1px;}
+ .nt b{font-size:10.2px;font-weight:800;color:var(--ink);}
+ .nt b em{font-style:normal;font-size:7.4px;font-weight:800;letter-spacing:.06em;
+   background:#E9F8F1;color:var(--green);border-radius:4px;padding:1px 5px;margin-left:5px;}
+ .nt b em.new{background:var(--ambbg);color:var(--amb);}
+ .nt span{font-size:9px;color:var(--ink2);line-height:1.5;display:block;margin-top:2px;}
+ .nt span b{font-size:9px;}
+
+ .free{display:flex;gap:9px;align-items:flex-start;background:var(--greenbg);
+   border:1px solid #BFE8D4;border-radius:9px;padding:9px 11px;margin-top:2px;}
+ .free i{font-style:normal;font-size:13px;line-height:1;}
+ .free h4{font-size:10.2px;font-weight:800;color:#0F7A50;}
+ .free p{font-size:9px;color:#2F6B52;line-height:1.5;margin-top:3px;}
+</style></head>
+<body>
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">3.6</span>Post a Job — AI Writes It, You Publish in Seconds</div>
+ <div class="subtitle">JOB POSTING &nbsp;/&nbsp; THREE STEPS · AI DRAFTS THE DESCRIPTION AND THE REQUIREMENTS · PUBLISH AT THE END</div>
+
+
+ <div class="wrap lead-off" style="top:134px;bottom:44px">
+
+
+  <div class="steps3">
+   <div class="st3"><div><b>Verification</b>
+    <s>The company passes once, then never again. <a>See 3.5</a></s></div></div>
+   <div class="arw3">›</div>
+   <div class="st3 on"><div><b>Post</b>
+    <s>Three steps — job info, visa &amp; sponsorship, candidate requirements. <a>this page</a></s></div></div>
+   <div class="arw3">›</div>
+   <div class="st3"><div><b>Promotion</b>
+    <s>Optional. Pick <b>Area · Plan · Duration</b> and the job jumps to the top.
+     <a>See 3.7</a></s></div></div>
+  </div>
+
+  <div class="cols">
+
+   <!-- ① 空表单 -->
+   
+
+   <div class="pcol">
+    <div class="ph"><b>Where posting starts</b></div>
+    <div class="phone"><div class="screen"><div class="pl">
+     <div class="st"><span>12:25</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="hd"><b>My Jobs</b><u><i>+</i>Post a Job</u></div>
+     <div class="tabs2"><span class="on">Active</span><span>Closed</span></div>
+     <div class="pc"><div class="t"><b>Warehouse Assistant</b><em>A$28&ndash;32<small>/hr</small></em></div>
+      <div class="end">Ends 2026-12-20 18:38</div>
+      <div class="g"><span class="loc"><b></b>Melbourne CBD</span><span>Casual</span><span>Cash</span><span>Year 12+</span></div>
+      <div class="d">Packing, sorting and shelving. Early starts, own transport&hellip;</div>
+      <div class="act"><span><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7.5 8.5L12 4l4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg> Promote</span><span><svg viewBox="0 0 24 24"><rect x="8.5" y="3.5" width="12" height="12" rx="2.6"/><path d="M15.5 20.5h-10A2 2 0 0 1 3.5 18.5v-10"/></svg> Duplicate</span><span><svg viewBox="0 0 24 24"><path d="M16.5 3.6l3.9 3.9L8.9 19H5v-3.9z"/><path d="M14.3 5.8l3.9 3.9"/></svg> Edit</span><span class="off"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6"/></svg> Close</span></div></div>
+     <div class="pc"><div class="t"><b>Store Supervisor</b><em>A$34&ndash;40<small>/hr</small></em></div>
+      <div class="end">Ends 2026-12-18 14:47</div>
+      <div class="g"><span class="v">186 Sponsorship</span><span class="loc"><b></b>Melbourne</span><span>Full-time</span><span>Cash</span></div>
+      <div class="d">Runs the floor roster and the daily stock count. Weekend&hellip;</div>
+      <div class="act"><span><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7.5 8.5L12 4l4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg> Promote</span><span><svg viewBox="0 0 24 24"><rect x="8.5" y="3.5" width="12" height="12" rx="2.6"/><path d="M15.5 20.5h-10A2 2 0 0 1 3.5 18.5v-10"/></svg> Duplicate</span><span><svg viewBox="0 0 24 24"><path d="M16.5 3.6l3.9 3.9L8.9 19H5v-3.9z"/><path d="M14.3 5.8l3.9 3.9"/></svg> Edit</span><span class="off"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6"/></svg> Close</span></div></div>
+     <div class="pc"><div class="t"><b>Kitchen Hand</b><em>A$30&ndash;34<small>/hr</small></em></div>
+      <div class="end">Ends 2026-11-20 10:33</div>
+      <div class="g"><span class="v">482 Sponsorship</span><span class="loc"><b></b>Southbank</span><span>Casual</span></div>
+      <div class="d">Prep and dishwashing, available weeknights. No experience&hellip;</div>
+      <div class="act"><span><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7.5 8.5L12 4l4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg> Promote</span><span><svg viewBox="0 0 24 24"><rect x="8.5" y="3.5" width="12" height="12" rx="2.6"/><path d="M15.5 20.5h-10A2 2 0 0 1 3.5 18.5v-10"/></svg> Duplicate</span><span><svg viewBox="0 0 24 24"><path d="M16.5 3.6l3.9 3.9L8.9 19H5v-3.9z"/><path d="M14.3 5.8l3.9 3.9"/></svg> Edit</span><span class="off"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6"/></svg> Close</span></div></div>
+     <div class="tb">
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1.4-3.6 4.5-5 7-5s5.6 1.4 7 5"/></svg>Candidate</span>
+      <span class="on"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 13 2.5 2.5L16 10"/></svg>Posts</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 4a6 6 0 0 0-6 6v4l-1.5 3h15L18 14v-4a6 6 0 0 0-6-6Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Notification<em>8</em></span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.4"/><path d="M5 20c1.4-3.5 4.5-5 7-5s5.6 1.5 7 5"/></svg>My</span>
+     </div>
+     <div class="hl2" style="left:112px;top:20px;width:66px;height:19px"></div>
+    </div></div></div>
+   </div>
+   <div class="ea2"></div>
+   <!-- ② 发布岗位:第 1 步 -->
+   <div class="pcol">
+    <div class="ph"><b>Step 1 of 3 &mdash; Job info</b></div>
+    <div class="phone"><div class="screen"><div class="wz">
+     <div class="st"><span>12:33</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="nv"><i>&lsaquo;</i><b>Post a Job</b></div>
+     <div class="steps">
+      <div class="sp on"><u>1</u><s>Job info</s></div><div class="ln"></div>
+      <div class="sp"><u>2</u><s>Visa</s></div><div class="ln"></div>
+      <div class="sp"><u>3</u><s>Requirements</s></div>
+     </div>
+     <div class="scrl"><div class="tf"></div>
+     <div class="card">
+      <div class="sec"><b>Job info</b></div>
+      <div class="hint">Get this right and the right people find you faster</div>
+      <div class="lb"><em>*</em>Job title</div><div class="fld val">Barista</div>
+      <div class="lb"><em>*</em>Job category</div><div class="fld val">Hospitality<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+      <div class="lb"><em>*</em>Job type</div><div class="fld val">Part-time<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+      <div class="lb"><em>*</em>Pay cycle</div><div class="fld val">Hourly<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+      <div class="lb"><em>*</em>Pay range</div>
+      <div class="fld val"><span class="half">28</span><span class="to">to</span><span class="half">34</span></div>
+      <div class="lb"><em>*</em>Pay method</div><div class="fld val">Bank transfer<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+      <div class="lb"><em>*</em>Work location<span class="ck2"><b></b>Same as the company address</span></div>
+      <div class="fld val">Melbourne &ndash; Inner<i class="ch">&rsaquo;</i></div>
+      <div class="lb">Detailed address</div>
+      <div class="fld val">173 La Trobe St, Melbourne VIC 3000<i class="ch">&rsaquo;</i></div>
+      <div class="lb">Postcode</div><div class="fld val">3000</div>
+      <div class="aih">Fill in the job title and category, then AI can write the description for you</div>
+      <div class="lb"><em>*</em>Job description</div>
+      <div class="desc">1. Make coffee and serve customers across morning and weekend shifts.<br>
+       2. Keep the machine, grinder and bar area clean and stocked.<br>
+       3. Help with opening or closing, and simple food prep when it is busy.</div>
+      <div class="cnt"><s>167 / 500</s><u>Clear</u><u class="ai hero">Generate with AI</u></div>
+     </div>
+     </div>
+     <div class="next">Next</div>
+    </div></div></div>
+   </div>
+
+   <!-- ③ 发布岗位:第 2 步 -->
+   <div class="ea2 wide"><div class="ar"><i>&rarr;</i><s>NEXT</s></div></div>
+   <div class="pcol">
+    <div class="ph"><b>Step 2 of 3 &mdash; Visa &amp; sponsorship</b></div>
+    <div class="phone"><div class="screen"><div class="wz">
+     <div class="st"><span>12:45</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="nv"><i>&lsaquo;</i><b>Post a Job</b></div>
+     <div class="steps">
+      <div class="sp ok"><u>1</u><s>Job info</s></div><div class="ln on"></div>
+      <div class="sp on"><u>2</u><s>Visa</s></div><div class="ln"></div>
+      <div class="sp"><u>3</u><s>Requirements</s></div>
+     </div>
+     <div class="scrl">
+      <div class="card" style="margin-top:0">
+       <div class="sec"><b>Visa &amp; sponsorship</b></div>
+       <div class="hint">The visa a candidate must already hold, and whether you sponsor</div>
+       <div class="lb"><em>*</em>Candidate visa requirement</div>
+       <div class="fld val">Australian Citizen, Full Work Rights (1)<i class="ch">&rsaquo;</i></div>
+       <div class="lb"><em>*</em>Do you sponsor?</div>
+       <div class="opt"><b></b>482 (Skills in Demand)</div>
+       <div class="opt"><b></b>186 (ENS &mdash; permanent residence)</div>
+       <div class="opt off"><b></b>Not provided</div>
+      </div>
+     </div>
+     <div class="two"><div class="bk">Back</div><div class="nx">Next</div></div>
+    </div></div></div>
+   </div>
+   <!-- ④ 发布岗位:第 3 步 -->
+   <div class="ea2"><div class="ar"><i>&rarr;</i><s>NEXT</s></div></div>
+   <div class="pcol">
+    <div class="ph"><b>Step 3 of 3 &mdash; Requirements</b></div>
+    <div class="phone"><div class="screen"><div class="wz">
+     <div class="st"><span>12:53</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="nv"><i>&lsaquo;</i><b>Post a Job</b></div>
+     <div class="steps">
+      <div class="sp ok"><u>1</u><s>Job info</s></div><div class="ln on"></div>
+      <div class="sp ok"><u>2</u><s>Visa</s></div><div class="ln on"></div>
+      <div class="sp on"><u>3</u><s>Requirements</s></div>
+     </div>
+     <div class="scrl"><div class="bf"></div>
+      <div class="card" style="margin-top:0">
+       <div class="sec"><b>Candidate requirements</b></div>
+       <div class="lb"><em>*</em>Languages</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb"><em>*</em>Education</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb"><em>*</em>Available from</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb">Job requirements</div>
+       <div class="hint" style="margin-left:0">One requirement per line. Start a bonus item with &ldquo;Bonus:&rdquo;</div>
+       <div class="cnt"><s>0 / 500</s><u>Clear</u><u class="ai mark">Generate with AI</u></div>
+       <div class="sec2"><b>Company info</b></div>
+       <div class="hint" style="margin-left:0">A real company background is what makes candidates trust the post</div>
+       <div class="vcard"><svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>You are not a verified employer yet</b>
+        <s>Pass once and the blue V sits beside your name on every post &mdash; see 3.5.</s>
+        <u>Verify now &rarr;</u></div></div>
+       <div class="lb"><em>*</em>Company name</div><div class="fld val">Sydney Construction</div>
+       <div class="lb"><em>*</em>Company address</div>
+       <div class="fld val">173 La Trobe St, Melbourne VIC 3000<i class="ch">&rsaquo;</i></div>
+       <div class="lb"><em>*</em>Contact</div>
+       <div class="opt pure"><b></b>Phone</div><div class="ckv">401 663 728</div>
+       <div class="opt pure"><b></b>Email</div><div class="ckv">meg@sydneyconstruction.com.au</div>
+       <div class="opt off"><b></b>WhatsApp<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>WeChat<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>LINE<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>Kakao Talk<span class="mut">(shown after a request)</span></div>
+      </div>
+     </div>
+     <div class="two"><div class="bk">Back</div><div class="nx">Publish</div></div>
+    </div></div></div>
+   </div>
+   <div class="ea2"></div>
+   <div class="pcol">
+    <div class="ph"><b>&hellip;scrolled down &mdash; company &amp; contact</b></div>
+    <div class="phone"><div class="screen"><div class="wz">
+     <div class="st"><span>12:53</span><span>&#9679;&#9679;&#9679; &#9650; &#9632;</span></div>
+     <div class="nv"><i>&lsaquo;</i><b>Post a Job</b></div>
+     <div class="steps">
+      <div class="sp ok"><u>1</u><s>Job info</s></div><div class="ln on"></div>
+      <div class="sp ok"><u>2</u><s>Visa</s></div><div class="ln on"></div>
+      <div class="sp on"><u>3</u><s>Requirements</s></div>
+     </div>
+     <div class="scrl"><div class="tf"></div>
+      <div class="card" style="margin-top:-249px">
+       <div class="sec"><b>Candidate requirements</b></div>
+       <div class="lb"><em>*</em>Languages</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb"><em>*</em>Education</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb"><em>*</em>Available from</div><div class="fld">Select<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
+       <div class="lb">Job requirements</div>
+       <div class="hint" style="margin-left:0">One requirement per line. Start a bonus item with &ldquo;Bonus:&rdquo;</div>
+       <div class="cnt"><s>0 / 500</s><u>Clear</u><u class="ai mark">Generate with AI</u></div>
+       <div class="sec2"><b>Company info</b></div>
+       <div class="hint" style="margin-left:0">A real company background is what makes candidates trust the post</div>
+       <div class="vcard"><svg viewBox="0 0 24 24"><path fill="#2878F0" d="M12 2.2l7.6 2.7v6.4c0 4.7-3.1 8.5-7.6 11-4.5-2.5-7.6-6.3-7.6-11V4.9z"/><path d="M8.5 8.4l3.5 7.8 3.5-7.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>You are not a verified employer yet</b>
+        <s>Pass once and the blue V sits beside your name on every post &mdash; see 3.5.</s>
+        <u>Verify now &rarr;</u></div></div>
+       <div class="lb"><em>*</em>Company name</div><div class="fld val">Sydney Construction</div>
+       <div class="lb"><em>*</em>Company address</div>
+       <div class="fld val">173 La Trobe St, Melbourne VIC 3000<i class="ch">&rsaquo;</i></div>
+       <div class="lb"><em>*</em>Contact</div>
+       <div class="opt pure"><b></b>Phone</div><div class="ckv">401 663 728</div>
+       <div class="opt pure"><b></b>Email</div><div class="ckv">meg@sydneyconstruction.com.au</div>
+       <div class="opt off"><b></b>WhatsApp<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>WeChat<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>LINE<span class="mut">(shown after a request)</span></div>
+       <div class="opt off"><b></b>Kakao Talk<span class="mut">(shown after a request)</span></div>
+      </div>
+     </div>
+     <div class="two"><div class="bk">Back</div><div class="nx">Publish</div></div>
+    </div></div></div>
+   </div>
+
+  </div>
+ </div>
+
+ <svg class="flw" viewBox="0 0 1360 765">
+  <defs><marker id="ah" markerWidth="7" markerHeight="7" refX="5.6" refY="3" orient="auto">
+   <path d="M0 0l6 3-6 3z" fill="#B4720E"/></marker></defs>
+  <path d="M207 241 C 240 239, 256 248, 286 254" fill="none" stroke="#B4720E" stroke-width="1.6"
+    stroke-dasharray="5 4" marker-end="url(#ah)"/>
+  <path d="M453 523 L 474 523" fill="none" stroke="#B4720E" stroke-width="1.6" stroke-dasharray="4 3"/>
+ </svg>
+ <div class="entrylbl">POST A JOB</div>
+ <div class="aicall"><b>AI writes it</b>
+  <p>Fill in the title and category, tap <b>Generate with AI</b> and the whole description is
+   drafted for you.</p></div>
+ <div class="footer">JobABC</div>
+ <div class="pgno">3.6</div>
+</div><script src="assets/fit.js"></script>
+</body></html>

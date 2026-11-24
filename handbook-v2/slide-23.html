@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.2 Operations Console — Module Map</title>
+<link rel="stylesheet" href="assets/page.css">
+<style>
+ .map { position:relative; height:100%; }
+ .root { position:absolute; left:18px; top:16px; display:inline-flex; align-items:center;
+   gap:8px; background:#1C62E2; color:#fff; border-radius:999px; padding:8px 17px;
+   font-size:13px; font-weight:800; letter-spacing:.01em;
+   box-shadow:0 10px 22px -12px rgba(28,98,226,.8); }
+ .root img { width:18px; height:18px; border-radius:50%; }
+
+ i.spine, i.rail, i.drop { position:absolute; background:#C7D6EE; }
+ i.spine, i.drop { width:2px; }
+ i.rail { height:2px; }
+
+ .card { position:absolute; border-radius:13px; background:#FBFCFE; border:1px solid #E7EDF7;
+   padding:13px 16px 14px; box-shadow:0 12px 26px -20px rgba(20,40,90,.5); }
+ .ch { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+ .ch .ci { flex:none; width:30px; height:30px; border-radius:9px; background:#EAF0FE;
+   display:flex; align-items:center; justify-content:center; }
+ .ch .ci svg { width:17px; height:17px; }
+ .ch b { font-size:16px; font-weight:800; color:#101A45; letter-spacing:-.01em; }
+ .it { display:flex; align-items:center; gap:9px; font-size:11.5px; color:#4A5468;
+   padding:2.5px 0; }
+ .it .pg { flex:none; min-width:34px; text-align:center; background:#1C62E2; color:#fff;
+   border-radius:5px; padding:2.5px 6px; font-size:10px; font-weight:800;
+   font-variant-numeric:tabular-nums; }
+ .it .nb { flex:none; background:#EDF0F5; color:#9AA6C0; border-radius:5px; padding:2.5px 7px;
+   font-size:9px; font-weight:800; white-space:nowrap; }
+</style></head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.2</span>Operations Console — Module Map</div>
+ <div class="lead">The console's actual sidebar, top to bottom — every module covering every part
+  of daily operations. Blue chips are the pages that follow; grey ones are planned but not built yet.</div>
+
+ <div class="wrap lead-on">
+  <div class="map">
+   <div class="root"><img src="assets/logo.png" alt="">Job Koala Admin</div>
+   <i class="drop" style="left:90px;top:72px;height:16px"></i><i class="drop" style="left:403px;top:72px;height:16px"></i><i class="drop" style="left:716px;top:72px;height:16px"></i><i class="drop" style="left:1029px;top:72px;height:16px"></i><i class="drop" style="left:90px;top:276px;height:16px"></i><i class="drop" style="left:403px;top:276px;height:16px"></i><i class="drop" style="left:716px;top:276px;height:16px"></i><i class="drop" style="left:1029px;top:276px;height:16px"></i><i class="drop" style="left:90px;top:416px;height:16px"></i><i class="drop" style="left:403px;top:416px;height:16px"></i><i class="drop" style="left:716px;top:416px;height:16px"></i><i class="rail" style="left:18px;top:72px;width:1011px"></i><i class="rail" style="left:18px;top:276px;width:1011px"></i><i class="rail" style="left:18px;top:416px;width:698px"></i><i class="spine" style="left:18px;top:52px;height:364px"></i>
+
+  <div class="card" style="left:56px;top:88px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg></span>
+    <b>Dashboard</b></div>
+   <div class="it"><span class="pg">4.3</span>Key metrics & overview</div>
+  </div>
+  <div class="card" style="left:369px;top:88px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span>
+    <b>System</b></div>
+   <div class="it"><span class="pg">4.4</span>Administrators</div><div class="it"><span class="pg">4.5</span>Roles &amp; Permissions (RBAC)</div><div class="it"><span class="pg">4.6</span>Basic Info configuration</div><div class="it"><span class="pg">4.7</span>Logs</div><div class="it"><span class="pg">4.8</span>Regions</div><div class="it"><span class="pg">4.9</span>Education Types</div>
+  </div>
+  <div class="card" style="left:682px;top:88px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/></svg></span>
+    <b>Jobs</b></div>
+   <div class="it"><span class="pg">4.10</span>Job listings</div><div class="it"><span class="pg">4.11</span>Resume management</div><div class="it"><span class="pg">4.12</span>Industry categories</div>
+  </div>
+  <div class="card" style="left:995px;top:88px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg></span>
+    <b>Users</b></div>
+   <div class="it"><span class="pg">4.13</span>User accounts & edit</div>
+  </div>
+  <div class="card" style="left:56px;top:292px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/><path d="M2.5 4h2.6l2.4 11h10L20 7H6"/></svg></span>
+    <b>Orders</b></div>
+   <div class="it"><span class="pg">4.14</span>Order list & payment records</div>
+  </div>
+  <div class="card" style="left:369px;top:292px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1.6"/><path d="M3 13h18M12 9v11"/><path d="M12 9c-3.5 0-5-1-5-2.6S8.5 4 9.6 4.7 12 9 12 9zm0 0c3.5 0 5-1 5-2.6S15.5 4 14.4 4.7 12 9 12 9z"/></svg></span>
+    <b>Promotion Plans</b></div>
+   <div class="it"><span class="pg">4.15</span>Plan, pricing & boosted visibility</div>
+  </div>
+  <div class="card" style="left:682px;top:292px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.4"/><path d="M4 17l4.8-4.4 3.4 3 3-2.6L20 17"/></svg></span>
+    <b>Home Banners</b></div>
+   <div class="it"><span class="pg">4.16</span>Homepage banner management</div><div class="it"><span class="nb">Not yet built</span>Region & category filters</div>
+  </div>
+  <div class="card" style="left:995px;top:292px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span>
+    <b>Comments</b></div>
+   <div class="it"><span class="pg">4.17</span>Moderate job post comments</div>
+  </div>
+  <div class="card" style="left:56px;top:432px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span>
+    <b>Content</b></div>
+   <div class="it"><span class="pg">4.18</span>FAQ</div><div class="it"><span class="pg">4.20</span>Privacy Policy</div><div class="it"><span class="pg">4.21</span>User Agreement</div><div class="it"><span class="pg">4.19</span>Notification templates</div>
+  </div>
+  <div class="card" style="left:369px;top:432px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h7M7 17h4"/></svg></span>
+    <b>Assessment</b></div>
+   <div class="it"><span class="nb">Not yet built</span>Form templates & AI Config</div><div class="it"><span class="nb">Not yet built</span>Submissions</div>
+  </div>
+  <div class="card" style="left:682px;top:432px;width:295px">
+   <div class="ch"><span class="ci"><svg class="st" viewBox="0 0 24 24"><path d="M3 5h13v9H8l-5 4V5z"/><path d="M18 9h3v10l-3-2.6"/></svg></span>
+    <b>Consultant Mgmt</b></div>
+   <div class="it"><span class="pg">4.24</span>Consultant profiles & content</div>
+  </div>
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="assets/fit.js"></script>
+</body></html>

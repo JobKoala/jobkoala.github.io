@@ -1,0 +1,99 @@
+/* JobKoala 手册 · 雇主端底色
+   基准页：3.7 Post a Job — Employer View（蛋黄奶油底 + 暖色渐变）
+   用法：在 page.css 之后再引这一张；没有 .bg-top/.wave 结构的页给 <body class="warm">
+   撤销：删掉这一行 <link> 即可回到 page.css 的蓝底 */
+
+body { background:#F8EFDD; }
+
+/* page.css 的 .page-card 是铺满整版的白纸，会把蛋黄底全挡住。
+   不能直接透明（分节页靠它压住下面的图层），所以把这张纸本身染成蛋黄渐变 */
+.page-card {
+  background:
+    radial-gradient(ellipse 120% 115% at 50% -12%, #FFFFFF 0%, #FBFCFE 46%, rgba(251,252,254,0) 70%),
+    radial-gradient(ellipse 62% 82% at 18% 128%, rgba(241,224,184,.62) 0%, rgba(241,224,184,0) 70%),
+    radial-gradient(ellipse 72% 88% at 94% 122%, rgba(239,217,174,.62) 0%, rgba(239,217,174,0) 70%),
+    #F8EFDD;
+}
+
+.wave1{ background:radial-gradient(ellipse at 50% 50%, #F1E0B8 0%, rgba(241,224,184,0) 70%); }
+.wave2 { background:radial-gradient(ellipse at 50% 50%, #EFD9AE 0%, rgba(239,217,174,0) 70%); }
+
+/* 宣传页没有分层的背景元素，用一整块渐变还原同一个观感 */
+body.warm {
+  background:
+    radial-gradient(ellipse 120% 115% at 50% -12%, #FFFFFF 0%, #FBFCFE 46%, rgba(251,252,254,0) 70%),
+    radial-gradient(ellipse 62% 82% at 18% 128%, rgba(241,224,184,.62) 0%, rgba(241,224,184,0) 70%),
+    radial-gradient(ellipse 72% 88% at 94% 122%, rgba(239,217,174,.62) 0%, rgba(239,217,174,0) 70%),
+    #F8EFDD;
+}
+
+/* ── WHERE YOU ARE：定位条 ────────────────────────────────────────────
+   雇主端统一用琥珀色；标签旁边挂一条迷你 tab bar，页面在哪个 tab 哪个就亮，
+   当前那一站用实心底色，一眼能找到。 */
+.wya        { display:flex; align-items:center; gap:12px; margin-bottom:9px; }
+.wya .lb    { font-size:8.4px; font-weight:800; letter-spacing:.12em; color:#B4720E;
+              background:#FDF3E1; border-radius:5px; padding:3px 9px; flex:none; }
+.wya .tb    { display:flex; gap:13px; align-items:flex-start; border:1.4px solid #E8C98F;
+              background:#FFFCF5; border-radius:9px; padding:5px 12px; flex:none; }
+.wya .tb i  { display:flex; flex-direction:column; align-items:center; gap:2px; font-style:normal;
+              font-size:7px; font-weight:700; color:#C6C1B4; }
+.wya .tb i::after { content:""; width:11px; height:2px; border-radius:1px; background:transparent; }
+.wya .tb i.on { color:#B4720E; font-weight:800; }
+.wya .tb i.on::after { background:#E08A17; }
+.wya .tb svg { width:13px; height:13px; fill:none; stroke:#C6C1B4; stroke-width:1.9;
+              stroke-linecap:round; stroke-linejoin:round; }
+.wya .tb i.on svg { stroke:#E08A17; }
+.wya .hint  { font-size:8.6px; color:#A9A092; }
+.wya .hint b { color:#B4720E; font-weight:800; }
+
+/* 当前这一站：实心琥珀，白字 */
+.loc .lz.here, .loc .b.here { border:1.6px solid #E08A17 !important;
+              background:linear-gradient(135deg,#F0A32A,#DE8410) !important;
+              box-shadow:0 8px 18px -10px rgba(224,138,23,.85); }
+.loc .lz.here b, .loc .b.here b, .loc .lz.here em, .loc .b.here em,
+.loc .lz.here .sib { color:#fff !important; }
+.loc .lz.here em, .loc .b.here em, .loc .lz.here .sib { opacity:.86; }
+.loc .lz.here .you, .loc .b.here i { background:#fff !important; color:#B4720E !important; }
+
+/* 定位条其余部分也收进雇主色系，别一半蓝一半琥珀 */
+.loc .lz em, .loc .b em   { color:#A9A092; }
+.loc .lz .sib             { color:#C9C2B4; }
+.loc .lz.tip, .loc .lz.tip.v { border-color:#E8C98F; background:#FFFCF5; }
+.loc > i                  { color:#D6C49A; }
+
+/* 面包屑：跟在 tab bar 后面，一行说完，下面不再重复一次位置 */
+.wya .cr     { display:flex; align-items:center; gap:8px; }
+.wya .cr b   { font-size:11px; font-weight:800; color:#5A5347; background:#fff;
+               border:1px solid #EAE2D3; border-radius:7px; padding:5px 11px; white-space:nowrap; }
+.wya .cr b.on{ color:#fff; border-color:#E08A17;
+               background:linear-gradient(135deg,#F0A32A,#DE8410);
+               box-shadow:0 8px 18px -10px rgba(224,138,23,.85); }
+.wya .cr b s { text-decoration:none; font-weight:700; opacity:.7; margin-left:5px; }
+.wya .cr i   { font-style:normal; font-size:12px; font-weight:800; color:#D6C49A; }
+
+/* ── 发布三段带：认证 → 填表 → 推广，3.4 / 3.5 共用 ── */
+ /* 发布这件事分三段：认证 → 填表 → 推广，用三级序号串起来 */
+ .steps3{display:flex;align-items:stretch;gap:0;margin:0 0 10px;}
+ .st3{flex:1;display:flex;gap:10px;align-items:flex-start;background:#fff;
+   border:1px solid #EFE7D6;border-radius:11px;padding:10px 13px;}
+ .st3.on{border:1.6px solid #E08A17;background:linear-gradient(180deg,#FFFBF3,#FFF6E7);
+   box-shadow:0 10px 22px -14px rgba(224,138,23,.7);}
+ .st3 u{text-decoration:none;flex:none;font-size:9px;font-weight:800;letter-spacing:.03em;
+   color:#B4720E;background:#FDF3E1;border-radius:6px;padding:3px 7px;
+   font-variant-numeric:tabular-nums;}
+ .st3.on u{color:#fff;background:#E08A17;}
+ .st3 b{display:block;font-size:12px;font-weight:800;color:var(--ink);line-height:1.2;}
+ .st3 s{text-decoration:none;display:block;font-size:8.8px;color:var(--ink2);line-height:1.45;
+   margin-top:3px;}
+ .st3 s b{display:inline;font-size:inherit;font-weight:800;color:var(--ink);}
+ .st3 s a{color:#B4720E;font-weight:800;text-decoration:none;}
+ .arw3{flex:none; align-self:center; font-size:14px; font-weight:800; color:#D6C49A;
+   padding:0 9px;}
+
+ .gh3{display:flex;align-items:baseline;gap:7px;margin:13px 0 7px;
+   padding-bottom:5px;border-bottom:1.4px solid #EFE7D6;}
+ .gh3:first-of-type{margin-top:0;}
+ .gh3 u{text-decoration:none;font-size:9px;font-weight:800;color:#B4720E;background:#FDF3E1;
+   border-radius:5px;padding:2px 7px;font-variant-numeric:tabular-nums;}
+ .gh3 b{font-size:10.6px;font-weight:800;color:var(--ink);}
+ .gh3 s{text-decoration:none;margin-left:auto;font-size:8.4px;color:var(--ink3);font-weight:700;}
