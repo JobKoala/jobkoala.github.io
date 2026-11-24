@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.4.3 Roles & Permissions</title>
+<link rel="stylesheet" href="_assets/page.css">
+<link rel="stylesheet" href="_assets/console-nav.css">
+<link rel="stylesheet" href="_assets/console.css">
+<style>
+ .how { position:relative; flex:none; width:496px; border-radius:13px; background:#FBFCFE;
+   border:1px solid #E7EDF7; padding:15px 20px 16px;
+   box-shadow:0 14px 30px -24px rgba(20,40,90,.5); }
+ .ht { font-size:13px; font-weight:800; color:#101A45; margin-bottom:11px; }
+ .box { border-radius:10px; background:#fff; border:1px solid #E9EDF6; padding:9px 13px 11px; }
+ .lb { font-size:8.4px; font-weight:800; letter-spacing:.14em; color:#9AA6C0; }
+ .rw { display:flex; align-items:center; gap:9px; margin-top:7px; }
+ .rw .av { width:22px; height:22px; border-radius:50%; background:#EAF0FE; color:#1C62E2;
+   font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+ .rw b { font-size:14px; font-weight:800; color:#101A45; }
+ .rw s { text-decoration:none; font-size:10px; color:#8A93A3; }
+ .rw .chip { display:inline-block; font-size:13px; font-weight:800; color:#B4720E;
+   background:#FDF3E1; border-radius:7px; padding:4px 12px; }
+ .link { display:flex; align-items:center; gap:9px; padding:7px 0 7px 21px; }
+ .link i { width:2px; height:19px; background:#C7D6EE; position:relative; }
+ .link i::after { content:""; position:absolute; left:-3px; bottom:-1px; width:0; height:0;
+   border:4px solid transparent; border-top-color:#C7D6EE; }
+ .link span { font-size:10px; color:#8A93A3; }
+ .ac { font-size:11px; color:#3E7B4A; margin-top:6px; display:flex; align-items:baseline; gap:7px; }
+ .ac::before { font-weight:800; }
+ .ac.y::before { content:"✓"; color:#2FA35B; }
+ .ac.n { color:#9AA6C0; } .ac.n::before { content:"✕"; color:#C2CADB; }
+ .ac em { font-style:normal; font-size:9.6px; color:#8A93A3; }
+ .foot { margin-top:13px; font-size:9.6px; line-height:1.55; color:#5A6478; }
+ .foot b { color:#1C62E2; font-weight:800; }
+ .pin.p1 { left:0; top:47%; }
+ .stage { gap:26px; align-items:stretch }
+ .fnote { margin-top:13px; font-size:9.6px; line-height:1.55; color:#5A6478; }
+ .fnote b { color:#1C62E2; font-weight:800; }
+ /* 抽屉打开态:蒙层压住左边的表格，右边抽屉保持明亮，
+    触发它的那颗 Assign 留在蒙层之上 */
+ .win .shot { position:relative; }
+ .win .shot .scrim { position:absolute; left:0; top:0; width:63.2%; height:100%;
+   background:rgba(16,26,69,.42); z-index:2; }
+ .win .shot .hot { position:absolute; left:47.4%; top:26.4%; width:5.6%; height:5.2%;
+   border-radius:6px; z-index:3;
+   box-shadow:0 0 0 2.4px #fff, 0 0 0 4.6px #1C62E2, 0 8px 20px -6px rgba(28,98,226,.8); }
+ .win .shot .drawertag { position:absolute; right:9px; top:8px; z-index:3; font-size:7.4px;
+   font-weight:800; letter-spacing:.12em; color:#1C62E2; background:#EAF0FE;
+   border:1px solid #C7D5EF; border-radius:5px; padding:2px 7px; }
+ /* 页面说明:大字、四步(cmain 有 zoom,这里用 zoom 抵消回正常字号) */
+ .howto, .howtip { zoom:1.2; }
+ .howto { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px; }
+ .howto .hc { display:flex; gap:10px; align-items:flex-start; background:#fff; border:1px solid #E3E9F5;
+   border-radius:12px; padding:14px 15px 15px; box-shadow:0 6px 16px -12px rgba(24,52,110,.35); }
+ .howto .hc u { text-decoration:none; flex:none; width:28px; height:28px; border-radius:50%; background:#1C62E2;
+   color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+ .howto h5 { font-size:17px; font-weight:800; color:#101A45; line-height:1.3; }
+ .howto p { font-size:14px; line-height:1.5; color:#4A5468; margin-top:4px; }
+ .howto p b { color:#101A45; }
+ .howtip { margin-top:10px; border-left:3px solid #E08A17; background:#FBF4EC; border-radius:0 8px 8px 0;
+   padding:9px 16px; font-size:14px; color:#3A4660; }
+ .howtip b { color:#C26A0A; margin-right:6px; } .howtip em { font-style:normal; font-weight:800; color:#101A45; }
+</style>
+</head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="_assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.4.3</span>Roles &amp; Permissions</div>
+ <div class="lead" style="font-size:14px">This page decides <b style="color:#101A45">what each kind of person can open</b> in the console. You make roles here, then give them to people on 4.4.2.</div>
+
+ <div class="wrap lead-on hasnav">
+  <div class="cnav">
+   <div class="brand"><i>🐨</i>Job Koala Admin</div>
+   <div class="it top">Dashboard</div>
+   <div class="g">SYSTEM</div>
+   <div class="it">Administrators</div>
+   <div class="it on">Roles</div>
+   <div class="it">Basic Info</div>
+   <div class="it">Logs</div>
+   <div class="it">Regions</div>
+   <div class="it">Education Types</div>
+   <div class="g">JOBS</div>
+   <div class="it">Job List</div>
+   <div class="it">Resume Management</div>
+   <div class="it">Industries</div>
+   <div class="it top">Users</div>
+   <div class="g">ORDERS</div>
+   <div class="it">Order List</div>
+   <div class="it top">Promotion Plans</div>
+   <div class="it top">Home Banners</div>
+   <div class="it top">Comments</div>
+   <div class="it top">Verification Review</div>
+   <div class="g">CONTENT</div>
+   <div class="it">FAQ</div>
+   <div class="it">Notification Templates</div>
+   <div class="it">Privacy Policy</div>
+   <div class="it">User Agreement</div>
+   <div class="g">ASSESSMENT</div>
+   <div class="it">Form Templates</div>
+   <div class="it">AI Config</div>
+   <div class="it">Assessment Records</div>
+   <div class="it">Consultants</div>
+   <div class="it">Consultant Pricing</div>
+  </div>
+  <div class="cmain" style="zoom:0.8">
+  <div class="stage">
+  <div class="how">
+   <div class="ht">How it works</div>
+
+   <div class="box">
+    <div class="lb">ACCOUNT</div>
+    <div class="rw"><span class="av">M</span><b>Meg</b><s>admin account</s></div>
+   </div>
+   <div class="link"><i></i><span>holds a role</span></div>
+
+   <div class="box">
+    <div class="lb">ROLE</div>
+    <div class="rw"><span class="chip">Ops Specialist</span></div>
+   </div>
+   <div class="link"><i></i><span>the role decides what opens</span></div>
+
+   <div class="box">
+    <div class="lb">CAN ACCESS</div>
+    <div class="ac y">Dashboard</div>
+    <div class="ac y">Jobs <em>Job List · Resume Mgmt</em></div>
+    <div class="ac y">Content · Assessment</div>
+    <div class="ac n">Users · Orders · System</div>
+   </div>
+
+   <div class="fnote">One account can hold <b>several roles</b> — their permissions simply add up.
+    Edit the role once and everyone holding it updates.</div>
+   <div class="pin p1">1</div>
+  </div>
+  <div class="win" style="width:727px">
+   <div class="bar">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span class="url">admin.jobkoala.au/system/roles</span>
+   </div>
+   <div class="shot">
+    <img src="_assets/4_5_roles.png" alt="">
+    <div class="scrim"></div>
+    <div class="hot"></div>
+    <div class="drawertag">DRAWER · OPEN</div>
+   </div>
+   <div class="pin" style="left:63.08%;top:19.11%">3</div>
+   <div class="pin" style="left:1.2%;top:25.73%">2</div>
+   <div class="pin" style="left:63.08%;top:84.74%">4</div>
+  </div>
+  </div>
+  <div class="howto">
+   <div class="hc"><u>1</u><div><h5>What a role is</h5>
+    <p>A role is a <b>set of permissions</b>, e.g. “Ops Specialist”. A person with that role can open only what it allows.</p></div></div>
+   <div class="hc"><u>2</u><div><h5>Pick a role</h5>
+    <p>Find the role in the list and click the blue <b>Assign</b> on its row.</p></div></div>
+   <div class="hc"><u>3</u><div><h5>Tick what it can open</h5>
+    <p>Tick the pages this role may use. <b>Untick</b> the ones it may not.</p></div></div>
+   <div class="hc"><u>4</u><div><h5>Click Confirm</h5>
+    <p>Everyone with this role gets the change <b>right away</b> — no need to log in again.</p></div></div>
+  </div>
+  <div class="howtip"><b>Tip</b>To give a role to a person, go to <em>4.4.2 Account Management › Assign Roles</em>.</div>
+
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="_assets/fit.js"></script>
+</body></html>

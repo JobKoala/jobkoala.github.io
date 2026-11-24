@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.4.6 Regions</title>
+<link rel="stylesheet" href="_assets/page.css">
+<link rel="stylesheet" href="_assets/console-nav.css">
+<link rel="stylesheet" href="_assets/console.css">
+<style> .stage { justify-content:space-between } 
+ .two { display:flex; gap:20px; align-items:flex-start; }
+ .two .lft { flex:1; min-width:0; }
+ .two .rgt { width:392px; flex:none; }
+ .tcap { font-size:8.4px; font-weight:800; letter-spacing:.09em; color:#9AA6C0; margin-bottom:8px; }
+ .troot { background:#fff; border:1.6px solid #1C62E2; border-radius:9px; padding:7px 11px;
+   box-shadow:0 8px 16px -13px rgba(28,98,226,.55); }
+ .troot b { font-size:10.5px; font-weight:800; color:#101A45; }
+ .troot i { font-style:normal; display:block; font-size:7.6px; color:#9AA6C0; font-weight:700; margin-top:2px; }
+ .grp2 { margin-top:10px; }
+ .grp2 .gh { font-size:8px; font-weight:800; letter-spacing:.08em; color:#1C62E2;
+   background:#EAF0FE; border:1px solid #D7E3FB; border-radius:5px; padding:2px 8px;
+   display:inline-block; margin-bottom:5px; }
+ .tsub { position:relative; margin:5px 0 0 15px; background:#fff; border:1px solid #E3E9F5;
+   border-radius:6px; padding:4px 9px; display:flex; align-items:baseline; gap:7px; }
+ .tsub:before { content:""; position:absolute; left:-12px; top:-14px; bottom:50%; width:10px;
+   border-left:2.2px solid #8FAEE4; border-bottom:2.2px solid #8FAEE4; border-radius:0 0 0 5px; }
+ .grp2 .tsub:first-of-type:before { top:-8px; }
+ .tsub:after { content:""; position:absolute; left:-5.5px; top:50%; transform:translateY(-50%);
+   width:7px; height:7px; border-radius:50%; background:#4C7FE0; }
+ .tsub b { font-size:8.6px; font-weight:800; color:#101A45; }
+ .tsub span { margin-left:auto; font-size:7.6px; font-weight:700; color:#9AA6C0; white-space:nowrap; }
+
+ .lg { background:#F6F8FC; font-size:8.6px; color:#3A4660; }
+ .lg .top { display:flex; align-items:center; gap:8px; background:#fff; padding:7px 12px;
+   border-bottom:1px solid #EDF0F5; }
+ .lg .top .bg { font-size:11px; color:#5A6478; }
+ .lg .top .rt { margin-left:auto; display:flex; align-items:center; gap:14px; color:#5A6478; font-size:8.4px; }
+ .lg h3 { text-align:center; font-size:13px; font-weight:800; color:#1B2440; margin-top:12px; }
+ .lg .sub { text-align:center; font-size:8.4px; color:#98A1B3; margin-top:2px; }
+ .lg .filt { margin:11px 14px 0; background:#fff; border-radius:6px; padding:10px 12px;
+   display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+ .lg .filt label { font-size:8.4px; color:#3A4660; }
+ .lg .inp { height:20px; min-width:88px; border:1px solid #DCE1EA; border-radius:4px; background:#fff;
+   display:flex; align-items:center; padding:0 7px; font-size:8px; color:#B4BBC8; }
+ .lg .btn { height:21px; border-radius:4px; display:flex; align-items:center; gap:4px; padding:0 11px;
+   font-size:8.2px; font-weight:700; }
+ .lg .btn.p { background:#2F7BF6; color:#fff; }
+ .lg .btn.g { background:#fff; border:1px solid #DCE1EA; color:#5A6478; }
+ .lg .btn.d { background:#E8674F; color:#fff; }
+ .lg .tbl { margin:11px 14px 14px; background:#fff; border-radius:6px; overflow:hidden; }
+ .lg table { width:100%; border-collapse:collapse; }
+ .lg th { background:#F7F9FC; font-size:8.2px; font-weight:800; color:#3A4660; text-align:left;
+   padding:8px 9px; border-bottom:1px solid #EDF0F5; white-space:nowrap; }
+ .lg td { font-size:8.2px; color:#3A4660; padding:6.5px 9px; border-bottom:1px solid #F2F4F8;
+   white-space:nowrap; }
+ .lg tr:nth-child(even) td { background:#FAFBFD; }
+ .lg .chip { display:inline-block; font-size:7.4px; font-weight:700; border-radius:3px; padding:1.5px 6px; }
+ .lg .m-sys { background:#FEF6E7; color:#C08A2A; }
+ .lg .m-plan { background:#FDECEC; color:#C9584C; }
+ .lg .m-job { background:#EAF7EE; color:#3E8C5A; }
+ .lg .o-create { background:#EAF7EE; color:#3E8C5A; }
+ .lg .o-update { background:#FEF6E7; color:#C08A2A; }
+ .lg .o-delete { background:#FDECEC; color:#C9584C; }
+ .lg .det { color:#2F7BF6; font-weight:700; }
+
+ .lg .brandlg { display:flex; align-items:center; gap:6px; }
+ .lg .brandlg img { width:14px; height:14px; border-radius:50%; }
+ .lg .brandlg b { font-size:9.4px; font-weight:800; color:#2F7BF6; }
+ .lg .hdr2 { display:flex; align-items:center; padding:0 14px; margin-top:12px; }
+ .lg .hdr2 h4 { font-size:11.5px; font-weight:800; color:#1B2440; }
+ .lg .hdr2 .rt { margin-left:auto; display:flex; gap:7px; }
+ .lg .sw { width:22px; height:12px; border-radius:6px; background:#2F7BF6; position:relative;
+   display:inline-block; }
+ .lg .sw:after { content:""; position:absolute; right:1.5px; top:1.5px; width:9px; height:9px;
+   border-radius:50%; background:#fff; }
+ .lg .sw.off { background:#DCE1EA; }
+ .lg .sw.off:after { left:1.5px; right:auto; }
+ .lg .lvl { display:inline-block; font-size:7.2px; font-weight:700; border-radius:3px; padding:1.5px 6px; }
+ .lg .lvl.st { background:#EAF1FE; color:#3C6DC4; }
+ .lg .lvl.ct { background:#EAF7EE; color:#3E8C5A; }
+ .lg .ac { font-size:7.6px; font-weight:700; color:#2F7BF6; white-space:nowrap; }
+ .lg .ac .del { color:#E8674F; }
+ .lg .pager { display:flex; align-items:center; justify-content:flex-end; gap:7px;
+   padding:9px 12px 2px; font-size:7.6px; color:#8A93A3; }
+ .lg .pager .pg1 { background:#2F7BF6; color:#fff; border-radius:3px; padding:2px 7px; font-weight:800; }
+
+ .nocfg { display:flex; gap:9px; align-items:flex-start; background:#FDF6E7;
+   border:1px solid #F0DFB6; border-radius:9px; padding:9px 12px; margin-top:12px; }
+ .nocfg i { font-style:normal; font-size:13px; line-height:1; }
+ .nocfg h4 { font-size:10.2px; font-weight:800; color:#8A6A2A; }
+ .nocfg p { font-size:9.2px; color:#7A6231; line-height:1.5; margin-top:3px; }
+ .nocfg p b { color:#5E4A1E; }
+
+ /* 连线统一成一条直干 + 分叉（同 2.2 / 3.8） */
+ .rgt{position:relative;}
+ .grp2{position:relative;padding-left:20px;}
+ .grp2:before{content:"";position:absolute;left:6px;top:24px;bottom:8px;width:2.2px;
+   background:#8FAEE4;border-radius:2px;}
+ .tsub{margin-left:0 !important;}
+ .tsub:before{content:"";position:absolute;left:-14px;top:50% !important;bottom:auto !important;
+   width:14px;height:2.2px;background:#8FAEE4;border:0 !important;border-radius:0 !important;
+   transform:translateY(-50%);}
+ .tsub:after{left:-5.5px;}
+</style>
+</head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="_assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.4.6</span>Regions</div>
+ <div class="lead">The state → city list every location picker reads from. <b style="color:#8A6A2A">Not configured here for now</b> — the region data is loaded technically, in bulk; this screen is where you check what is live, not where you build it.</div>
+
+ <div class="wrap lead-on hasnav">
+  <div class="cnav">
+   <div class="brand"><i>🐨</i>Job Koala Admin</div>
+   <div class="it top">Dashboard</div>
+   <div class="g">SYSTEM</div>
+   <div class="it">Administrators</div>
+   <div class="it">Roles</div>
+   <div class="it">Basic Info</div>
+   <div class="it">Logs</div>
+   <div class="it on">Regions</div>
+   <div class="it">Education Types</div>
+   <div class="g">JOBS</div>
+   <div class="it">Job List</div>
+   <div class="it">Resume Management</div>
+   <div class="it">Industries</div>
+   <div class="it top">Users</div>
+   <div class="g">ORDERS</div>
+   <div class="it">Order List</div>
+   <div class="it top">Promotion Plans</div>
+   <div class="it top">Home Banners</div>
+   <div class="it top">Comments</div>
+   <div class="it top">Verification Review</div>
+   <div class="g">CONTENT</div>
+   <div class="it">FAQ</div>
+   <div class="it">Notification Templates</div>
+   <div class="it">Privacy Policy</div>
+   <div class="it">User Agreement</div>
+   <div class="g">ASSESSMENT</div>
+   <div class="it">Form Templates</div>
+   <div class="it">AI Config</div>
+   <div class="it">Assessment Records</div>
+   <div class="it">Consultants</div>
+   <div class="it">Consultant Pricing</div>
+  </div>
+  <div class="cmain">
+  <div class="stage">
+  <div class="two">
+   <div class="lft">
+  <div class="win">
+   <div class="lg">
+    <div class="top"><span class="brandlg"><img src="_assets/logo.png"><b>Job Koala Admin</b></span><span class="rt"><span>🌐 English ⌄</span><span>👤 admin ⌄</span></span></div>
+    <div class="hdr2"><h4>Region Management</h4><div class="rt"><span class="btn p">+ Add Region</span></div></div>
+    <div class="filt"><label>Region Name</label><span class="inp">Enter name</span><label>Region Level</label><span class="inp">All ⌄</span><label>Status</label><span class="inp">All ⌄</span><span class="btn p">Search</span><span class="btn g">Reset</span></div>
+    <div class="tbl"><table>
+     <colgroup><col style="width:30px"><col style="width:160px"><col style="width:62px"><col style="width:62px"><col style="width:48px"><col style="width:56px"><col style="width:86px"><col style="width:110px"></colgroup>
+     <tr><th>#</th><th>Region Name</th><th>Level</th><th>Parent</th><th>Sort</th><th>Status</th><th>Updated</th><th>Actions</th></tr>
+     <tr><td>1</td><td>New South Wales</td><td><span class="lvl st">State</span></td><td>–</td><td>10</td><td><span class="sw"></span></td><td>28-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>2</td><td>Sydney</td><td><span class="lvl ct">City</span></td><td>NSW</td><td>11</td><td><span class="sw"></span></td><td>28-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>3</td><td>Newcastle</td><td><span class="lvl ct">City</span></td><td>NSW</td><td>12</td><td><span class="sw"></span></td><td>28-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>4</td><td>Victoria</td><td><span class="lvl st">State</span></td><td>–</td><td>20</td><td><span class="sw"></span></td><td>29-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>5</td><td>Melbourne</td><td><span class="lvl ct">City</span></td><td>VIC</td><td>21</td><td><span class="sw"></span></td><td>29-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>6</td><td>Queensland</td><td><span class="lvl st">State</span></td><td>–</td><td>30</td><td><span class="sw"></span></td><td>30-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>7</td><td>Brisbane</td><td><span class="lvl ct">City</span></td><td>QLD</td><td>31</td><td><span class="sw"></span></td><td>30-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     <tr><td>8</td><td>Townsville</td><td><span class="lvl ct">City</span></td><td>QLD</td><td>32</td><td><span class="sw off"></span></td><td>30-07-2026</td><td class="ac">Edit &nbsp;<span class="del">Delete</span></td></tr>
+     </table>
+     <div class="pager">Total 23 &nbsp; 10 / page &nbsp; ‹ <span class="pg1">1</span> 2 3 ›</div>
+    </div>
+   </div>
+  </div>
+   </div>
+    <div class="rgt">
+     <div class="tcap">EVERY PLACE THIS LIST FEEDS</div>
+     <div class="troot"><b>Regions</b><i>state → city, one master list</i></div>
+
+     <div class="grp2"><div class="gh">👤 JOB SEEKER APP</div>
+      <div class="tsub"><b>Job List · Area filter</b><span>2.4</span></div>
+      <div class="tsub"><b>Job card · work location</b><span>2.4</span></div>
+      <div class="tsub"><b>Company Info · address</b><span>2.5</span></div>
+      <div class="tsub"><b>Resume · preferred region</b><span>2.7</span></div>
+     </div>
+
+     <div class="grp2"><div class="gh">🏢 EMPLOYER APP</div>
+      <div class="tsub"><b>Candidate List · Region filter</b><span>3.3</span></div>
+      <div class="tsub"><b>Post a Job · Work Location</b><span>3.5</span></div>
+      <div class="tsub"><b>Boost to Top · Area</b><span>3.5</span></div>
+      <div class="tsub"><b>Company Info · address</b><span>3.7</span></div>
+     </div>
+
+     <div class="grp2"><div class="gh">🖥 CONSOLE</div>
+      <div class="tsub"><b>Job List · Location column</b><span>4.10</span></div>
+      <div class="tsub"><b>Resume Management · filter</b><span>4.11</span></div>
+     </div>
+    </div>
+  </div>
+
+  </div>
+
+   <div class="nocfg"><i>⚙️</i><div><h4>No console configuration for now</h4><p>Nobody adds or edits these rows by hand at this stage — the data is <b>uploaded technically, in bulk</b>, and the console page is here so operations can see what is currently live and switch a row off if it has to come out of the pickers. <b>+ Add</b> and <b>Edit</b> stay in the UI but are not part of the current workflow.</p></div></div>
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="_assets/fit.js"></script>
+</body></html>

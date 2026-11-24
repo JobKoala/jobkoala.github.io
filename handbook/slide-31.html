@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.5.1 Job List</title>
+<link rel="stylesheet" href="_assets/page.css">
+<link rel="stylesheet" href="_assets/console-nav.css">
+<link rel="stylesheet" href="_assets/console.css">
+<style> .stage { justify-content:space-between } 
+ /* 截图自带的后台侧边栏裁掉，左边那条由手册提供 */
+ .win .shot { overflow:hidden; }
+ .win .shot img { width:113.20%; margin-left:-13.20%; }
+
+ .two { display:flex; gap:20px; align-items:flex-start; }
+ .two .lft { flex:1; min-width:0; }
+ .two .rgt { width:392px; flex:none; }
+ .two .rgt { width:452px; }
+ .ecap { font-size:8.4px; font-weight:800; letter-spacing:.09em; color:#9AA6C0; margin-bottom:7px; }
+ .emod { background:#fff; border-radius:9px; box-shadow:0 14px 34px -16px rgba(20,40,90,.42),
+   0 0 0 1px #E6EBF4; overflow:hidden; }
+ .emod .eh { display:flex; align-items:center; padding:8px 12px; border-bottom:1px solid #EEF1F7; }
+ .emod .eh b { flex:1; text-align:center; font-size:9.6px; font-weight:800; color:#1B2440; }
+ .emod .eh s { text-decoration:none; color:#B4BBC8; font-size:10px; }
+ .emod .sect { text-align:center; font-size:8.4px; font-weight:800; color:#2F7BF6; margin:9px 0 6px; }
+ .emod .kv { display:grid; grid-template-columns:auto 1fr auto 1fr; border-top:1px solid #EEF1F7;
+   border-left:1px solid #EEF1F7; margin:0 12px; }
+ .emod .kv div { border-right:1px solid #EEF1F7; border-bottom:1px solid #EEF1F7;
+   padding:4px 7px; font-size:7.2px; color:#3A4660; }
+ .emod .kv div.k { background:#FAFBFD; color:#5A6478; white-space:nowrap; }
+ .emod .fr { display:flex; align-items:center; gap:7px; margin:6px 12px 0; }
+ .emod .fr label { font-size:7.2px; color:#3A4660; white-space:nowrap; }
+ .emod .fr label em { font-style:normal; color:#E8674F; }
+ .emod .in { flex:1; min-width:0; height:19px; border:1px solid #DCE1EA; border-radius:4px;
+   background:#fff; display:flex; align-items:center; padding:0 7px; font-size:7.2px; color:#3A4660; }
+ .emod .in.sel:after { content:"⌄"; margin-left:auto; color:#B4BBC8; }
+ .emod .in.ph { color:#B4BBC8; }
+ .emod .stp { display:flex; align-items:center; border:1px solid #DCE1EA; border-radius:4px;
+   font-size:7.2px; overflow:hidden; }
+ .emod .stp span { padding:2px 6px; background:#F7F9FC; color:#8A93A3; }
+ .emod .stp b { padding:2px 10px; font-weight:600; color:#3A4660; }
+ .emod .ta { margin:6px 12px 0; border:1px solid #DCE1EA; border-radius:4px; padding:5px 7px;
+   font-size:6.6px; color:#5A6478; line-height:1.6; position:relative; }
+ .emod .ta u { text-decoration:none; position:absolute; right:6px; bottom:4px; font-size:6px; color:#B4BBC8; }
+ .emod .chipn { font-size:6.6px; font-weight:700; color:#3E8C5A; background:#EAF7EE;
+   border-radius:3px; padding:1px 6px; }
+ .emod .pad { padding-bottom:11px; }
+ .enote { margin-top:10px; font-size:9.4px; color:#4A5468; line-height:1.55; }
+ .enote b { color:#101A45; }
+ .enote p + p { margin-top:7px; }
+ .enote .warn { color:#B03A3A; }
+ /* 表格右上角触发新建的按钮 */
+ .win .shot { position:relative; }
+ .win .shot .hotadd { position:absolute; left:91.2%; top:7.4%; width:7.1%; height:5.6%;
+   border-radius:6px; z-index:3;
+   box-shadow:0 0 0 2.4px #fff, 0 0 0 4.4px #1C62E2, 0 8px 20px -6px rgba(28,98,226,.8); }
+
+ /* Add Job:新建走三个页签，放在窗口下面和 Edit 对照 */
+ .addwrap { width:1010px; margin-top:10px; display:flex; gap:16px; align-items:flex-start; }
+ .acap { font-size:8.4px; font-weight:800; letter-spacing:.08em; color:#9AA6C0; margin-bottom:6px; }
+ .amod { flex:none; width:560px; background:#fff; border-radius:9px;
+   box-shadow:0 14px 34px -16px rgba(20,40,90,.42), 0 0 0 1px #E7EBF2; overflow:hidden; }
+ .amod .ah { display:flex; align-items:center; padding:7px 11px; border-bottom:1px solid #EEF1F7; }
+ .amod .ah b { flex:1; text-align:center; font-size:9.4px; font-weight:800; color:#1B2440; }
+ .amod .ah s { text-decoration:none; color:#B4BBC8; font-size:9px; }
+ .amod .atabs { display:flex; gap:16px; padding:6px 11px 0; border-bottom:1px solid #EEF1F7; }
+ .amod .atabs u { text-decoration:none; font-size:8px; font-weight:700; color:#8A93A3;
+   padding-bottom:5px; }
+ .amod .atabs u.on { color:#2F7BF6; font-weight:800; border-bottom:2px solid #2F7BF6; }
+ .amod .agrid { display:grid; grid-template-columns:1fr 1fr; gap:5px 14px; padding:9px 11px 0; }
+ .amod .af { display:flex; align-items:center; gap:6px; }
+ .amod .af label { flex:none; width:82px; text-align:right; font-size:7.2px; color:#3A4660; }
+ .amod .af label em { font-style:normal; color:#E8674F; margin-right:2px; }
+ .amod .af label i { font-style:normal; color:#B6BDC9; }
+ .amod .ain { flex:1; min-width:0; font-size:7.2px; color:#1B2440; border:1px solid #DCE1EA;
+   border-radius:4px; padding:3px 6px; display:flex; align-items:center; white-space:nowrap;
+   overflow:hidden; }
+ .amod .ain.ph { color:#B6BDC9; }
+ .amod .ain s { text-decoration:none; margin-left:auto; color:#B6BDC9; }
+ .amod .ain.bad { border-color:#E5A3A3; background:#FDF6F6; }
+ .amod .ain.bad b { margin-left:auto; color:#B03A3A; font-weight:800; }
+ .amod .af2 { display:flex; justify-content:flex-end; gap:7px; padding:9px 11px 10px; margin-top:7px;
+   border-top:1px solid #EEF1F7; }
+ .amod .af2 span { font-size:7.6px; font-weight:700; border-radius:4px; padding:3.5px 12px; }
+ .amod .af2 .c { border:1px solid #DCE1EA; color:#4A5468; }
+ .amod .af2 .k { background:#2F7BF6; color:#fff; font-weight:800; }
+ .anote { flex:1; font-size:8.6px; color:#4A5468; line-height:1.55; padding-top:20px; }
+ .anote p { margin-bottom:7px; }
+ .anote b { color:#101A45; font-weight:800; }
+
+ /* 说明统一成编号条目，字号放大 */
+ .enote p, .anote p{position:relative;padding-left:22px;font-size:9.4px !important;
+   line-height:1.55 !important;color:#4A5468;margin-top:8px;}
+ .enote p:first-child, .anote p:first-child{margin-top:0;}
+ .enote p:before, .anote p:before{content:counter(nt);counter-increment:nt;position:absolute;
+   left:0;top:0;width:15px;height:15px;border-radius:50%;background:#DCE7FA;color:#1C62E2;
+   font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+ .enote, .anote{counter-reset:nt;}
+ .enote p b, .anote p b{color:#101A45;}
+ .enote p.warn:before, .anote p.warn:before{background:#FDE7E7;color:#B03A3A;}
+
+ /* 两个弹窗统一成「上图下文」，并排 */
+ .stage{display:block !important;}
+ .two{display:block !important;}
+ .lft,.rgt{width:auto !important;flex:none !important;min-width:0;}
+ .addwrap{width:auto !important;display:block !important;margin-top:0 !important;}
+ .amod{width:100% !important;}
+ .anote,.enote{margin-top:9px;}
+ .anote p,.enote p{font-size:9.4px !important;line-height:1.55 !important;}
+ .pcol{display:none;}
+
+ /* 弹窗效果:压暗的底 + 浮起的对话框 */
+ .emod, .amod{position:relative;z-index:2;
+   box-shadow:0 26px 60px -18px rgba(16,30,70,.55), 0 0 0 1px rgba(255,255,255,.9) !important;}
+ .rgt{position:relative;margin-top:14px;padding:16px 16px 0;border-radius:14px;
+   background:linear-gradient(180deg,#4A5568 0%,#39435A 100%);}
+ .rgt:after{content:"";position:absolute;inset:0;border-radius:14px;
+   background:rgba(20,30,55,.28);pointer-events:none;}
+ .ecap, .acap{position:relative;z-index:3;color:#EAF0FE !important;}
+ .enote, .anote{position:relative;z-index:3;background:#fff;border-radius:11px;
+   padding:11px 13px;margin:12px 0 14px;}
+</style>
+</head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="_assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.5.1</span>Job List</div>
+ <div class="lead">Every published job on the platform — filter by a dozen dimensions, then edit, take offline or republish.</div>
+
+ <div class="wrap lead-on hasnav">
+  <div class="cnav">
+   <div class="brand"><i>🐨</i>Job Koala Admin</div>
+   <div class="it top">Dashboard</div>
+   <div class="g">SYSTEM</div>
+   <div class="it">Administrators</div>
+   <div class="it">Roles</div>
+   <div class="it">Basic Info</div>
+   <div class="it">Logs</div>
+   <div class="it">Regions</div>
+   <div class="it">Education Types</div>
+   <div class="g">JOBS</div>
+   <div class="it on">Job List</div>
+   <div class="it">Resume Management</div>
+   <div class="it">Industries</div>
+   <div class="it top">Users</div>
+   <div class="g">ORDERS</div>
+   <div class="it">Order List</div>
+   <div class="it top">Promotion Plans</div>
+   <div class="it top">Home Banners</div>
+   <div class="it top">Comments</div>
+   <div class="it top">Verification Review</div>
+   <div class="g">CONTENT</div>
+   <div class="it">FAQ</div>
+   <div class="it">Notification Templates</div>
+   <div class="it">Privacy Policy</div>
+   <div class="it">User Agreement</div>
+   <div class="g">ASSESSMENT</div>
+   <div class="it">Form Templates</div>
+   <div class="it">AI Config</div>
+   <div class="it">Assessment Records</div>
+   <div class="it">Consultants</div>
+   <div class="it">Consultant Pricing</div>
+  </div>
+  <div class="cmain" style="zoom:0.522">
+  <div class="stage">
+  <div class="two">
+   <div class="lft">
+  <div class="win" style="width:1010px">
+   <div class="bar">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <span class="url">admin.jobkoala.au/jobs/list</span>
+   </div>
+   <div class="shot"><img src="_assets/4_10_console.png" alt="">
+    <div class="hotadd"></div>
+   </div>
+  </div>
+   </div>
+   
+   <div class="rgt">
+     <div class="ecap">EDIT JOB · THE CONSOLE MODAL</div>
+     <div class="emod">
+      <div class="eh"><b>Edit Job</b><s>✕</s></div>
+      <div class="sect">Basic Info</div>
+      <div class="kv">
+       <div class="k">Job ID</div><div>779</div><div class="k">Real Views</div><div>2</div>
+       <div class="k">Status</div><div><span class="chipn">In Progress</span></div>
+       <div class="k">Current Package</div><div>Not filled</div>
+       <div class="k">Start Time</div><div>2026/08/05 11:27</div>
+       <div class="k">End Time</div><div>2026/09/04 11:27</div>
+      </div>
+      <div class="sect">Operation Settings</div>
+      <div class="fr"><label>Operation Views</label>
+        <span class="stp"><span>−</span><b>0</b><span>+</span></span>
+        <label style="margin-left:14px">Is Top</label><span class="in sel" style="max-width:96px">No</span></div>
+      <div class="sect">Position Info</div>
+      <div class="fr"><label><em>*</em> Job Title (中)</label><span class="in">Meg一小时免费测试</span></div>
+      <div class="fr"><label><em>*</em> Category</label><span class="in sel">送餐外卖</span>
+        <label><em>*</em> Job Type</label><span class="in sel">Part-time</span></div>
+      <div class="fr"><label><em>*</em> Salary</label><span class="in sel">Hourly</span>
+        <label>Range</label><span class="in">A$ 100 – 200</span></div>
+      <div class="fr"><label><em>*</em> Work Location</label><span class="in sel">New South Wales / Newcastle</span></div>
+      <div class="fr"><label>Full Address</label><span class="in">1111111</span>
+        <label>Postcode</label><span class="in" style="max-width:88px">845424846</span></div>
+      <div class="ta">- 具备高度的责任心与专注力，能够独立完成复杂任务<br>
+        - 拥有良好的学习能力与问题解决能力，适应快节奏工作环境<br>
+        - 具备基础的数据处理、文档整理或流程执行经验（应届生可培养）<u>199 / 2000</u></div>
+      <div class="sect">Company Info</div>
+      <div class="fr"><label>Company Name (中)</label><span class="in">公司名称</span></div>
+      <div class="fr"><label>Company Address (中)</label><span class="in">65 Haig St, Southbank VIC 3006, Australia</span></div>
+      <div class="fr pad"><label><em>*</em> Contact Phone</label><span class="in">15704308431</span>
+        <label>Visa</label><span class="in ph" style="max-width:96px">Not Provided</span></div>
+     </div>
+     <div class="enote">
+      <p><b>Four buttons on every row.</b> <b>Detail</b> opens the job in read-only mode. <b>Edit</b> opens the modal below. <b>Offline</b> pulls a live job out of the seeker's list but keeps it — that same button then reads <b>Republish</b>, which puts it back. <b>Del</b> removes the job for good.</p>
+      <p><b>Two fields here do not exist in the employer app.</b> <b>Operation Views</b> adds views on top of
+       the real count — the row above still shows <b>Real Views 2</b>, so the two numbers are kept apart.
+       <b>Is Top</b> pins a job without anyone buying a boost.</p>
+      <p>Everything else mirrors the employer's own form, but stored <b>per language</b> — the fields are
+       labelled <b>(中)</b>, so each job carries a Chinese and an English copy.</p>
+      <p class="warn">The requirements counter here reads <b>199 / 2000</b> — the app caps the same field at
+       <b>500</b>. One of the two is wrong. Test data in this record: Full Address <b>1111111</b>,
+       Postcode <b>845424846</b>.</p>
+     </div>
+    </div>
+  </div>
+
+  <div class="pcol"><div class="cap">LIVE ON THE APP</div>
+   <div class="ph" style="width:216px">
+    <div class="scr"><img src="_assets/4_10_app.png" alt=""></div>
+   </div>
+  </div>
+  </div><!-- /.stage -->
+
+  
+  
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="_assets/fit.js"></script>
+</body></html>

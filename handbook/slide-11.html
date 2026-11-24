@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>2.9 My — Your History, Favourites, Orders and Settings</title>
+<link rel="stylesheet" href="_assets/page.css">
+<style>
+ .stage { display:flex; gap:34px; align-items:flex-start; }
+ .phone { width:196px; flex:none; }
+ .phone .screen { height:462px; }
+ .phone .screen img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+
+ .tree { flex:1; position:relative; padding-left:152px; }
+ /* 根节点:竖直居中，主干接到脊线 */
+ .root { position:absolute; left:0; top:50%; transform:translateY(-50%); width:104px;
+   border-radius:11px; padding:11px 8px; text-align:center;
+   background:linear-gradient(135deg,#3559C7,#2B3E9E); color:#fff;
+   box-shadow:0 8px 20px -10px rgba(30,60,140,.55); }
+ .root b { display:block; font-size:15px; font-weight:800; line-height:1.1; }
+ .root s { text-decoration:none; display:block; font-size:7.6px; opacity:.82; margin-top:3px; }
+ .trunk { position:absolute; left:104px; top:50%; width:28px; height:2px; background:#C9D8F2; }
+ .spine { position:absolute; left:130px; top:16px; bottom:16px; width:2px; background:#C9D8F2; }
+
+ .grp { margin-bottom:12px; }
+ .gh { display:flex; align-items:baseline; gap:8px; margin-bottom:7px; }
+ .gh b { font-size:11.5px; font-weight:800; color:#101A45; }
+ .gh s { text-decoration:none; font-size:9.4px; font-weight:700; color:#9AA6C0; }
+ .gh i { flex:1; height:1px; background:#E9EDF4; font-style:normal; }
+
+ .lf { display:flex; gap:9px; align-items:flex-start; background:#fff; border:1px solid #E3E9F5;
+   border-radius:9px; padding:7px 10px; margin-bottom:6px; position:relative; }
+ /* 每片叶子单独连回脊线 */
+ .lf:before { content:''; position:absolute; left:-22px; top:17px; width:22px; height:1.5px;
+   background:#C9D8F2; }
+ .lf .n { flex:none; width:19px; height:19px; border-radius:50%; background:#1C62E2; color:#fff;
+   font-size:9.6px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+ .lf b { display:block; font-size:11px; font-weight:800; color:#101A45; line-height:1.15; }
+ .lf p { font-size:9px; color:#4A5468; line-height:1.4; margin-top:2px; }
+ .lf p b { display:inline; font-weight:800; color:#101A45; }
+
+ /* 连线统一成一条直干 + 分叉（同 2.2 / 3.8 / 3.9） */
+ .grp{position:relative;padding-left:20px;}
+ .grp:before{content:"";position:absolute;left:6px;top:22px;bottom:8px;width:2.2px;
+   background:#8FAEE4;border-radius:2px;}
+ .lf{position:relative;}
+ .lf:before{content:"";position:absolute;left:-14px;top:50%;transform:translateY(-50%);
+   width:14px;height:2.2px;background:#8FAEE4;}
+ .lf:after{content:"";position:absolute;left:-5.5px;top:50%;transform:translateY(-50%);
+   width:7px;height:7px;border-radius:50%;background:#4C7FE0;}
+</style></head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="_assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">2.9</span>My — Your History, Favourites, Orders and Settings</div>
+ <div class="lead">Everything a job seeker keeps for themselves hangs off one tab. Three quick entries
+  across the top, four service rows underneath — seven screens in total.</div>
+
+ <div class="wrap lead-on">
+  <div class="stage">
+   <div class="pcol">
+    <div class="head">
+     <svg class="st" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+     <div class="t">My · Job Seeker</div>
+    </div>
+    <div class="phone">
+     <div class="screen"><img src="_assets/2.11_my_seeker.png" alt="My — Job Seeker"></div>
+    </div>
+   </div>
+
+   <div class="tree">
+    <div class="root"><b>My</b><s>job seeker tab</s></div>
+    <div class="trunk"></div><div class="spine"></div>
+
+    <div class="grp">
+     <div class="gh"><b>Quick entries</b><s>3 tiles across the top</s><i></i></div>
+     
+     <div class="lf"><span class="n">1</span><div class="tx">
+      <b>Browsing History</b><p>Jobs you opened, newest first — same card, same Email / Call buttons.</p></div></div>
+     <div class="lf"><span class="n">2</span><div class="tx">
+      <b>My Favourites</b><p>Jobs you saved. Employer contact stays on the card.</p></div></div>
+     <div class="lf"><span class="n">3</span><div class="tx">
+      <b>Orders</b><p>Order ID, item and status — <b>Work Visa Consultation A$999 · Ended</b>.</p></div></div>
+    </div>
+
+    <div class="grp">
+     <div class="gh"><b>Service</b><s>4 rows below</s><i></i></div>
+     
+     <div class="lf"><span class="n">4</span><div class="tx">
+      <b>Language</b><p>English · 简体中文 · Tiếng Việt</p></div></div>
+     <div class="lf"><span class="n">5</span><div class="tx">
+      <b>FAQ</b><p>How do I create an account · how can I search jobs in my area</p></div></div>
+     <div class="lf"><span class="n">6</span><div class="tx">
+      <b>Contact Us</b><p>133608644031 · 15704369854@qq.com</p></div></div>
+     <div class="lf"><span class="n">7</span><div class="tx">
+      <b>Settings</b><p>Notification prefs · Terms of Service · Privacy Policy · Log out</p></div></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+ <div class="pgno">2.9</div>
+</div>
+<script src="_assets/fit.js"></script>
+</body></html>

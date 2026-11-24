@@ -1,0 +1,48 @@
+/* 2.4 Visa Help 三页（PPT 新增页）共用：在 page.css 之上加副标题、截图条、右侧说明栏、底部步骤卡 */
+.title.has-sub { top:18px; }
+.sub { position:absolute; left:128px; top:64px; font-size:17px; color:#5A6478; white-space:nowrap; }
+.lead.big { top:118px; font-size:16px; color:#3A4660; }
+.shot { position:absolute; display:block; }
+.cap { position:absolute; transform:translateX(-50%); font-size:16px; font-weight:800;
+  color:#1C62E2; white-space:nowrap; }
+.badge { position:absolute; width:38px; height:38px; border-radius:50%; background:#1C62E2;
+  color:#fff; font-size:19px; font-weight:800; display:flex; align-items:center; justify-content:center;
+  border:3px solid #fff; box-shadow:0 4px 12px rgba(28,98,226,.35); transform:translate(-50%,-50%); z-index:3; }
+
+.side { position:absolute; background:#fff; border:1px solid #D7E3F5; border-radius:12px;
+  box-shadow:0 10px 30px -14px rgba(24,52,110,.18); padding:20px 20px 16px; }
+.side h3 { font-size:22px; line-height:1.15; font-weight:800; color:#101A45; margin-bottom:12px; }
+.side ol { list-style:none; }
+.side li { padding:12px 0; border-bottom:1px solid #E3E9F5; }
+.side li:last-child { border-bottom:0; }
+.side li b { display:flex; gap:12px; font-size:16.5px; font-weight:800; color:#1C62E2; }
+.side li p { font-size:14px; line-height:1.45; color:#5A6478; margin:4px 0 0 26px; }
+.side li.plain b { gap:0; }
+.side li.plain p { margin-left:0; }
+
+.cards { position:absolute; left:36px; right:34px; top:628px; display:grid;
+  grid-template-columns:repeat(3,1fr); gap:12px; }
+.card { display:flex; gap:16px; align-items:flex-start; background:#fff; border:1px solid #D7E3F5;
+  border-radius:8px; padding:12px 16px; height:72px; }
+.card .n { flex:none; width:36px; height:36px; border-radius:50%; background:#1C62E2; color:#fff;
+  font-size:17px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:4px; }
+.card b { display:block; font-size:16px; font-weight:800; color:#101A45; }
+.card p { font-size:14px; color:#4A5468; margin-top:4px; }
+
+/* 上下结构：截图组整体等比缩放居中，说明改为底部一排步骤卡 */
+.stack { position:absolute; transform-origin:0 0; transform:scale(var(--s)); }
+.stack .cap { font-size:calc(16px / var(--s)); }
+.stack .badge { transform:translate(-50%,-50%) scale(calc(1 / var(--s))); }
+.cards.c4 { top:606px; grid-template-columns:repeat(4,1fr); }
+.cards.c4 .card { height:108px; padding:10px 14px; gap:12px; }
+.cards.c4 .card .n { width:30px; height:30px; font-size:15px; margin-top:0; }
+.cards.c4 .card b { font-size:15px; }
+.cards.c4 .card p { font-size:12px; line-height:1.38; margin-top:3px; }
+.cards.c4 .card.note { background:#EEF4FE; border-color:#CFDDF8; }
+.cards.c4 .card.note b { color:#1C62E2; }
+
+/* 5 列：每张卡片与上方手机同宽、同列、同编号 */
+.cards.c5 { left:238px; right:auto; width:893px; top:606px; grid-template-columns:repeat(5,1fr); gap:11px; }
+.cards.c5 .card { height:106px; flex-direction:column; gap:7px; padding:10px 11px; }
+.cards.c5 .card .n { width:24px; height:24px; font-size:12.5px; margin-top:0; }
+.cards.c5 .card p { font-size:12.5px; line-height:1.4; color:#3A4660; margin-top:0; }

@@ -1,0 +1,36 @@
+/* JobKoala 手册 · 第 4 章通用：后台真实侧边栏
+   每页左边挂一条，当前讲的那一项高亮。顺序和分组照抄后台。
+   用法：<div class="wrap lead-on hasnav"> + <div class="cnav">…</div> + <div class="cmain">…</div> */
+
+.wrap.hasnav { display:flex; flex-direction:row; gap:18px; align-items:flex-start; }
+.cmain { flex:1; min-width:0; }
+
+.cnav { width:152px; flex:none; align-self:flex-start; background:#fff;
+  border:1px solid #E3E9F5; border-radius:10px; padding:8px 0 9px;
+  box-shadow:0 8px 20px -14px rgba(24,52,110,.45); }
+
+.cnav .brand { display:flex; align-items:center; gap:5px; font-size:9px; font-weight:800;
+  color:#1C62E2; padding:0 10px 7px; border-bottom:1px solid #EEF1F7; margin-bottom:4px; }
+.cnav .brand i { font-style:normal; font-size:10px; }
+
+.cnav .g { font-size:7px; font-weight:800; letter-spacing:.1em; color:#9AA6C0;
+  padding:6px 10px 2px; }
+.cnav .it { display:block; font-size:8.4px; font-weight:600; color:#4A5468;
+  padding:3.4px 10px 3.4px 19px; line-height:1.25; }
+.cnav .it.top { padding-left:10px; font-weight:700; color:#101A45; }
+.cnav .it.soon { color:#C3C9D4; font-weight:600; }
+.cnav .it.on { background:#EAF0FE; color:#1C62E2; font-weight:800;
+  box-shadow:inset 2.5px 0 0 #1C62E2; }
+
+/* 挂了侧边栏之后，浏览器窗口壳不能再吃满 1086px，让它跟着 .cmain 缩 */
+.wrap.hasnav .win { width:100%; max-width:1086px; margin:0; }
+
+/* 后台图统一风格：不要假浏览器框（红黄绿点 + 地址栏），只留一张干净的卡片，
+   省下来的高度全给截图，表格看得更清楚 */
+.wrap.hasnav .win .bar { display:none; }
+.wrap.hasnav .win { border-radius:12px;
+  box-shadow:0 18px 40px -22px rgba(20,40,90,.30), 0 0 0 1px #E6EBF4; }
+
+/* 品牌只在后台图的 banner 上出现一次，左边这条不再重复写 */
+.cnav .brand { display:none; }
+.cnav { padding-top:9px; }

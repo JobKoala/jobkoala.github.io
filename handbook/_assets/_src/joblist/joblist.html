@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<style>
+ *{margin:0;padding:0;box-sizing:border-box}
+ html,body{width:448px;height:1068px;overflow:hidden}
+ body{background:#F7F9FC;position:relative;
+   font-family:-apple-system,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+   -webkit-font-smoothing:antialiased;}
+ .sb{height:48px;position:relative}
+ .sb .t{position:absolute;left:26px;top:13px;font-size:15px;font-weight:800;color:#12203F;
+   letter-spacing:.2px}
+ .sb .notch{position:absolute;left:50%;transform:translateX(-50%);top:8px;width:122px;height:27px;
+   border-radius:14px;background:#14171C}
+ .sb .ic{position:absolute;right:24px;top:15px;display:flex;align-items:center;gap:9px}
+ .sb .ic .d{display:flex;gap:4px}
+ .sb .ic .d i{width:6px;height:6px;border-radius:50%;background:#14171C;display:block}
+ .sb .ic .tri{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;
+   border-bottom:12px solid #14171C}
+ .sb .ic .sq{width:11px;height:11px;border-radius:2px;background:#14171C}
+
+ .hd{display:flex;align-items:center;gap:14px;padding:6px 22px 0}
+ .hd .me{width:46px;height:46px;border-radius:50%;background:#DDE1E8;flex:none;position:relative;
+   overflow:hidden}
+ .hd .me:before{content:"";position:absolute;left:50%;top:9px;transform:translateX(-50%);
+   width:16px;height:16px;border-radius:50%;background:#B4BAC6}
+ .hd .me:after{content:"";position:absolute;left:50%;top:29px;transform:translateX(-50%);
+   width:30px;height:22px;border-radius:15px 15px 0 0;background:#B4BAC6}
+ .hd .tx{flex:1;min-width:0}
+ .hd .tx b{display:block;font-size:22px;font-weight:800;color:#101A45;letter-spacing:-.01em}
+ .hd .tx s{text-decoration:none;display:block;font-size:14px;color:#7A8397;margin-top:4px}
+ .hd .sw{width:42px;height:42px;border-radius:50%;background:#fff;flex:none;
+   border:1px solid #E7EBF3;box-shadow:0 2px 8px rgba(24,52,110,.07);
+   display:flex;align-items:center;justify-content:center}
+
+ .bn{position:relative;margin:16px 22px 0;height:144px;border-radius:18px;overflow:hidden;
+   background:linear-gradient(100deg,#1B5BE0 0%,#2A69EC 55%,#2E6DEE 100%)}
+ .bn img{position:absolute;right:0;top:0;height:100%;width:250px;object-fit:cover;
+   -webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.85) 46%,#000 78%);
+   mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.85) 46%,#000 78%)}
+ .bn .bt{position:absolute;left:22px;top:28px;font-size:23px;font-weight:800;color:#fff;
+   letter-spacing:-.015em;text-shadow:0 1px 6px rgba(10,40,110,.30)}
+ .bn .bs{position:absolute;left:22px;top:63px;font-size:14px;font-weight:600;
+   color:rgba(255,255,255,.94);text-shadow:0 1px 5px rgba(10,40,110,.28)}
+ .bn .bb{position:absolute;left:22px;top:88px;background:#fff;border-radius:999px;
+   padding:9px 21px;font-size:15px;font-weight:800;color:#1C62E2;
+   box-shadow:0 4px 12px rgba(10,40,110,.18)}
+ .bn .dots{position:absolute;left:22px;bottom:12px;display:flex;gap:5px}
+ .bn .dots i{display:block;height:4px;width:11px;border-radius:2px;background:rgba(255,255,255,.5)}
+ .bn .dots i:first-child{width:18px;background:#fff}
+
+ .sr{margin:20px 22px 0;height:46px;border-radius:23px;background:#fff;border:1px solid #E7EBF3;
+   display:flex;align-items:center;gap:11px;padding:0 18px;
+   box-shadow:0 2px 8px rgba(24,52,110,.045)}
+ .sr span{font-size:15px;color:#9AA3B2}
+
+ .cp{margin:14px 22px 0;display:flex;gap:10px}
+ .cp b{height:40px;border-radius:20px;background:#fff;border:1px solid #E7EBF3;
+   display:flex;align-items:center;gap:7px;padding:0 15px;font-size:13.5px;font-weight:700;
+   color:#12203F;white-space:nowrap;box-shadow:0 2px 8px rgba(24,52,110,.045)}
+ .cp b i{font-style:normal;font-size:9px;color:#12203F;transform:translateY(1px)}
+
+ .list{margin:16px 22px 0;display:flex;flex-direction:column;gap:14px}
+ .jc{background:#fff;border-radius:16px;padding:14px 16px;
+   box-shadow:0 2px 10px rgba(24,52,110,.055)}
+ .jc .r1{display:flex;align-items:center;gap:9px}
+ .jc .r1 .nm{font-size:17px;font-weight:800;color:#101A45;letter-spacing:-.012em;white-space:nowrap}
+ .jc .r1 .hot{font-size:10.5px;font-weight:800;color:#E1483C;background:#FDE9E7;border-radius:5px;
+   padding:2px 7px;flex:none}
+ .jc .r1 .pay{margin-left:auto;font-size:13.5px;font-weight:800;color:#1C62E2;white-space:nowrap}
+ .jc .r1 .pay em{font-style:normal;font-size:10.5px;font-weight:700;color:#9AA3B2;margin-left:2px}
+ .jc .r2{font-size:12.5px;color:#9AA3B2;margin-top:6px}
+ .jc .r3{font-size:12.5px;color:#9AA3B2;line-height:1.52;margin-top:3px}
+ .jc .r4{display:flex;align-items:center;gap:11px;margin-top:13px}
+ .jc .r4 img{width:36px;height:36px;border-radius:50%;flex:none;
+   box-shadow:0 0 0 2px #EEF2F9}
+ .jc .r4 .co{flex:1;min-width:0}
+ .jc .r4 .co b{display:block;font-size:14px;font-weight:800;color:#101A45;white-space:nowrap;
+   overflow:hidden;text-overflow:ellipsis}
+ .jc .r4 .co s{text-decoration:none;display:block;font-size:12px;color:#9AA3B2;margin-top:3px}
+ .btn{height:34px;border-radius:17px;display:flex;align-items:center;gap:6px;padding:0 14px;
+   font-size:13px;font-weight:800;flex:none}
+ .btn.em{border:1.6px solid #1C62E2;color:#1C62E2;background:#fff}
+ .btn.ca{background:#1C62E2;color:#fff;box-shadow:0 3px 9px rgba(28,98,226,.30)}
+
+ .fade{position:absolute;left:0;right:0;bottom:78px;height:74px;
+   background:linear-gradient(to bottom,rgba(247,249,252,0),#F7F9FC 82%)}
+ .nav{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;
+   border-top:1px solid #EDF0F6;display:flex;align-items:flex-start;padding-top:11px}
+ .nav .it{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+ .nav .it s{text-decoration:none;font-size:12px;color:#9AA3B2;font-weight:600}
+ .nav .it.on s{color:#1C62E2;font-weight:800}
+ .nav .it .ul{width:22px;height:3px;border-radius:2px;background:#1C62E2;margin-top:2px}
+
+ .fab{display:none}
+ body.hasfab .fab{position:absolute;right:20px;bottom:96px;width:64px;height:64px;border-radius:50%;
+   background:linear-gradient(160deg,#2A6BEE,#1550CB);display:flex;flex-direction:column;
+   align-items:center;justify-content:center;gap:2px;
+   box-shadow:0 0 0 4px #F7F9FC,0 10px 22px -8px rgba(21,80,203,.75)}
+ body.hasfab .fab s{text-decoration:none;font-size:10px;font-weight:800;color:#fff;letter-spacing:.02em}
+</style></head>
+<body>
+
+<div class="sb">
+ <div class="t">9:41</div><div class="notch"></div>
+ <div class="ic"><span class="d"><i></i><i></i><i></i></span><span class="tri"></span><span class="sq"></span></div>
+</div>
+
+<div class="hd">
+ <div class="me"></div>
+ <div class="tx"><b>Hi, Meg</b><s>Find jobs, build your future</s></div>
+ <div class="sw">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A5468" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round">
+   <circle cx="10" cy="7.5" r="3.6"/><path d="M4 20c0-3.4 2.7-5.6 6-5.6 1.3 0 2.5.35 3.5.95"/>
+   <path d="M15.5 17.5h5"/><path d="M18.6 14.8l2.4 2.7-2.4 2.7"/>
+  </svg>
+ </div>
+</div>
+
+<div class="bn">
+ <img src="banner.png" alt="">
+ <div class="bt">Urgent Hiring Today</div>
+ <div class="bs">High pay, immediate start</div>
+ <div class="bb">View Jobs</div>
+ <div class="dots"><i></i><i></i><i></i></div>
+</div>
+
+<div class="sr">
+ <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1C62E2" stroke-width="2.2"
+      stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.6"/><path d="M15.6 15.6L20.5 20.5"/></svg>
+ <span>Search jobs...</span>
+</div>
+
+<div class="cp">
+ <b>Location <i>▼</i></b>
+ <b>Category <i>▼</i></b>
+ <b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1C62E2" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8.2V20l-4-2.2v-4.6z"/></svg>
+   Advanced Filter</b>
+</div>
+
+<div class="list">
+
+ <div class="jc">
+  <div class="r1"><span class="nm">Plumber Apprentice</span><span class="hot">Hot</span>
+    <span class="pay">A$200K-$55.6K<em>/year</em></span></div>
+  <div class="r2">Sydney &nbsp;•&nbsp; Full-time</div>
+  <div class="r3">Plumbing, drainage repair / installations, hot &amp;<br>cold water systems, tools provided, training...</div>
+  <div class="r4">
+   <img src="av1.png" alt="">
+   <span class="co"><b>Artisan Plumbing</b><s>Sydney</s></span>
+   <span class="btn em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C62E2"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19"
+     height="14" rx="2.6"/><path d="M3.4 6.6L12 13l8.6-6.4"/></svg>Email</span>
+   <span class="btn ca"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.6h3.1l1.6 4-2 1.3
+     a12.5 12.5 0 006.2 6.2l1.3-2 4 1.6v3.1a1.8 1.8 0 01-2 1.8A16.6 16.6 0 014.4 5.6a1.8 1.8 0 011.8-2z"/></svg>Call</span>
+  </div>
+ </div>
+
+ <div class="jc">
+  <div class="r1"><span class="nm">Warehouse Assistant</span><span class="hot">Hot</span></div>
+  <div class="r2">Melbourne &nbsp;•&nbsp; Casual</div>
+  <div class="r3">Packing, sorting, shelving, teamwork,<br>basic English</div>
+  <div class="r4">
+   <img src="av2.png" alt="">
+   <span class="co"><b>E-Z Work</b><s>Melbourne</s></span>
+   <span class="btn em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C62E2"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19"
+     height="14" rx="2.6"/><path d="M3.4 6.6L12 13l8.6-6.4"/></svg>Email</span>
+   <span class="btn ca"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.6h3.1l1.6 4-2 1.3
+     a12.5 12.5 0 006.2 6.2l1.3-2 4 1.6v3.1a1.8 1.8 0 01-2 1.8A16.6 16.6 0 014.4 5.6a1.8 1.8 0 011.8-2z"/></svg>Call</span>
+  </div>
+ </div>
+
+ <div class="jc">
+  <div class="r1"><span class="nm">Electrician</span></div>
+  <div class="r2">Brisbane &nbsp;•&nbsp; Full-time</div>
+  <div class="r3">Electrical installations, maintenance, fault<br>finding, safety compliance</div>
+  <div class="r4">
+   <img src="av3.png" alt="">
+   <span class="co"><b>Bright Electrical</b><s>Brisbane</s></span>
+   <span class="btn em"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C62E2"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19"
+     height="14" rx="2.6"/><path d="M3.4 6.6L12 13l8.6-6.4"/></svg>Email</span>
+   <span class="btn ca"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff"
+     stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.6h3.1l1.6 4-2 1.3
+     a12.5 12.5 0 006.2 6.2l1.3-2 4 1.6v3.1a1.8 1.8 0 01-2 1.8A16.6 16.6 0 014.4 5.6a1.8 1.8 0 011.8-2z"/></svg>Call</span>
+  </div>
+ </div>
+
+ <div class="jc">
+  <div class="r1"><span class="nm">Kitchen Hand</span></div>
+  <div class="r2">Perth &nbsp;•&nbsp; Casual</div>
+  <div class="r3">Prep, dishwashing, closing shift, no experience<br>needed, uniform provided</div>
+ </div>
+
+</div>
+
+<div class="fade"></div>
+<div class="fab">
+ <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.2a7.6 7.6 0 01-8.2 7.6c-.9 0-1.8-.15-2.6-.4L4.5 21l1.6-4.6
+      A7.5 7.5 0 013.5 11.6 7.6 7.6 0 0111.8 4.4a7.6 7.6 0 018.7 7.8z"/></svg>
+ <s>Visa</s>
+</div>
+
+<div class="nav">
+ <div class="it on">
+  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#1C62E2" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12.5" rx="2.6"/>
+   <path d="M9 7.5V5.6A1.6 1.6 0 0110.6 4h2.8A1.6 1.6 0 0115 5.6V7.5"/></svg>
+  <s>Jobs</s><span class="ul"></span>
+ </div>
+ <div class="it">
+  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9AA3B2" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3.4"/>
+   <path d="M8.4 12.2l2.6 2.6 4.6-5"/></svg>
+  <s>Posts</s>
+ </div>
+ <div class="it">
+  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9AA3B2" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round"><path d="M18 9.4a6 6 0 10-12 0c0 5.2-2 6.6-2 6.6h16s-2-1.4-2-6.6z"/>
+   <path d="M10.4 19.4a1.9 1.9 0 003.2 0"/></svg>
+  <s>Notification</s>
+ </div>
+ <div class="it">
+  <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#9AA3B2" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.8"/>
+   <path d="M4.6 20c0-3.7 3.2-6 7.4-6s7.4 2.3 7.4 6"/></svg>
+  <s>My</s>
+ </div>
+</div>
+
+<script>
+if(location.hash.indexOf('fab')>=0)document.body.classList.add('hasfab');
+var m=location.hash.match(/h(\d+)/);
+if(m){document.documentElement.style.height=document.body.style.height=m[1]+'px';}
+</script>
+</body></html>

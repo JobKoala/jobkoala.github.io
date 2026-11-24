@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>4.11.2 Notification Templates</title>
+<link rel="stylesheet" href="_assets/page.css">
+<link rel="stylesheet" href="_assets/console-nav.css">
+<style>
+ .win { position:relative; width:100%; border-radius:12px; overflow:hidden; background:#fff;
+   box-shadow:0 22px 46px -22px rgba(20,40,90,.34), 0 0 0 1px #E3E9F5; }
+ .win .bar { height:30px; background:linear-gradient(#FBFCFE,#F2F5FA); border-bottom:1px solid #E9EDF4;
+   display:flex; align-items:center; gap:7px; padding:0 12px; }
+ .win .dot { width:9px; height:9px; border-radius:50%; flex:none; }
+ .win .dot.r { background:#FF5F57 } .win .dot.y { background:#FEBC2E } .win .dot.g { background:#28C840 }
+ .win .url { flex:1; margin-left:9px; height:18px; border-radius:9px; background:#fff;
+   border:1px solid #E4E9F2; font-size:9px; color:#8A93A3; display:flex; align-items:center; padding:0 10px; }
+ .empty { height:392px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+   gap:9px; background:repeating-linear-gradient(135deg,#FBFCFE 0 12px,#F5F8FD 12px 24px); }
+ .empty i { font-style:normal; font-size:30px; opacity:.5; }
+ .empty b { font-size:14px; font-weight:800; color:#8A93A3; }
+ .empty s { text-decoration:none; font-size:10.5px; color:#AAB2C2; }
+ .todo { display:grid; grid-template-columns:1fr 1fr; gap:8px 30px; margin-top:14px; }
+ .td { display:flex; gap:9px; align-items:flex-start; }
+ .td .n { flex:none; width:19px; height:19px; border-radius:50%; background:#EEF1F7;
+   color:#AAB2C2; font-size:10.5px; font-weight:800; display:flex; align-items:center;
+   justify-content:center; margin-top:1px; }
+ .td .h { font-size:11.5px; font-weight:800; color:#AAB2C2; display:inline; margin-right:6px; }
+ .td .d { font-size:10px; line-height:1.5; color:#C3C9D4; display:inline; }
+
+ .lg { background:#F6F8FC; font-size:8.6px; color:#3A4660; }
+ .lg .top { display:flex; align-items:center; background:#fff; padding:7px 12px; border-bottom:1px solid #EDF0F5; }
+ .lg .top .bg { font-size:11px; color:#5A6478; }
+ .lg .top .rt { margin-left:auto; display:flex; align-items:center; gap:14px; color:#5A6478; font-size:8.4px; }
+ .lg h3 { text-align:center; font-size:13px; font-weight:800; color:#1B2440; margin-top:12px; }
+ .lg .sub { text-align:center; font-size:8.4px; color:#98A1B3; margin-top:2px; }
+ .lg .filt { margin:11px 14px 0; background:#fff; border-radius:6px; padding:10px 12px;
+   display:flex; align-items:center; gap:9px; }
+ .lg .bar2 { margin:9px 14px 0; background:#fff; border-radius:6px; padding:9px 12px; display:flex; gap:9px; }
+ .lg label { font-size:8.4px; color:#3A4660; }
+ .lg .inp { height:20px; min-width:104px; border:1px solid #DCE1EA; border-radius:4px; background:#fff;
+   display:flex; align-items:center; padding:0 7px; font-size:8px; color:#B4BBC8; }
+ .lg .btn { height:21px; border-radius:4px; display:flex; align-items:center; gap:4px; padding:0 11px;
+   font-size:8.2px; font-weight:700; }
+ .lg .btn.p { background:#2F7BF6; color:#fff; }
+ .lg .btn.g { background:#fff; border:1px solid #DCE1EA; color:#5A6478; }
+ .lg .btn.dim { background:#F6C4C0; color:#fff; }
+ .lg .tbl { margin:10px 14px 14px; background:#fff; border-radius:6px; overflow:hidden; }
+ .lg table { width:100%; border-collapse:collapse; table-layout:fixed; }
+ .lg th { background:#F7F9FC; font-size:7.4px; font-weight:800; color:#3A4660; text-align:left;
+   padding:7px 6px; border-bottom:1px solid #EDF0F5; }
+ .lg td { font-size:7.2px; color:#3A4660; padding:4px 6px; border-bottom:1px solid #F2F4F8;
+   vertical-align:top; line-height:1.35; }
+ .lg tr:nth-child(even) td { background:#FAFBFD; }
+ .lg .nm { font-weight:700; color:#1B2440; }
+ .lg .code { font-family:ui-monospace,Menlo,monospace; font-size:6px; color:#98A1B3; margin-top:2px; }
+ .lg .chip { display:inline-block; white-space:nowrap; font-size:6.6px; font-weight:700; border-radius:3px; padding:1.5px 5px;
+   border:1px solid transparent; }
+ .lg .t-exp { background:#FEF6E7; color:#C08A2A; border-color:#F4E2BE; }
+ .lg .t-com { background:#EAF7EE; color:#3E8C5A; border-color:#CBE8D6; }
+ .lg .t-aud { background:#EAF1FE; color:#3C6DC4; border-color:#CBDCF7; }
+ .lg .i-emp { background:#fff; color:#3C6DC4; border-color:#CBDCF7; }
+ .lg .i-seek { background:#fff; color:#3E8C5A; border-color:#CBE8D6; }
+ .lg .ck { width:8px; height:8px; border:1px solid #CBD2DE; border-radius:2px; display:inline-block; }
+ .lg .act { font-size:6.8px; font-weight:700; color:#2F7BF6; line-height:1.5; white-space:nowrap; }
+ .lg .act .del { color:#E8674F; }
+
+ .lg .brandlg { display:flex; align-items:center; gap:6px; }
+ .lg .brandlg img { width:14px; height:14px; border-radius:50%; }
+ .lg .brandlg b { font-size:9.4px; font-weight:800; color:#2F7BF6; }
+</style></head><body>
+
+<div class="bg-top"></div><div class="wave1"></div><div class="wave2"></div>
+<div class="page-card">
+ <div class="titleband"></div><div class="headrule"></div>
+ <div class="logo"><img src="_assets/jobabc_icon.png" alt=""></div>
+ <div class="title"><span class="num">4.11.2</span>Notification Templates</div>
+ <div class="lead">The wording of every push and in-app message. Editing a template here changes what lands in the Notifications tab.</div>
+
+ <div class="wrap lead-on hasnav">
+  <div class="cnav">
+   <div class="brand"><i>🐨</i>Job Koala Admin</div>
+   <div class="it top">Dashboard</div>
+   <div class="g">SYSTEM</div>
+   <div class="it">Administrators</div>
+   <div class="it">Roles</div>
+   <div class="it">Basic Info</div>
+   <div class="it">Logs</div>
+   <div class="it">Regions</div>
+   <div class="it">Education Types</div>
+   <div class="g">JOBS</div>
+   <div class="it">Job List</div>
+   <div class="it">Resume Management</div>
+   <div class="it">Industries</div>
+   <div class="it top">Users</div>
+   <div class="g">ORDERS</div>
+   <div class="it">Order List</div>
+   <div class="it top">Promotion Plans</div>
+   <div class="it top">Home Banners</div>
+   <div class="it top">Comments</div>
+   <div class="it top">Verification Review</div>
+   <div class="g">CONTENT</div>
+   <div class="it">FAQ</div>
+   <div class="it on">Notification Templates</div>
+   <div class="it">Privacy Policy</div>
+   <div class="it">User Agreement</div>
+   <div class="g">ASSESSMENT</div>
+   <div class="it">Form Templates</div>
+   <div class="it">AI Config</div>
+   <div class="it">Assessment Records</div>
+   <div class="it">Consultants</div>
+   <div class="it">Consultant Pricing</div>
+  </div>
+  <div class="cmain">
+   <div class="win">
+    <div class="bar">
+     <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+     <span class="url">admin.jobkoala.au/content/notifications</span>
+    </div>
+    <div class="lg">
+     <div class="top"><span class="brandlg"><img src="_assets/logo.png"><b>Job Koala Admin</b></span><span class="rt"><span>🌐 English ⌄</span><span>👤 admin ⌄</span></span></div>
+     <h3>Notification Template Management</h3><div class="sub">Manage system notification templates</div>
+     <div class="filt"><label>Template Name</label><span class="inp">Enter template name</span><label>Notification Type</label><span class="inp">Select notification type ⌄</span><label>Target Identity</label><span class="inp">Select target identity ⌄</span><span class="btn p">🔍 Search</span><span class="btn g">↻ Reset</span></div>
+     <div class="bar2"><span class="btn p">+ Add Template</span><span class="btn dim">🗑 Batch Delete</span></div>
+     <div class="tbl"><table>
+      <colgroup><col style="width:18px"><col style="width:120px"><col style="width:76px"><col style="width:62px"><col style="width:74px"><col style="width:80px"><col><col><col style="width:58px"><col style="width:52px"></colgroup>
+      <tr><th></th><th>Template Name</th><th>Notification Type</th><th>Target Identity</th><th>Chinese Title</th><th>English Title</th><th>Chinese Content</th><th>English Content</th><th>Created At</th><th>Action</th></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Package Expiry Reminder (Employer)</div><div class="code">PACKAGE_EXPIRED_EMPLOYER</div></td><td><span class="chip t-exp">Job/Top Expiry</span></td><td><span class="chip i-emp">Employer</span></td><td>cpdd</td><td>-</td><td>dd</td><td>-</td><td>2026/07/29 19:00</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">New Comment Notification (Job Seeker)</div><div class="code">NEW_COMMENT_JOB_SEEKER</div></td><td><span class="chip t-com">New Comment</span></td><td><span class="chip i-seek">Job Seeker</span></td><td>测试</td><td>test</td><td>测试。</td><td>test</td><td>2026/07/28 01:33</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Package Expiry Reminder (Job Seeker)</div><div class="code">PACKAGE_EXPIRED_JOB_SEEKER</div></td><td><span class="chip t-exp">Job/Top Expiry</span></td><td><span class="chip i-seek">Job Seeker</span></td><td>套餐即将到期</td><td>expiring soon</td><td>您购买的推广计划${name}，在${expireTime}即将到期，如需延期请及时购买</td><td>The package you purchased${name}, about to ${expireTime}expire</td><td>2026/04/10 23:23</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Package Expiry Reminder (Employer)</div><div class="code">PACKAGE_EXPIRED_EMPLOYER</div></td><td><span class="chip t-exp">Job/Top Expiry</span></td><td><span class="chip i-emp">Employer</span></td><td>套餐即将到期</td><td>expiring soon</td><td>您购买的推广计划${name}，在${expireTime}即将到期，如需延期请及时购买</td><td>The package you purchased${name}, about to ${expireTime}expire</td><td>2026/04/10 23:23</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Package Expiry Reminder</div><div class="code">PACKAGE_EXPIRED</div></td><td><span class="chip t-exp">Job/Top Expiry</span></td><td><span class="chip i-emp">Employer</span></td><td>套餐即将到期</td><td>expiring soon</td><td>您购买的推广计划${name}，在${expireTime}即将到期，如需延期请及时购买</td><td>The package you purchased${name}, about to ${expireTime}expire</td><td>2026/01/26 14:24</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Job Seeker Audit Rejected</div><div class="code">JOB_SEEKER_AUDIT_REJECT</div></td><td><span class="chip t-aud">Audit Result</span></td><td><span class="chip i-seek">Job Seeker</span></td><td>简历没有通过审核</td><td>Resume did not pass the review</td><td>${reason}</td><td>${reason}</td><td>2026/01/26 14:20</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Job Seeker Audit Approved</div><div class="code">JOB_SEEKER_AUDIT_PASS</div></td><td><span class="chip t-aud">Audit Result</span></td><td><span class="chip i-seek">Job Seeker</span></td><td>简历审核通过</td><td>Approved</td><td>已通过审核</td><td>Approved 111</td><td>2026/01/26 14:19</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Job Audit Approved</div><div class="code">JOB_AUDIT_PASS</div></td><td><span class="chip t-aud">Audit Result</span></td><td><span class="chip i-emp">Employer</span></td><td>审核通过</td><td>Approved</td><td>发布的招聘信息，${positionName}审核通过！</td><td>Published Recruitment，${positionName}Approved</td><td>2026/01/24 19:08</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+      <tr><td><span class="ck"></span></td><td><div class="nm">Job Audit Rejected</div><div class="code">JOB_AUDIT_REJECT</div></td><td><span class="chip t-aud">Audit Result</span></td><td><span class="chip i-emp">Employer</span></td><td>招聘信息不通过</td><td>unreview1</td><td>${positionName}该招聘审核不通过，${reason}</td><td>${positionName} unreview1, ${reason}</td><td>2026/01/24 17:40</td><td class="act">👁 View &nbsp;✎ Edit<br><span class="del">🗑 Delete</span></td></tr>
+     </table></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="footer">JobABC</div>
+</div>
+<script src="_assets/fit.js"></script>
+</body></html>
